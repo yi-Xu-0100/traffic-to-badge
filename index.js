@@ -14,7 +14,6 @@ async function run() {
         console.log(views);
     } catch (error) {
         console.log(error);
-        core.setFailed(error.message);
     }
     try {
         var clones = await octokit.repo.getViews({owner:owner,repo:repo,per:clones_per});

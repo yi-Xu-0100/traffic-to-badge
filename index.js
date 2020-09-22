@@ -10,13 +10,13 @@ async function run() {
     const octokit = new github.getOctokit(process.env.GITHUB_TOKEN);
     const { owner, repo } = github.context.repo;
     try {
-        var views = await octokit.repo.getViews({owner:owner,repo:repo,per:views_per});
+        var views = await octokit.repos.getViews({owner:owner,repo:repo,per:views_per});
         console.log(views);
     } catch (error) {
         console.log(error);
     }
     try {
-        var clones = await octokit.repo.getViews({owner:owner,repo:repo,per:clones_per});
+        var clones = await octokit.repos.getViews({owner:owner,repo:repo,per:clones_per});
         console.log(clones);
     } catch (error) {
         console.log(error);

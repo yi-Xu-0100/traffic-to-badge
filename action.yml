@@ -2,8 +2,12 @@ name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
   views_per:  # id of input
-    description: 'number of milliseconds to wait'
-    required: true
+    description: 'views_per'
+    required: false
+    default: 'day'
+  clones_per:  # id of input
+    description: 'clones_per'
+    required: false
     default: 'day'
 outputs:
   views: # output will be available to future steps

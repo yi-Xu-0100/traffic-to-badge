@@ -1,7 +1,7 @@
 name: 'Wait'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  views:  # id of input
+  views_per:  # id of input
     description: 'number of milliseconds to wait'
     required: true
     default: 'day'

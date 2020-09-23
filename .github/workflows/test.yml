@@ -23,7 +23,6 @@ jobs:
       uses: actions/checkout@v2
     - name: test
       uses: ./
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         views_per: day
+        my_token: ${{ secrets.GITHUB_TOKEN }}

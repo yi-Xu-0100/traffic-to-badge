@@ -9,6 +9,9 @@ inputs:
     description: 'clones_per'
     required: false
     default: 'day'
+  my_token:  # id of input
+    description: 'my_token'
+    required: true
 outputs:
   views: # output will be available to future steps
     description: 'page views'

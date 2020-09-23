@@ -19,28 +19,28 @@ async function run() {
     const { owner, repo } = github.context.repo;
     try {
         var views = await octokit.repos.getViews({owner:owner,repo:repo,per:views_per});
-        console.log(views);
+        console.log(JSON.stringify(views.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
         var clones = await octokit.repos.getClones({owner:owner,repo:repo,per:clones_per});
-        console.log(clones);
+        console.log(JSON.stringify(clones.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var paths = await octokit.repos.getClones({owner:owner,repo:repo});
-        console.log(paths);
+        var paths = await octokit.repos.getTopPaths({owner:owner,repo:repo});
+        console.log(JSON.stringify(paths.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var referrers = await octokit.repos.getClones({owner:owner,repo:repo});
-        console.log(referrers);
+        var referrers = await octokit.repos.getTopReferrers({owner:owner,repo:repo});
+        console.log(JSON.stringify(referrers.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);

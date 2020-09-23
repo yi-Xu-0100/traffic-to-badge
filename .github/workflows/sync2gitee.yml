@@ -5,6 +5,7 @@ name: sync2gitee
 # lastmod: 2020-09-21 08:32:13
 
 on:
+  push:
   schedule:
     # UTC 17:00 -> CST (China) 1:00 see https://datetime360.com/cn/utc-cst-china-time/
     - cron: '1 17 * * *'

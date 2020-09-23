@@ -25,4 +25,5 @@ jobs:
       uses: ./
       with:
         views_per: day
-        my_token: ${{ secrets.GITHUB_TOKEN }}
+        clones_per: week
+        my_token: ${{ secrets.TRAFFIC_TOKEN }}

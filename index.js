@@ -15,10 +15,25 @@ async function run() {
         console.log(views);
     } catch (error) {
         console.log(error);
+        core.setFailed(error.message);
     }
     try {
         var clones = await octokit.repos.getClones({owner:owner,repo:repo,per:clones_per});
         console.log(clones);
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    try {
+        var paths = await octokit.repos.getClones({owner:owner,repo:repo});
+        console.log(paths);
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    try {
+        var referrers = await octokit.repos.getClones({owner:owner,repo:repo});
+        console.log(referrers);
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);

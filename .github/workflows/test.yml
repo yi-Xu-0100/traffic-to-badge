@@ -30,7 +30,10 @@ jobs:
 
     - name: check traffic dir
       if: failure()
-      run: mkdir traffic/
+      run: |
+        ls -a
+        cd traffic/
+        ls -a
 
     - name: test
       uses: ./

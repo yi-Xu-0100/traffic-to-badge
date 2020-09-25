@@ -32,7 +32,8 @@
   "homepage": "https://github.com/yi-Xu-0100/traffic-to-badge#readme",
   "dependencies": {
     "@actions/core": "^1.1.1",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "child_process": "^1.0.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",

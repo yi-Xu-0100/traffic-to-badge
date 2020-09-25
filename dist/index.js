@@ -7,16 +7,20 @@ require('./sourcemap-register.js');module.exports =
 
 const core = __webpack_require__(186);
 const github = __webpack_require__(438)
+const fs = __webpack_require__(747);
+const path = __webpack_require__(622);
+const exec = __webpack_require__(129).exec;
 
+const src = __dirname;
 
-
-// most @actions toolkit packages have async methods
 async function run() {
     const views_per = core.getInput('views_per', {require: false});
     const clones_per = core.getInput('clones_per', {require: false});
     const my_token = core.getInput('my_token', {require: false});
     const octokit = new github.getOctokit(my_token);
     const { owner, repo } = github.context.repo;
+    console.log(github.context);
+    var traffic_action_path = path.join(src, `src`);
     try {
         var views = await octokit.repos.getViews({owner:owner,repo:repo,per:views_per});
         console.log(JSON.stringify(views.data));
@@ -45,6 +49,37 @@ async function run() {
         console.log(error);
         core.setFailed(error.message);
     }
+    
+    exec(`git clone ${github.context.repo.url} ${traffic_action_path}`, function(error, stdout, stderr){
+        if(error) {
+            console.error('error: ' + error);
+            return;
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + typeof stderr);
+    });
+
+    var traffic_action = path.join(src, `src/traffic_clones_${getFormatDate()}.json`);
+    fs.writeFile(traffic_action, JSON.stringify(clones.data), function(err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log('文件创建成功，地址：' + traffic_action);
+    });
+}
+
+function getFormatDate() {
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (strDate < 10) {
+        strDate = "0" + strDate;
+    }
+    var currentDate = date.getFullYear() + "-" + month + "-" + strDate;
+    return currentDate;
 }
 
 run();
@@ -5818,6 +5853,14 @@ module.exports = eval("require")("encoding");
 
 "use strict";
 module.exports = require("assert");
+
+/***/ }),
+
+/***/ 129:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
 
 /***/ }),
 

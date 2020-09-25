@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
 
-const src = __dirname;
+const src = path.join(__dirname,'..');
 
 async function run() {
     const views_per = core.getInput('views_per', {require: false});
@@ -12,8 +12,16 @@ async function run() {
     const my_token = core.getInput('my_token', {require: false});
     const octokit = new github.getOctokit(my_token);
     const { owner, repo } = github.context.repo;
-    console.log(github.context);
+    console.log(github.context.payload.repository.clone_url);
     var traffic_action_path = path.join(src, `src`);
+    
+    fs.mkdir('traffic_action_path',function(error){
+        if(error){
+            console.log(error);
+            return false;
+        }
+        console.log('创建目录成功');
+    })
     try {
         var views = await octokit.repos.getViews({owner:owner,repo:repo,per:views_per});
         console.log(JSON.stringify(views.data));
@@ -43,7 +51,7 @@ async function run() {
         core.setFailed(error.message);
     }
     
-    exec(`git clone ${github.context.repo.url} ${traffic_action_path}`, function(error, stdout, stderr){
+    exec(`git clone ${github.context.payload.repository.clone_url} ${traffic_action_path}`, function(error, stdout, stderr){
         if(error) {
             console.error('error: ' + error);
             return;
@@ -52,7 +60,7 @@ async function run() {
         console.log('stderr: ' + typeof stderr);
     });
 
-    var traffic_action = path.join(src, `src/traffic_clones_${getFormatDate()}.json`);
+    var traffic_action = path.join(traffic_action_path, `traffic_clones_${getFormatDate()}.json`);
     fs.writeFile(traffic_action, JSON.stringify(clones.data), function(err) {
         if (err) {
             return console.log(err);

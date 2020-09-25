@@ -29,9 +29,9 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           return await github.repos.getBranch({
-            context.repo.owner,
-            context.repo.repo,
-            traffic,
+            owner:context.repo.owner,
+            repo:context.repo.repo,
+            branch:traffic,
           });
 
     # - name: Set traffic

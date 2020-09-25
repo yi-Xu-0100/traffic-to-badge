@@ -28,7 +28,7 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          return await octokit.repos.getBranch({
+          return await github.repos.getBranch({
             owner,
             repo,
             traffic,

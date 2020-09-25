@@ -31,7 +31,7 @@ jobs:
           return await github.repos.getBranch({
             owner:context.repo.owner,
             repo:context.repo.repo,
-            branch:traffic,
+            branch:'traffic',
           });
 
     # - name: Set traffic

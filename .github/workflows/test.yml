@@ -19,31 +19,31 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: checkout
-      uses: actions/checkout@v2
+    - name: Get current repository name
+      id: info
+      uses: actions/github-script@v3.0.0
       with:
-        ref: traffic
-        path: traffic
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          return await octokit.repos.getBranch({
+            owner,
+            repo,
+            traffic,
+          });
 
-    - name: check traffic dir
-      if: failure()
-      run: |
-        ls -a
-        cd traffic/
-        ls -a
+    # - name: Set traffic
+    #   uses: ./
+    #   with:
+    #     views_per: day
+    #     clones_per: week
+    #     my_token: ${{ secrets.TRAFFIC_TOKEN }}
 
-    - name: test
-      uses: ./
-      with:
-        views_per: day
-        clones_per: week
-        my_token: ${{ secrets.TRAFFIC_TOKEN }}
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: traffic
+    # - name: Deploy
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_branch: traffic
+    #     publish_dir: ./traffic

@@ -2,100 +2,7 @@ require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 932:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-const core = __webpack_require__(186);
-const github = __webpack_require__(438)
-const fs = __webpack_require__(747);
-const path = __webpack_require__(622);
-const exec = __webpack_require__(129).exec;
-
-const src = path.join(__dirname,'..');
-
-async function run() {
-    const views_per = core.getInput('views_per', {require: false});
-    const clones_per = core.getInput('clones_per', {require: false});
-    const my_token = core.getInput('my_token', {require: false});
-    const octokit = new github.getOctokit(my_token);
-    const { owner, repo } = github.context.repo;
-    console.log(github.context.payload.repository.clone_url);
-    var traffic_action_path = path.join(src, `src`);
-    
-    fs.mkdir('traffic_action_path',function(error){
-        if(error){
-            console.log(error);
-            return false;
-        }
-        console.log('创建目录成功');
-    })
-    try {
-        var views = await octokit.repos.getViews({owner:owner,repo:repo,per:views_per});
-        console.log(JSON.stringify(views.data));
-    } catch (error) {
-        console.log(error);
-        core.setFailed(error.message);
-    }
-    try {
-        var clones = await octokit.repos.getClones({owner:owner,repo:repo,per:clones_per});
-        console.log(JSON.stringify(clones.data));
-    } catch (error) {
-        console.log(error);
-        core.setFailed(error.message);
-    }
-    try {
-        var paths = await octokit.repos.getTopPaths({owner:owner,repo:repo});
-        console.log(JSON.stringify(paths.data));
-    } catch (error) {
-        console.log(error);
-        core.setFailed(error.message);
-    }
-    try {
-        var referrers = await octokit.repos.getTopReferrers({owner:owner,repo:repo});
-        console.log(JSON.stringify(referrers.data));
-    } catch (error) {
-        console.log(error);
-        core.setFailed(error.message);
-    }
-    
-    exec(`git clone ${github.context.payload.repository.clone_url} ${traffic_action_path}`, function(error, stdout, stderr){
-        if(error) {
-            console.error('error: ' + error);
-            return;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + typeof stderr);
-    });
-
-    var traffic_action = path.join(traffic_action_path, `traffic_clones_${getFormatDate()}.json`);
-    fs.writeFile(traffic_action, JSON.stringify(clones.data), function(err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log('文件创建成功，地址：' + traffic_action);
-    });
-}
-
-function getFormatDate() {
-    var date = new Date();
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-    if (month < 10) {
-        month = "0" + month;
-    }
-    if (strDate < 10) {
-        strDate = "0" + strDate;
-    }
-    var currentDate = date.getFullYear() + "-" + month + "-" + strDate;
-    return currentDate;
-}
-
-run();
-
-
-/***/ }),
-
-/***/ 351:
+/***/ 241:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -109,6 +16,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const os = __importStar(__webpack_require__(87));
+const utils_1 = __webpack_require__(278);
 /**
  * Commands
  *
@@ -162,28 +70,14 @@ class Command {
         return cmdStr;
     }
 }
-/**
- * Sanitizes an input into a string so it can be passed into issueCommand safely
- * @param input input to sanitize into a string
- */
-function toCommandValue(input) {
-    if (input === null || input === undefined) {
-        return '';
-    }
-    else if (typeof input === 'string' || input instanceof String) {
-        return input;
-    }
-    return JSON.stringify(input);
-}
-exports.toCommandValue = toCommandValue;
 function escapeData(s) {
-    return toCommandValue(s)
+    return utils_1.toCommandValue(s)
         .replace(/%/g, '%25')
         .replace(/\r/g, '%0D')
         .replace(/\n/g, '%0A');
 }
 function escapeProperty(s) {
-    return toCommandValue(s)
+    return utils_1.toCommandValue(s)
         .replace(/%/g, '%25')
         .replace(/\r/g, '%0D')
         .replace(/\n/g, '%0A')
@@ -216,7 +110,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const command_1 = __webpack_require__(351);
+const command_1 = __webpack_require__(241);
+const file_command_1 = __webpack_require__(717);
+const utils_1 = __webpack_require__(278);
 const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
 /**
@@ -243,9 +139,17 @@ var ExitCode;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function exportVariable(name, val) {
-    const convertedVal = command_1.toCommandValue(val);
+    const convertedVal = utils_1.toCommandValue(val);
     process.env[name] = convertedVal;
-    command_1.issueCommand('set-env', { name }, convertedVal);
+    const filePath = process.env['GITHUB_ENV'] || '';
+    if (filePath) {
+        const delimiter = '_GitHubActionsFileCommandDelimeter_';
+        const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
+        file_command_1.issueCommand('ENV', commandValue);
+    }
+    else {
+        command_1.issueCommand('set-env', { name }, convertedVal);
+    }
 }
 exports.exportVariable = exportVariable;
 /**
@@ -261,7 +165,13 @@ exports.setSecret = setSecret;
  * @param inputPath
  */
 function addPath(inputPath) {
-    command_1.issueCommand('add-path', {}, inputPath);
+    const filePath = process.env['GITHUB_PATH'] || '';
+    if (filePath) {
+        file_command_1.issueCommand('PATH', inputPath);
+    }
+    else {
+        command_1.issueCommand('add-path', {}, inputPath);
+    }
     process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
 }
 exports.addPath = addPath;
@@ -420,6 +330,68 @@ function getState(name) {
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
+
+/***/ }),
+
+/***/ 717:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+// For internal use, subject to change.
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const fs = __importStar(__webpack_require__(747));
+const os = __importStar(__webpack_require__(87));
+const utils_1 = __webpack_require__(278);
+function issueCommand(command, message) {
+    const filePath = process.env[`GITHUB_${command}`];
+    if (!filePath) {
+        throw new Error(`Unable to find environment variable for file command ${command}`);
+    }
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`Missing file at path: ${filePath}`);
+    }
+    fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+        encoding: 'utf8'
+    });
+}
+exports.issueCommand = issueCommand;
+//# sourceMappingURL=file-command.js.map
+
+/***/ }),
+
+/***/ 278:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Sanitizes an input into a string so it can be passed into issueCommand safely
+ * @param input input to sanitize into a string
+ */
+function toCommandValue(input) {
+    if (input === null || input === undefined) {
+        return '';
+    }
+    else if (typeof input === 'string' || input instanceof String) {
+        return input;
+    }
+    return JSON.stringify(input);
+}
+exports.toCommandValue = toCommandValue;
+//# sourceMappingURL=utils.js.map
 
 /***/ }),
 
@@ -3337,7 +3309,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var deprecation = __webpack_require__(481);
+var deprecation = __webpack_require__(932);
 var once = _interopDefault(__webpack_require__(223));
 
 const logOnce = once(deprecation => console.warn(deprecation));
@@ -3768,7 +3740,7 @@ function removeHook (state, name, method) {
 
 /***/ }),
 
-/***/ 481:
+/***/ 932:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -5848,6 +5820,96 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 351:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+const core = __webpack_require__(186);
+const github = __webpack_require__(438)
+const fs = __webpack_require__(747);
+const path = __webpack_require__(622);
+const util = __webpack_require__(254);
+
+const src = path.join(__dirname,'..');
+
+async function run() {
+    const views_per = core.getInput('views_per', {require: false});
+    const clones_per = core.getInput('clones_per', {require: false});
+    const my_token = core.getInput('my_token', {require: false});
+    const octokit = new github.getOctokit(my_token);
+    const { owner, repo } = github.context.repo;
+    console.log(github.context.payload.repository.clone_url);
+    var traffic_action_path = path.join(src, `src`);
+    var traffic_data = await util.getTraffic(octokit, owner, repo, views_per, clones_per);
+
+    var traffic_action = path.join(traffic_action_path, `traffic_clones_${util.getFormatDate()}.json`);
+    fs.writeFile(traffic_action, traffic_data.clones, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log('文件创建成功，地址：' + traffic_action);
+    });
+}
+
+run();
+
+
+/***/ }),
+
+/***/ 254:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const core = __webpack_require__(186);
+
+let getFormatDate = function () {
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (strDate < 10) {
+        strDate = "0" + strDate;
+    }
+    var currentDate = date.getFullYear() + "-" + month + "-" + strDate;
+    return currentDate;
+}
+
+let getTraffic = async function (octokit, owner, repo, views_per = 'day', clones_per = 'day') {
+    try {
+        var views = await octokit.repos.getViews({ owner: owner, repo: repo, per: views_per });
+        console.log(JSON.stringify(views.data));
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    try {
+        var clones = await octokit.repos.getClones({ owner: owner, repo: repo, per: clones_per });
+        console.log(JSON.stringify(clones.data));
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    try {
+        var paths = await octokit.repos.getTopPaths({ owner: owner, repo: repo });
+        console.log(JSON.stringify(paths.data));
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    try {
+        var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: repo });
+        console.log(JSON.stringify(referrers.data));
+    } catch (error) {
+        console.log(error);
+        core.setFailed(error.message);
+    }
+    return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
+}
+
+module.exports = { getFormatDate, getTraffic };
+
+/***/ }),
+
 /***/ 877:
 /***/ ((module) => {
 
@@ -5861,14 +5923,6 @@ module.exports = eval("require")("encoding");
 
 "use strict";
 module.exports = require("assert");
-
-/***/ }),
-
-/***/ 129:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("child_process");
 
 /***/ }),
 
@@ -6006,7 +6060,7 @@ module.exports = require("zlib");
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(932);
+/******/ 	return __webpack_require__(351);
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map

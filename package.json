@@ -6,7 +6,7 @@
   "scripts": {
     "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint": "eslint .",
-    "prepare": "ncc build index.js -o dist --source-map",
+    "prepare": "ncc build ./src/index.js -o ./dist/ --source-map",
     "test": "jest",
     "pre-commit": "npm run prepare && git add dist/"
   },
@@ -33,7 +33,8 @@
   "dependencies": {
     "@actions/core": "^1.1.1",
     "@actions/github": "^4.0.0",
-    "child_process": "^1.0.2"
+    "child_process": "^1.0.2",
+    "simple-git": "^2.20.1"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",

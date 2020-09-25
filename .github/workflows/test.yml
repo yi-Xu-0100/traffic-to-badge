@@ -29,8 +29,8 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           return await github.repos.getBranch({
-            owner,
-            repo,
+            context.repo.owner,
+            context.repo.repo,
             traffic,
           });
 

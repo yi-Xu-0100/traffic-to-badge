@@ -28,6 +28,10 @@ jobs:
         ref: traffic
         path: traffic
 
+    - name: check traffic dir
+      if: failure()
+      run: mkdir traffic/
+
     - name: test
       uses: ./
       with:

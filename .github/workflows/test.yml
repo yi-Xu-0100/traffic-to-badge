@@ -27,12 +27,34 @@ jobs:
       uses: actions/github-script@v3.0.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
+        result-encoding: string
         script: |
-          return await github.repos.getBranch({
-            owner:context.repo.owner,
-            repo:context.repo.repo,
-            branch:'traffic',
-          });
+          try{
+              await github.repos.getBranch({
+                owner:context.repo.owner,
+                repo:context.repo.repo,
+                branch:'traffic',
+              });
+          } catch (error) {
+            if (error.message === 'Not Found') {
+              return false
+            } else {
+              core.setFailed(error.message)
+            }
+          }
+          return true
+
+    - name: Get traffic data
+      if: steps.info.outputs.result == 'true'
+      uses: actions/checkout@v2
+      with:
+        ref: traffic
+        path: traffic
+
+    - name: Init traffic data
+      if: steps.info.outputs.result == 'false'
+      run: |
+        mkdir traffic/
 
     # - name: Set traffic
     #   uses: ./
@@ -47,3 +69,8 @@ jobs:
     #     github_token: ${{ secrets.GITHUB_TOKEN }}
     #     publish_branch: traffic
     #     publish_dir: ./traffic
+
+    - name: Show traffic data
+      run: |
+        cd traffic/
+        ls -a

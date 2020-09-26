@@ -36,7 +36,7 @@ jobs:
                 branch:'traffic',
               });
           } catch (error) {
-            if (error.message === 'Not Found') {
+            if (error.message === 'Branch not found') {
               return false
             } else {
               core.setFailed(error.message)

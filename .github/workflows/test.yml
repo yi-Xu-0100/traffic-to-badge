@@ -63,12 +63,12 @@ jobs:
     #     clones_per: week
     #     my_token: ${{ secrets.TRAFFIC_TOKEN }}
 
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: traffic
-    #     publish_dir: ./traffic
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: traffic
+        publish_dir: ./traffic
 
     - name: Show traffic data
       run: |

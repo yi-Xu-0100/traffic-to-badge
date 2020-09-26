@@ -54,7 +54,8 @@ jobs:
     - name: Init traffic data
       if: steps.info.outputs.result == 'false'
       run: |
-        mkdir traffic/
+        mkdir ./traffic/
+        cp ./LICENSE ./traffic/
 
     # - name: Set traffic
     #   uses: ./
@@ -69,8 +70,12 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: traffic
         publish_dir: ./traffic
+        allow_empty_commit: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        full_commit_message: ${{ github.event.head_commit.message }}
 
     - name: Show traffic data
       run: |
-        cd traffic/
+        cd ./traffic/
         ls -a

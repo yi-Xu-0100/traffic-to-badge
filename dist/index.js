@@ -5828,6 +5828,7 @@ const github = __webpack_require__(438)
 const fs = __webpack_require__(747);
 const path = __webpack_require__(622);
 const util = __webpack_require__(254);
+const cp = __webpack_require__(129);
 
 const src = path.join(__dirname,'..');
 
@@ -5837,8 +5838,37 @@ async function run() {
     const my_token = core.getInput('my_token', {require: false});
     const octokit = new github.getOctokit(my_token);
     const { owner, repo } = github.context.repo;
-    console.log(github.context.payload.repository.clone_url);
-    var traffic_action_path = path.join(src, `src`);
+    const clone_url = github.context.payload.repository.clone_url;
+
+    try{
+        await octokit.repos.getBranch({
+          owner:owner,
+          repo:repo,
+          branch:'traffic',
+        });
+    } catch (error) {
+      if (error.message === 'Branch not found') {
+        cp.execFileSync('mkdir ./traffic', function(error, stdout, stderr){
+            if(error) {
+                console.error('error: ' + error);
+                return;
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + typeof stderr);
+        });
+      } else {
+        core.setFailed(error.message)
+      }
+    }
+    cp.execFileSync(`git clone ${clone_url} ./traffic -b traffic`, function(error, stdout, stderr){
+        if(error) {
+            console.error('error: ' + error);
+            return;
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + typeof stderr);
+    });
+    var traffic_action_path = path.join(src, `traffic`);
     var traffic_data = await util.getTraffic(octokit, owner, repo, views_per, clones_per);
 
     var traffic_action = path.join(traffic_action_path, `traffic_clones_${util.getFormatDate()}.json`);
@@ -5923,6 +5953,14 @@ module.exports = eval("require")("encoding");
 
 "use strict";
 module.exports = require("assert");
+
+/***/ }),
+
+/***/ 129:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
 
 /***/ }),
 

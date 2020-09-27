@@ -22,47 +22,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Get current repository name
-      id: info
-      uses: actions/github-script@v3.0.0
+    - name: Set traffic
+      uses: ./
       with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        result-encoding: string
-        script: |
-          try{
-              await github.repos.getBranch({
-                owner:context.repo.owner,
-                repo:context.repo.repo,
-                branch:'traffic',
-              });
-          } catch (error) {
-            if (error.message === 'Branch not found') {
-              return false
-            } else {
-              core.setFailed(error.message)
-            }
-          }
-          return true
-
-    - name: Get traffic data
-      if: steps.info.outputs.result == 'true'
-      uses: actions/checkout@v2
-      with:
-        ref: traffic
-        path: traffic
-
-    - name: Init traffic data
-      if: steps.info.outputs.result == 'false'
-      run: |
-        mkdir ./traffic/
-        cp ./LICENSE ./traffic/
-
-    # - name: Set traffic
-    #   uses: ./
-    #   with:
-    #     views_per: day
-    #     clones_per: week
-    #     my_token: ${{ secrets.TRAFFIC_TOKEN }}
+        views_per: day
+        clones_per: week
+        my_token: ${{ secrets.TRAFFIC_TOKEN }}
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
@@ -70,7 +35,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: traffic
         publish_dir: ./traffic
-        allow_empty_commit: true
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@users.noreply.github.com'
         full_commit_message: ${{ github.event.head_commit.message }}

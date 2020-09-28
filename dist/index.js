@@ -5836,7 +5836,7 @@ async function run() {
     const my_token = core.getInput('my_token', {require: false});
     var traffic_data_path = path.join(src, `traffic`);
 
-    if (!(await util.initTafficDate(traffic_data_path))) core.setFailed("Init traffic data fail!");
+    if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
 
     var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
 
@@ -5911,8 +5911,8 @@ let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day'
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-let initTafficDate = async function (traffic_data_path) {
-    const octokit = new github.getOctokit();
+let initTafficDate = async function (my_token, traffic_data_path) {
+    const octokit = new github.getOctokit(my_token);
     try {
         await octokit.repos.getBranch({
             owner: owner,

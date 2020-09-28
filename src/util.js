@@ -52,8 +52,8 @@ let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day'
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-let initTafficDate = async function (traffic_data_path) {
-    const octokit = new github.getOctokit();
+let initTafficDate = async function (my_token, traffic_data_path) {
+    const octokit = new github.getOctokit(my_token);
     try {
         await octokit.repos.getBranch({
             owner: owner,

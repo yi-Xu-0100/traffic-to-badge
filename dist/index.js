@@ -5824,11 +5824,9 @@ function wrappy (fn, cb) {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186);
-const github = __webpack_require__(438)
 const fs = __webpack_require__(747);
 const path = __webpack_require__(622);
 const util = __webpack_require__(254);
-const cp = __webpack_require__(129);
 
 const src = path.join(__dirname,'..');
 
@@ -5836,47 +5834,18 @@ async function run() {
     const views_per = core.getInput('views_per', {require: false});
     const clones_per = core.getInput('clones_per', {require: false});
     const my_token = core.getInput('my_token', {require: false});
-    const octokit = new github.getOctokit(my_token);
-    const { owner, repo } = github.context.repo;
-    const clone_url = github.context.payload.repository.clone_url;
+    var traffic_data_path = path.join(src, `traffic`);
 
-    try{
-        await octokit.repos.getBranch({
-          owner:owner,
-          repo:repo,
-          branch:'traffic',
-        });
-    } catch (error) {
-      if (error.message === 'Branch not found') {
-        cp.execFileSync('mkdir ./traffic', function(error, stdout, stderr){
-            if(error) {
-                console.error('error: ' + error);
-                return;
-            }
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + typeof stderr);
-        });
-      } else {
-        core.setFailed(error.message)
-      }
-    }
-    cp.execFileSync(`git clone ${clone_url} ./traffic -b traffic`, function(error, stdout, stderr){
-        if(error) {
-            console.error('error: ' + error);
-            return;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + typeof stderr);
-    });
-    var traffic_action_path = path.join(src, `traffic`);
-    var traffic_data = await util.getTraffic(octokit, owner, repo, views_per, clones_per);
+    if (!(await util.initTafficDate(traffic_data_path))) core.setFailed("Init traffic data fail!");
 
-    var traffic_action = path.join(traffic_action_path, `traffic_clones_${util.getFormatDate()}.json`);
-    fs.writeFile(traffic_action, traffic_data.clones, function (err) {
+    var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
+
+    var traffic_clones = path.join(traffic_data_path, `traffic_clones_${util.getFormatDate()}.json`);
+    fs.writeFile(traffic_clones, traffic_data.clones, function (err) {
         if (err) {
             return console.log(err);
         }
-        console.log('文件创建成功，地址：' + traffic_action);
+        console.log('文件创建成功，地址：' + traffic_clones);
     });
 }
 
@@ -5889,6 +5858,11 @@ run();
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186);
+const cp = __webpack_require__(129);
+const github = __webpack_require__(438);
+
+const { owner, repo } = github.context.repo;
+const clone_url = github.context.payload.repository.clone_url;
 
 let getFormatDate = function () {
     var date = new Date();
@@ -5904,7 +5878,8 @@ let getFormatDate = function () {
     return currentDate;
 }
 
-let getTraffic = async function (octokit, owner, repo, views_per = 'day', clones_per = 'day') {
+let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day') {
+    const octokit = new github.getOctokit(my_token);
     try {
         var views = await octokit.repos.getViews({ owner: owner, repo: repo, per: views_per });
         console.log(JSON.stringify(views.data));
@@ -5936,7 +5911,41 @@ let getTraffic = async function (octokit, owner, repo, views_per = 'day', clones
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-module.exports = { getFormatDate, getTraffic };
+let initTafficDate = async function (traffic_data_path) {
+    const octokit = new github.getOctokit();
+    try {
+        await octokit.repos.getBranch({
+            owner: owner,
+            repo: repo,
+            branch: 'traffic',
+        });
+    } catch (error) {
+        if (error.message === 'Branch not found') {
+            cp.execFileSync(`mkdir ${traffic_data_path}`, function (error, stdout, stderr) {
+                if (error) {
+                    console.error('error: ' + error);
+                    return false;
+                }
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + typeof stderr);
+            });
+        } else {
+            core.setFailed(error.message)
+        }
+    }
+    cp.execFileSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+        if (error) {
+            console.error('error: ' + error);
+            return false;
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + typeof stderr);
+    });
+    console.log(`Init traffic data into ${traffic_data_path}.`);
+    return true;
+}
+
+module.exports = { getFormatDate, getTraffic, initTafficDate };
 
 /***/ }),
 

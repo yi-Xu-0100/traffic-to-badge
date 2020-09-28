@@ -1,4 +1,9 @@
 const core = require('@actions/core');
+const cp = require('child_process');
+const github = require('@actions/github');
+
+const { owner, repo } = github.context.repo;
+const clone_url = github.context.payload.repository.clone_url;
 
 let getFormatDate = function () {
     var date = new Date();
@@ -14,7 +19,8 @@ let getFormatDate = function () {
     return currentDate;
 }
 
-let getTraffic = async function (octokit, owner, repo, views_per = 'day', clones_per = 'day') {
+let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day') {
+    const octokit = new github.getOctokit(my_token);
     try {
         var views = await octokit.repos.getViews({ owner: owner, repo: repo, per: views_per });
         console.log(JSON.stringify(views.data));
@@ -46,4 +52,38 @@ let getTraffic = async function (octokit, owner, repo, views_per = 'day', clones
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-module.exports = { getFormatDate, getTraffic };
+let initTafficDate = async function (traffic_data_path) {
+    const octokit = new github.getOctokit();
+    try {
+        await octokit.repos.getBranch({
+            owner: owner,
+            repo: repo,
+            branch: 'traffic',
+        });
+    } catch (error) {
+        if (error.message === 'Branch not found') {
+            cp.execFileSync(`mkdir ${traffic_data_path}`, function (error, stdout, stderr) {
+                if (error) {
+                    console.error('error: ' + error);
+                    return false;
+                }
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + typeof stderr);
+            });
+        } else {
+            core.setFailed(error.message)
+        }
+    }
+    cp.execFileSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+        if (error) {
+            console.error('error: ' + error);
+            return false;
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + typeof stderr);
+    });
+    console.log(`Init traffic data into ${traffic_data_path}.`);
+    return true;
+}
+
+module.exports = { getFormatDate, getTraffic, initTafficDate };

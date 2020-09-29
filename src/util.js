@@ -2,8 +2,6 @@ const core = require('@actions/core');
 const cp = require('child_process');
 const github = require('@actions/github');
 const fs = require('fs');
-const { rejects } = require('assert');
-const { resolve } = require('path');
 
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
@@ -63,7 +61,7 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             repo: repo,
             branch: 'traffic',
         });
-        resolve(true);
+        return true;
     } catch (error) {
         if (error.message === 'Branch not found') {
             if (!(fs.statSync(traffic_data_path).isDirectory())) {
@@ -79,13 +77,13 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             if (error) {
                 console.error('error: ' + error);
                 console.error('traffic_data_path' + traffic_data_path);
-                rejects(false);
+                return false;
             }
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + typeof stderr);
         });
         console.log(`Init traffic data into ${traffic_data_path}.`);
-        resolve(false);
+        return false;
     }
 }
 

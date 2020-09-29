@@ -5866,8 +5866,6 @@ const core = __webpack_require__(186);
 const cp = __webpack_require__(129);
 const github = __webpack_require__(438);
 const fs = __webpack_require__(747);
-const { rejects } = __webpack_require__(357);
-const { resolve } = __webpack_require__(622);
 
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
@@ -5927,7 +5925,7 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             repo: repo,
             branch: 'traffic',
         });
-        resolve(true);
+        return true;
     } catch (error) {
         if (error.message === 'Branch not found') {
             if (!(fs.statSync(traffic_data_path).isDirectory())) {
@@ -5943,13 +5941,13 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             if (error) {
                 console.error('error: ' + error);
                 console.error('traffic_data_path' + traffic_data_path);
-                rejects(false);
+                return false;
             }
             console.log('stdout: ' + stdout);
             console.log('stderr: ' + typeof stderr);
         });
         console.log(`Init traffic data into ${traffic_data_path}.`);
-        resolve(false);
+        return false;
     }
 }
 

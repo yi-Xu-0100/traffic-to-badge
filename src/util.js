@@ -61,7 +61,6 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             repo: repo,
             branch: 'traffic',
         });
-        return true;
     } catch (error) {
         if (error.message === 'Branch not found') {
             if (!(fs.statSync(traffic_data_path).isDirectory())) {
@@ -77,8 +76,8 @@ let initTafficDate = async function (my_token, traffic_data_path) {
     }
     cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
         if (error) {
-            console.error('error: ' + error);
-            console.error('traffic_data_path' + traffic_data_path);
+            console.log('error: ' + error);
+            console.log('traffic_data_path' + traffic_data_path);
             return false;
         }
         console.log('stdout: ' + stdout);

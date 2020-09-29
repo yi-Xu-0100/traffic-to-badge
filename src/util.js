@@ -94,20 +94,26 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
         var uniques = ClonesDate.uniques;
         var clones = ClonesDate.clones;
     } catch (error) {
-        console.log(error);
-        throw error;
+        if(error.code === 'ENOENT'){
+            console.log(error);
+            clones=[];
+            count = '0';
+            uniques = '0';
+        } else {
+            throw error;
+        }
     } finally {
         console.log("clones: " + clones);
         console.log("uniques: " + uniques);
         console.log("count: " + count);
     }
-    if(clones == null) clones=[];
+    if(clones === undefined) clones=[];
     var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
         return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1 )
     })
-    if (count == null) count = '0';
+    if (count == undefined) count = '0';
     count = count + traffic_data_latest.reduce((a,b)=>{a.count + b.count}, '0');
-    if (uniques == null) uniques = '0';
+    if (uniques == undefined) uniques = '0';
     uniques = uniques + traffic_data_latest.reduce((a,b)=>{a.uniques + b.uniques}, '0');
     clones = Object.assign(clones, traffic_data_latest);
     traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});

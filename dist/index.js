@@ -5840,7 +5840,7 @@ async function run() {
     if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
 
     var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
-    var clones_data = await util.getClonesDate(traffic_data, traffic_clones);
+    var clones_data = await util.getClonesDate(traffic_data.clones, traffic_clones);
     fs.writeFile(traffic_clones, clones_data, function (err) {
         if (err) {
             return console.log(err);
@@ -5951,25 +5951,25 @@ let initTafficDate = async function (my_token, traffic_data_path) {
     return true;
 }
 
-let getClonesDate = async function (traffic_data, traffic_clones) {
+let getClonesDate = async function (clones_data, traffic_clones) {
     try {
         var ClonesDate = JSON.parse(fs.readFileSync(traffic_clones, 'utf8').data);
         var count = ClonesDate.count;
         var uniques = ClonesDate.uniques;
         var clones = ClonesDate.clones;
-        var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
+        var traffic_data_latest = clones_data.clones.filter((item) => {
             return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1)
         })
         count = count + traffic_data_latest.reduce((a, b) => { a.count + b.count }, '0');
         uniques = uniques + traffic_data_latest.reduce((a, b) => { a.uniques + b.uniques }, '0');
         clones = Object.assign(clones, traffic_data_latest);
-        traffic_data = Object.assign({ 'count': count }, { 'uniques': uniques }, { 'clones': clones });
-        console.log("traffic_data: " + JSON.stringify(traffic_data));
-        return traffic_data;
+        clones_data = Object.assign({ 'count': count }, { 'uniques': uniques }, { 'clones': clones });
+        console.log("clones_data: " + JSON.stringify(clones_data));
+        return clones_data;
     } catch (error) {
         if (error.code === 'ENOENT') {
-            console.log("traffic_data: " + JSON.stringify(traffic_data));
-            return traffic_data;
+            console.log("clones_data: " + JSON.stringify(clones_data));
+            return clones_data;
         } else {
             throw error;
         }

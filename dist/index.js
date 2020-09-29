@@ -5934,21 +5934,22 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             } else {
                 console.log('error: ' + error);
                 core.setFailed(error.message)
+                return false;
             }
         }
 
-        cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
-            if (error) {
-                console.error('error: ' + error);
-                console.error('traffic_data_path' + traffic_data_path);
-                return false;
-            }
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + typeof stderr);
-        });
-        console.log(`Init traffic data into ${traffic_data_path}.`);
-        return false;
     }
+    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+        if (error) {
+            console.error('error: ' + error);
+            console.error('traffic_data_path' + traffic_data_path);
+            return false;
+        }
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + typeof stderr);
+    });
+    console.log(`Init traffic data into ${traffic_data_path}.`);
+    return true;
 }
 
 let getClonesDate = async function (traffic_data, traffic_clones) {
@@ -5958,25 +5959,21 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
         var uniques = ClonesDate.uniques;
         var clones = ClonesDate.clones;
         var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
-            return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1 )
+            return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1)
         })
-        count = count + traffic_data_latest.reduce((a,b)=>{a.count + b.count}, '0');
-        uniques = uniques + traffic_data_latest.reduce((a,b)=>{a.uniques + b.uniques}, '0');
+        count = count + traffic_data_latest.reduce((a, b) => { a.count + b.count }, '0');
+        uniques = uniques + traffic_data_latest.reduce((a, b) => { a.uniques + b.uniques }, '0');
         clones = Object.assign(clones, traffic_data_latest);
-        traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});
+        traffic_data = Object.assign({ 'count': count }, { 'uniques': uniques }, { 'clones': clones });
+        console.log("traffic_data: " + JSON.stringify(traffic_data));
+        return traffic_data;
     } catch (error) {
-        if(error.code === 'ENOENT'){
-            console.log(error);
-            clones=[];
-            count = '0';
-            uniques = '0';
+        if (error.code === 'ENOENT') {
+            return traffic_data;
         } else {
             throw error;
         }
-    } finally {
-        console.log("traffic_data: " + traffic_data);
     }
-    return traffic_data;
 }
 
 

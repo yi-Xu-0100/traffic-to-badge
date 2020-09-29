@@ -5834,14 +5834,14 @@ async function run() {
     const views_per = core.getInput('views_per', {require: false});
     const clones_per = core.getInput('clones_per', {require: false});
     const my_token = core.getInput('my_token', {require: false});
-    var traffic_data_path = path.join(src, `traffic`);
+    const traffic_data_path = path.join(src, `traffic`);
+    const traffic_clones = path.join(traffic_data_path, `traffic_clones.json`);
 
     if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
 
     var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
-
-    var traffic_clones = path.join(traffic_data_path, `traffic_clones_${util.getFormatDate()}.json`);
-    fs.writeFile(traffic_clones, traffic_data.clones, function (err) {
+    var clones_data = await util.getClonesDate(traffic_data, traffic_clones);
+    fs.writeFile(traffic_clones, clones_data, function (err) {
         if (err) {
             return console.log(err);
         }
@@ -5865,9 +5865,15 @@ try{
 const core = __webpack_require__(186);
 const cp = __webpack_require__(129);
 const github = __webpack_require__(438);
+const fs = __webpack_require__(747);
+const { rejects } = __webpack_require__(357);
+const { resolve } = __webpack_require__(622);
 
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
+
+
+module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
 
 let getFormatDate = function () {
     var date = new Date();
@@ -5924,34 +5930,59 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             repo: repo,
             branch: 'traffic',
         });
+        resolve(true);
     } catch (error) {
         if (error.message === 'Branch not found') {
-            cp.execFileSync(`mkdir ${traffic_data_path}`, function (error, stdout, stderr) {
-                if (error) {
-                    console.error('error: ' + error);
-                    return false;
-                }
-                console.log('stdout: ' + stdout);
-                console.log('stderr: ' + typeof stderr);
-            });
-        } else {
-            core.setFailed(error.message)
+            if (!(fs.statSync(traffic_data_path).isDirectory())) {
+                fs.unlinkSync(traffic_data_path);
+                fs.mkdirSync(traffic_data_path);
+            } else {
+                console.log('error: ' + error);
+                core.setFailed(error.message)
+            }
         }
+
+        cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+            if (error) {
+                console.error('error: ' + error);
+                console.error('traffic_data_path' + traffic_data_path);
+                rejects(false);
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + typeof stderr);
+        });
+        console.log(`Init traffic data into ${traffic_data_path}.`);
+        resolve(false);
     }
-    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
-        if (error) {
-            console.error('error: ' + error);
-            console.error('traffic_data_path' + traffic_data_path);
-            return false;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + typeof stderr);
-    });
-    console.log(`Init traffic data into ${traffic_data_path}.`);
-    return true;
 }
 
-module.exports = { getFormatDate, getTraffic, initTafficDate };
+let getClonesDate = async function (traffic_data, traffic_clones) {
+    try {
+        var ClonesDate = JSON.parse(fs.readFileSync(traffic_clones, 'utf8').data);
+        var count = ClonesDate.count;
+        var uniques = ClonesDate.uniques;
+        var clones = ClonesDate.clones;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    } finally {
+        console.log("clones: " + clones);
+        console.log("uniques: " + uniques);
+        console.log("count: " + count);
+    }
+    if(clones == null) clones=[];
+    var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
+        return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1 )
+    })
+    if (count == null) count = '0';
+    count = count + traffic_data_latest.reduce((a,b)=>{a.count + b.count}, '0');
+    if (uniques == null) uniques = '0';
+    uniques = uniques + traffic_data_latest.reduce((a,b)=>{a.uniques + b.uniques}, '0');
+    clones = Object.assign(clones, traffic_data_latest);
+    traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});
+    return traffic_data;
+}
+
 
 /***/ }),
 

@@ -104,6 +104,7 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
         return traffic_data;
     } catch (error) {
         if (error.code === 'ENOENT') {
+            console.log("traffic_data: " + JSON.stringify(traffic_data));
             return traffic_data;
         } else {
             throw error;

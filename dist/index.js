@@ -5957,6 +5957,13 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
         var count = ClonesDate.count;
         var uniques = ClonesDate.uniques;
         var clones = ClonesDate.clones;
+        var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
+            return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1 )
+        })
+        count = count + traffic_data_latest.reduce((a,b)=>{a.count + b.count}, '0');
+        uniques = uniques + traffic_data_latest.reduce((a,b)=>{a.uniques + b.uniques}, '0');
+        clones = Object.assign(clones, traffic_data_latest);
+        traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});
     } catch (error) {
         if(error.code === 'ENOENT'){
             console.log(error);
@@ -5967,20 +5974,8 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
             throw error;
         }
     } finally {
-        console.log("clones: " + clones);
-        console.log("uniques: " + uniques);
-        console.log("count: " + count);
+        console.log("traffic_data: " + traffic_data);
     }
-    if(clones === undefined) clones=[];
-    var traffic_data_latest = traffic_data.clones.clones.filter((item) => {
-        return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1 )
-    })
-    if (count == undefined) count = '0';
-    count = count + traffic_data_latest.reduce((a,b)=>{a.count + b.count}, '0');
-    if (uniques == undefined) uniques = '0';
-    uniques = uniques + traffic_data_latest.reduce((a,b)=>{a.uniques + b.uniques}, '0');
-    clones = Object.assign(clones, traffic_data_latest);
-    traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});
     return traffic_data;
 }
 

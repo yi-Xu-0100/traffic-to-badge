@@ -5872,9 +5872,6 @@ const { resolve } = __webpack_require__(622);
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
 
-
-module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
-
 let getFormatDate = function () {
     var date = new Date();
     var month = date.getMonth() + 1;
@@ -5983,6 +5980,8 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
     return traffic_data;
 }
 
+
+module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
 
 /***/ }),
 

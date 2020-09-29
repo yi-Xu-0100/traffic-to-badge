@@ -8,9 +8,6 @@ const { resolve } = require('path');
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
 
-
-module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
-
 let getFormatDate = function () {
     var date = new Date();
     var month = date.getMonth() + 1;
@@ -118,3 +115,6 @@ let getClonesDate = async function (traffic_data, traffic_clones) {
     traffic_data = Object.assign({'count': count}, {'uniques': uniques}, {'clones':clones});
     return traffic_data;
 }
+
+
+module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };

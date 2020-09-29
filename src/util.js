@@ -74,9 +74,10 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             core.setFailed(error.message)
         }
     }
-    cp.execFileSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
         if (error) {
             console.error('error: ' + error);
+            console.error('traffic_data_path' + traffic_data_path);
             return false;
         }
         console.log('stdout: ' + stdout);

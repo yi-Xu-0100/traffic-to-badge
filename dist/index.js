@@ -5836,7 +5836,7 @@ async function run() {
     const my_token = core.getInput('my_token', {require: false});
     var traffic_data_path = path.join(src, `traffic`);
 
-    if (!(await util.initTafficDate(my_token, traffic_data_path).catch())) core.setFailed("Init traffic data fail!");
+    if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
 
     var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
 
@@ -5938,9 +5938,10 @@ let initTafficDate = async function (my_token, traffic_data_path) {
             core.setFailed(error.message)
         }
     }
-    cp.execFileSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
+    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
         if (error) {
             console.error('error: ' + error);
+            console.error('traffic_data_path' + traffic_data_path);
             return false;
         }
         console.log('stdout: ' + stdout);

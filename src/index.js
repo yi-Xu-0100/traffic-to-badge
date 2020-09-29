@@ -11,7 +11,7 @@ async function run() {
     const my_token = core.getInput('my_token', {require: false});
     var traffic_data_path = path.join(src, `traffic`);
 
-    if (!(await util.initTafficDate(my_token, traffic_data_path).catch())) core.setFailed("Init traffic data fail!");
+    if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
 
     var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
 

@@ -105,15 +105,9 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
     function combineTypesData(data, data_path, data_type) {
         try {
             var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8'));
-            var days_data = origin_data[data_type];
-            console.log("days_data: " + days_data);
-            console.log("data: " + data);
-            var days_data_latest = data[data_type].filter((item) => {
-                return (days_data.findIndex(a => { return a.timestamp === item.timestamp; }) === -1);
-            });
-            days_data = _.extend(days_data, days_data_latest);
-            var count = days_data_latest.reduce((a, b) => { parseInt(a.count) + parseInt(b.count); }, 0);
-            var uniques = days_data_latest.reduce((a, b) => { parseInt(a.uniques) + parseInt(b.uniques); }, 0);
+            var days_data = _.extend(origin_data[data_path], data[data_type]);
+            var count = days_data.reduce((a, b) => { return parseInt(a.count) + parseInt(b.count); }, 0);
+            var uniques = days_data.reduce((a, b) => { return parseInt(a.uniques) + parseInt(b.uniques); }, 0);
             data = _.extend({ 'count': count }, { 'uniques': uniques }, { [`${data_type}`]: days_data });
             console.log(`${data_type}: ${JSON.stringify(data)}`);
             return data;

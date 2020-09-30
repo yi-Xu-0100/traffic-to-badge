@@ -65,7 +65,7 @@ let initTafficData = async function (my_token, traffic_branch, traffic_branch_pa
         });
     } catch (error) {
         if (error.message === 'Branch not found') {
-            if (!(fs.existSync(traffic_branch_path))) {
+            if (!(fs.existsSync(traffic_branch_path))) {
                 fs.unlinkSync(traffic_branch_path);
                 fs.mkdirSync(traffic_branch_path);
             } else {
@@ -98,7 +98,7 @@ let initTafficData = async function (my_token, traffic_branch, traffic_branch_pa
 }
 
 let combineTrafficData = async function (traffic_data, traffic_data_path) {
-    if (!(fs.existSync(traffic_data_path))) {
+    if (!(fs.existsSync(traffic_data_path))) {
         fs.unlinkSync(traffic_data_path);
         fs.mkdirSync(traffic_data_path);
     }

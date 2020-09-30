@@ -7986,9 +7986,9 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
             console.log("pluck: " + _.pluck(origin_data, 'timestamp'));
             origin_data = _.filter(origin_data, 
                 (item) => !_.contains(_.pluck(data[data_type], 'timestamp'), item.timestamp));
-            console.log("origin_data_filter: " + origin_data);
+            console.log("origin_data_filter: " + JSON.stringify(origin_data));
             var today_data = _.union(origin_data, data[data_type]);
-            console.log("today_data_union: " + today_data);
+            console.log("today_data_union: " + JSON.stringify(today_data));
             var count = today_data.map(el => parseInt(el.count)).reduce((a, b) => a + b, 0);
             var uniques = today_data.map(el => parseInt(el.uniques)).reduce((a, b) => a + b, 0);
             data = _.extend({ 'count': count }, { 'uniques': uniques }, { [`${data_type}`]: today_data });

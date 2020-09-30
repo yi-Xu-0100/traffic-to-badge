@@ -6033,6 +6033,10 @@ let initTafficData = async function (my_token, traffic_branch, traffic_branch_pa
 }
 
 let combineTrafficData = async function (traffic_data, traffic_data_path) {
+    if (!(fs.statSync(traffic_data_path).isDirectory())) {
+        fs.unlinkSync(traffic_data_path);
+        fs.mkdirSync(traffic_data_path);
+    }
     var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
     var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
     function combineTypesData(data, data_path, data_type) {
@@ -6052,6 +6056,7 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
             return data;
         } catch (error) {
             if (error.code === 'ENOENT') {
+                console.log(`Not Found ${error.path}`)
                 console.log(`${data_type}: ${JSON.stringify(data)}`);
                 return data;
             } else {
@@ -6059,7 +6064,6 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
             }
         }
     }
-
     traffic_data.views = combineTypesData(traffic_data.views, traffic_views_path, 'views');
     traffic_data.clones = combineTypesData(traffic_data.clones, traffic_clones_path, 'clones');
     return traffic_data;

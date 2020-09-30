@@ -19,8 +19,6 @@ inputs:
     description: 'traffic_branch'
     required: false
     default: 'traffic'
-
-
 outputs:
   views: # output will be available to future steps
     description: 'page views'

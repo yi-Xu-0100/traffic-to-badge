@@ -66,7 +66,6 @@ let initTafficData = async function (my_token, traffic_branch, traffic_branch_pa
     } catch (error) {
         if (error.message === 'Branch not found') {
             if (!(fs.existsSync(traffic_branch_path))) {
-                fs.unlinkSync(traffic_branch_path);
                 fs.mkdirSync(traffic_branch_path);
             } else {
                 core.setFailed(`${traffic_branch_path} already exists!`);
@@ -99,7 +98,6 @@ let initTafficData = async function (my_token, traffic_branch, traffic_branch_pa
 
 let combineTrafficData = async function (traffic_data, traffic_data_path) {
     if (!(fs.existsSync(traffic_data_path))) {
-        fs.unlinkSync(traffic_data_path);
         fs.mkdirSync(traffic_data_path);
     }
     var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);

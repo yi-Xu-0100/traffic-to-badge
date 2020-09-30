@@ -7982,8 +7982,8 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
         try {
             var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8'));
             var days_data = _.extend(origin_data[data_type], data[data_type]);
-            var count = days_data.reduce((a, b) => { return parseInt(a.count) + parseInt(b.count); }, 0);
-            var uniques = days_data.reduce((a, b) => { return parseInt(a.uniques) + parseInt(b.uniques); }, 0);
+            var count = days_data.map(el => parseInt(el.count)).reduce((a, b) => a + b, 0);
+            var uniques = days_data.map(el => parseInt(el.uniques)).reduce((a, b) => a + b, 0);
             data = _.extend({ 'count': count }, { 'uniques': uniques }, { [`${data_type}`]: days_data });
             console.log(`${data_type}: ${JSON.stringify(data)}`);
             return data;
@@ -7993,7 +7993,7 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
                 console.log(`${data_type}: ${JSON.stringify(data)}`);
                 return data;
             } else {
-                throw error;
+                console.error(error);
             }
         }
     }

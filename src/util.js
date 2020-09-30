@@ -26,28 +26,28 @@ let getTraffic = async function (my_token, traffic_repo, views_per = 'day', clon
     const octokit = new github.getOctokit(my_token);
     try {
         var views = await octokit.repos.getViews({ owner: owner, repo: traffic_repo, per: views_per });
-        console.log(JSON.stringify(views.data));
+        console.log("latest views: " + JSON.stringify(views.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
         var clones = await octokit.repos.getClones({ owner: owner, repo: traffic_repo, per: clones_per });
-        console.log(JSON.stringify(clones.data));
+        console.log("latest clones: " + JSON.stringify(clones.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
         var paths = await octokit.repos.getTopPaths({ owner: owner, repo: traffic_repo });
-        console.log(JSON.stringify(paths.data));
+        console.log("latest paths: " + JSON.stringify(paths.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
         var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: traffic_repo });
-        console.log(JSON.stringify(referrers.data));
+        console.log("latest referrers: " + JSON.stringify(referrers.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);

@@ -35,7 +35,8 @@
     "@actions/github": "^4.0.0",
     "child_process": "^1.0.2",
     "image-downloader": "^4.0.1",
-    "simple-git": "^2.20.1"
+    "simple-git": "^2.20.1",
+    "underscore": "^1.11.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",

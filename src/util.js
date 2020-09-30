@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const fs = require('fs');
 const path = require('path');
 const download = require('image-downloader');
-
+const _ = require('underscore');
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
 
@@ -111,10 +111,10 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
             var days_data_latest = data[data_type].filter((item) => {
                 return (days_data.findIndex(a => { return a.timestamp === item.timestamp; }) === -1);
             });
-            days_data = Object.assign(days_data, days_data_latest);
+            days_data = _.extend(days_data, days_data_latest);
             var count = days_data_latest.reduce((a, b) => { parseInt(a.count) + parseInt(b.count); }, 0);
             var uniques = days_data_latest.reduce((a, b) => { parseInt(a.uniques) + parseInt(b.uniques); }, 0);
-            data = Object.assign({ 'count': count }, { 'uniques': uniques }, { data_type: days_data });
+            data = _.extend({ 'count': count }, { 'uniques': uniques }, { [`${data_type}`]: days_data });
             console.log(`${data_type}: ${JSON.stringify(data)}`);
             return data;
         } catch (error) {

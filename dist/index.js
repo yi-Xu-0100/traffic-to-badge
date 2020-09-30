@@ -6073,10 +6073,10 @@ let saveTrafficData = async function (traffic_data, traffic_data_path) {
     var traffic_paths_path = path.join(traffic_data_path, `traffic_paths.json`);
     var traffic_referrers_path = path.join(traffic_data_path, `traffic_referrers.json`);
     function saveData(data, data_path) {
-        fs.writeFile(data_path, data, function (error) {
+        fs.writeFile(data_path, JSON.stringify(data), function (error) {
             if (error) {
-                console.log(error);
-                throw error;
+                console.error(JSON.stringify(data));
+                console.error(error);
             }
             console.log(`文件保存成功，地址： ${data_path}`);
         });

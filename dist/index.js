@@ -5908,7 +5908,7 @@ async function run() {
     const static_list = core.getInput('static_list', {require: true}).split(',');
     const traffic_branch = core.getInput('traffic_branch', {require: false});
     const traffic_branch_path = path.join(src, traffic_branch);
-    for (let i=1; i<static_list.length; i++) {
+    for (let i=0; i<static_list.length; i++) {
         let traffic_data_path = path.join(traffic_branch_path, `traffic-${static_list[i]}`);
         if (!(await util.initTafficData(my_token, traffic_branch, traffic_branch_path))){
             core.setFailed(`Init traffic data into ${traffic_branch_path} fail!`);

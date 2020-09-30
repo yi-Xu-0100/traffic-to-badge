@@ -100,11 +100,11 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
     if (!(fs.existsSync(traffic_data_path))) {
         fs.mkdirSync(traffic_data_path);
     }
-    var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
-    var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
+    var traffic_views_path = path.join(traffic_data_path, 'traffic_views.json');
+    var traffic_clones_path = path.join(traffic_data_path, 'traffic_clones.json');
     function combineTypesData(data, data_path, data_type) {
         try {
-            var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8').data);
+            var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8'));
             var count = origin_data.count;
             var uniques = origin_data.uniques;
             var days_data = origin_data[data_type];

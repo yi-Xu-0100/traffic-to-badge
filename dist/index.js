@@ -7981,7 +7981,8 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
     function combineTypesData(data, data_path, data_type) {
         try {
             var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8'));
-            var days_data = _.extend(origin_data[data_type], data[data_type]);
+            var days_data = _.union(origin_data[data_type], data[data_type])
+                .reduce((a, b) => _.extend(a, b), {});
             var count = days_data.map(el => parseInt(el.count)).reduce((a, b) => a + b, 0);
             var uniques = days_data.map(el => parseInt(el.uniques)).reduce((a, b) => a + b, 0);
             data = _.extend({ 'count': count }, { 'uniques': uniques }, { [`${data_type}`]: days_data });

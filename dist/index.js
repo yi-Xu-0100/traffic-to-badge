@@ -7981,8 +7981,8 @@ let combineTrafficData = async function (traffic_data, traffic_data_path) {
     function combineTypesData(data, data_path, data_type) {
         try {
             var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8'))[data_type];
-            console.log("origin_data: " + origin_data);
-            console.log("data: " + data[data_type]);
+            console.log("origin_data: " + JSON.stringify(origin_data));
+            console.log("data: " + JSON.stringify(data[data_type]));
             console.log("pluck: " + _.pluck(origin_data, 'timestamp'));
             var today_data = _.filter(data[data_type],
                 (a) => !_.contains(_.pluck(origin_data, 'timestamp'), a.timestamp));

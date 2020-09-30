@@ -3768,6 +3768,78 @@ exports.Deprecation = Deprecation;
 
 /***/ }),
 
+/***/ 628:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+const path = __webpack_require__(622);
+const request = __webpack_require__(754);
+
+module.exports.image = (options = {}) => {
+  if (!options.url) {
+    return Promise.reject(new Error('The options.url is required'));
+  }
+
+  if (!options.dest) {
+    return Promise.reject(new Error('The options.dest is required'));
+  }
+
+  options = Object.assign({ extractFilename: true }, options);
+
+  if (options.extractFilename) {
+    if (!path.extname(options.dest)) {
+      const url = __webpack_require__(835);
+      const pathname = url.parse(options.url).pathname;
+      const basename = path.basename(pathname);
+      const decodedBasename = decodeURIComponent(basename);
+
+      options.dest = path.join(options.dest, decodedBasename);
+    }
+  }
+
+  return request(options);
+};
+
+
+/***/ }),
+
+/***/ 754:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+const fs = __webpack_require__(747);
+
+module.exports = ({ url, dest, timeout = 0, ...options }) => new Promise((resolve, reject) => {
+  const request  = url.trim().startsWith('https') ? __webpack_require__(211) : __webpack_require__(605);
+
+  if (timeout) {
+    request.setTimeout(timeout);
+  }
+
+  request
+    .get(url, options, (res) => {
+      if (res.statusCode !== 200) {
+        // Consume response data to free up memory
+        res.resume();
+        reject(new Error('Request Failed.\n' +
+                         `Status Code: ${res.statusCode}`));
+
+        return;
+      }
+
+      res.pipe(fs.createWriteStream(dest)).once('close', () => resolve({ filename: dest }));
+    })
+    .on('timeout', reject)
+    .on('error', reject);
+});
+
+
+/***/ }),
+
 /***/ 467:
 /***/ ((module, exports, __webpack_require__) => {
 
@@ -5824,7 +5896,6 @@ function wrappy (fn, cb) {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 const core = __webpack_require__(186);
-const fs = __webpack_require__(747);
 const path = __webpack_require__(622);
 const util = __webpack_require__(254);
 
@@ -5833,27 +5904,27 @@ const src = path.join(__dirname,'..');
 async function run() {
     const views_per = core.getInput('views_per', {require: false});
     const clones_per = core.getInput('clones_per', {require: false});
-    const my_token = core.getInput('my_token', {require: false});
-    const traffic_data_path = path.join(src, `traffic`);
-    const traffic_clones = path.join(traffic_data_path, `traffic_clones.json`);
-
-    if (!(await util.initTafficDate(my_token, traffic_data_path))) core.setFailed("Init traffic data fail!");
-
-    var traffic_data = await util.getTraffic(my_token, views_per, clones_per);
-    var clones_data = await util.getClonesDate(traffic_data.clones, traffic_clones);
-    fs.writeFile(traffic_clones, clones_data, function (err) {
-        if (err) {
-            return console.log(err);
+    const my_token = core.getInput('my_token', {require: true});
+    const static_list = core.getInput('static_list', {require: true}).split(',');
+    const traffic_branch = core.getInput('traffic_branch', {require: false});
+    const traffic_branch_path = path.join(src, traffic_branch);
+    for (let i=1; i<static_list.length(); i++) {
+        let traffic_data_path = path.join(traffic_branch_path, `traffic-${static_list[i]}`);
+        if (!(await util.initTafficData(my_token, traffic_branch, traffic_branch_path))){
+            core.setFailed(`Init traffic data into ${traffic_branch_path} fail!`);
         }
-        console.log('文件创建成功，地址：' + traffic_clones);
-    });
+        let latest_traffic_data = await util.getTraffic(my_token, static_list[i], views_per, clones_per);
+        let traffic_data = await util.combineTrafficData(latest_traffic_data, traffic_data_path);
+        await util.saveTrafficData(traffic_data, traffic_data_path);
+        await util.downloadSVG(traffic_data,traffic_data_path);
+    }
 }
 
 try{
     run();
 } catch(error){
     console.error();
-    throw error;
+    core.setFailed(error);
 }
 
 
@@ -5866,6 +5937,8 @@ const core = __webpack_require__(186);
 const cp = __webpack_require__(129);
 const github = __webpack_require__(438);
 const fs = __webpack_require__(747);
+const path = __webpack_require__(622);
+const download = __webpack_require__(628);
 
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
@@ -5884,31 +5957,31 @@ let getFormatDate = function () {
     return currentDate;
 }
 
-let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day') {
+let getTraffic = async function (my_token, traffic_repo, views_per = 'day', clones_per = 'day') {
     const octokit = new github.getOctokit(my_token);
     try {
-        var views = await octokit.repos.getViews({ owner: owner, repo: repo, per: views_per });
+        var views = await octokit.repos.getViews({ owner: owner, repo: traffic_repo, per: views_per });
         console.log(JSON.stringify(views.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var clones = await octokit.repos.getClones({ owner: owner, repo: repo, per: clones_per });
+        var clones = await octokit.repos.getClones({ owner: owner, repo: traffic_repo, per: clones_per });
         console.log(JSON.stringify(clones.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var paths = await octokit.repos.getTopPaths({ owner: owner, repo: repo });
+        var paths = await octokit.repos.getTopPaths({ owner: owner, repo: traffic_repo });
         console.log(JSON.stringify(paths.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: repo });
+        var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: traffic_repo });
         console.log(JSON.stringify(referrers.data));
     } catch (error) {
         console.log(error);
@@ -5917,67 +5990,115 @@ let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day'
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-let initTafficDate = async function (my_token, traffic_data_path) {
+let initTafficData = async function (my_token, traffic_branch, traffic_branch_path) {
     const octokit = new github.getOctokit(my_token);
     try {
         await octokit.repos.getBranch({
             owner: owner,
             repo: repo,
-            branch: 'traffic',
+            branch: traffic_branch,
         });
     } catch (error) {
         if (error.message === 'Branch not found') {
-            if (!(fs.statSync(traffic_data_path).isDirectory())) {
-                fs.unlinkSync(traffic_data_path);
-                fs.mkdirSync(traffic_data_path);
+            if (!(fs.statSync(traffic_branch_path).isDirectory())) {
+                fs.unlinkSync(traffic_branch_path);
+                fs.mkdirSync(traffic_branch_path);
             } else {
-                console.log('error: ' + error);
-                core.setFailed(error.message)
+                core.setFailed(`${traffic_branch_path} already exists!`);
                 return false;
             }
         }
 
     }
-    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
-        if (error) {
-            console.log('error: ' + error);
-            console.log('traffic_data_path' + traffic_data_path);
-            return false;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + typeof stderr);
-    });
-    console.log(`Init traffic data into ${traffic_data_path}.`);
+    cp.execSync(`git clone ${clone_url} ${traffic_branch_path} -b ${traffic_branch}`,
+        function (error, stdout, stderr) {
+            if (error) {
+                console.log('error: ' + error);
+                console.log('traffic_branch_path' + traffic_branch_path);
+                return false;
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + typeof stderr);
+        });
+    console.log(`Init traffic data into ${traffic_branch_path}.`);
     return true;
 }
 
-let getClonesDate = async function (clones_data, traffic_clones) {
-    try {
-        var ClonesDate = JSON.parse(fs.readFileSync(traffic_clones, 'utf8').data);
-        var count = ClonesDate.count;
-        var uniques = ClonesDate.uniques;
-        var clones = ClonesDate.clones;
-        var traffic_data_latest = clones_data.clones.filter((item) => {
-            return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1)
-        })
-        count = count + traffic_data_latest.reduce((a, b) => { a.count + b.count }, '0');
-        uniques = uniques + traffic_data_latest.reduce((a, b) => { a.uniques + b.uniques }, '0');
-        clones = Object.assign(clones, traffic_data_latest);
-        clones_data = Object.assign({ 'count': count }, { 'uniques': uniques }, { 'clones': clones });
-        console.log("clones_data: " + JSON.stringify(clones_data));
-        return clones_data;
-    } catch (error) {
-        if (error.code === 'ENOENT') {
-            console.log("clones_data: " + JSON.stringify(clones_data));
-            return clones_data;
-        } else {
-            throw error;
+let combineTrafficData = async function (traffic_data, traffic_data_path) {
+    var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
+    var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
+    function combineTypesData(data, data_path, data_type) {
+        try {
+            var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8').data);
+            var count = origin_data.count;
+            var uniques = origin_data.uniques;
+            var days_data = origin_data[data_type];
+            var days_data_latest = data[data_type].filter((item) => {
+                return !(days_data.findIndex(a => { return a.timestamp === item.timestamp; }) != -1);
+            });
+            count = count + days_data_latest.reduce((a, b) => { a.count + b.count; }, '0');
+            uniques = uniques + days_data_latest.reduce((a, b) => { a.uniques + b.uniques; }, '0');
+            days_data = Object.assign(days_data, days_data_latest);
+            data = Object.assign({ 'count': count }, { 'uniques': uniques }, { data_type: days_data });
+            console.log(`${data_type}: ${JSON.stringify(data)}`);
+            return data;
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                console.log(`${data_type}: ${JSON.stringify(data)}`);
+                return data;
+            } else {
+                throw error;
+            }
         }
+    }
+
+    traffic_data.views = combineTypesData(traffic_data.views, traffic_views_path, 'views');
+    traffic_data.clones = combineTypesData(traffic_data.clones, traffic_clones_path, 'clones');
+    return traffic_data;
+}
+
+let saveTrafficData = async function (traffic_data, traffic_data_path) {
+    var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
+    var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
+    var traffic_paths_path = path.join(traffic_data_path, `traffic_paths.json`);
+    var traffic_referrers_path = path.join(traffic_data_path, `traffic_referrers.json`);
+    function saveData(data, data_path) {
+        fs.writeFile(data_path, data, function (error) {
+            if (error) {
+                console.log(error);
+                throw error;
+            }
+            console.log(`文件保存成功，地址： ${data_path}`);
+        });
+    }
+
+    try {
+        saveData(traffic_data.views, traffic_views_path);
+        saveData(traffic_data.clones, traffic_clones_path);
+        saveData(traffic_data.paths, traffic_paths_path);
+        saveData(traffic_data.referrers, traffic_referrers_path);
+        return true;
+    } catch (error) {
+        console.error("Save data fail!");
     }
 }
 
-
-module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
+let downloadSVG = async function (traffic_data, traffic_data_path) {
+    function downbadge(name, count) {
+        var options = {
+            url: `https://img.shields.io/badge/${name}-${count}-brightgreen`,
+            dest: `${traffic_data_path}/${name}.svg`
+        }
+        download.image(options)
+            .then(({ filename }) => {
+                console.log('Saved to', filename)
+            })
+            .catch((err) => console.error(err))
+    }
+    downbadge("views", traffic_data.views.count);
+    downbadge("clones", traffic_data.clones.count);
+}
+module.exports = { getFormatDate, getTraffic, initTafficData, combineTrafficData, saveTrafficData, downloadSVG };
 
 /***/ }),
 

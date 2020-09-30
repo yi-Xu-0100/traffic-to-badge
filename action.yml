@@ -12,6 +12,15 @@ inputs:
   my_token:  # id of input
     description: 'my_token'
     required: true
+  static_list: #repo static_list
+    description: 'static_list'
+    required: true
+  traffic_branch: #traffic_branch
+    description: 'traffic_branch'
+    required: false
+    default: 'traffic'
+
+
 outputs:
   views: # output will be available to future steps
     description: 'page views'

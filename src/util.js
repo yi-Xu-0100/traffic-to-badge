@@ -2,6 +2,8 @@ const core = require('@actions/core');
 const cp = require('child_process');
 const github = require('@actions/github');
 const fs = require('fs');
+const path = require('path');
+const download = require('image-downloader');
 
 const { owner, repo } = github.context.repo;
 const clone_url = github.context.payload.repository.clone_url;
@@ -20,31 +22,31 @@ let getFormatDate = function () {
     return currentDate;
 }
 
-let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day') {
+let getTraffic = async function (my_token, traffic_repo, views_per = 'day', clones_per = 'day') {
     const octokit = new github.getOctokit(my_token);
     try {
-        var views = await octokit.repos.getViews({ owner: owner, repo: repo, per: views_per });
+        var views = await octokit.repos.getViews({ owner: owner, repo: traffic_repo, per: views_per });
         console.log(JSON.stringify(views.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var clones = await octokit.repos.getClones({ owner: owner, repo: repo, per: clones_per });
+        var clones = await octokit.repos.getClones({ owner: owner, repo: traffic_repo, per: clones_per });
         console.log(JSON.stringify(clones.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var paths = await octokit.repos.getTopPaths({ owner: owner, repo: repo });
+        var paths = await octokit.repos.getTopPaths({ owner: owner, repo: traffic_repo });
         console.log(JSON.stringify(paths.data));
     } catch (error) {
         console.log(error);
         core.setFailed(error.message);
     }
     try {
-        var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: repo });
+        var referrers = await octokit.repos.getTopReferrers({ owner: owner, repo: traffic_repo });
         console.log(JSON.stringify(referrers.data));
     } catch (error) {
         console.log(error);
@@ -53,64 +55,112 @@ let getTraffic = async function (my_token, views_per = 'day', clones_per = 'day'
     return { views: views.data, clones: clones.data, paths: paths.data, referrers: referrers.data }
 }
 
-let initTafficDate = async function (my_token, traffic_data_path) {
+let initTafficData = async function (my_token, traffic_branch, traffic_branch_path) {
     const octokit = new github.getOctokit(my_token);
     try {
         await octokit.repos.getBranch({
             owner: owner,
             repo: repo,
-            branch: 'traffic',
+            branch: traffic_branch,
         });
     } catch (error) {
         if (error.message === 'Branch not found') {
-            if (!(fs.statSync(traffic_data_path).isDirectory())) {
-                fs.unlinkSync(traffic_data_path);
-                fs.mkdirSync(traffic_data_path);
+            if (!(fs.statSync(traffic_branch_path).isDirectory())) {
+                fs.unlinkSync(traffic_branch_path);
+                fs.mkdirSync(traffic_branch_path);
             } else {
-                console.log('error: ' + error);
-                core.setFailed(error.message)
+                core.setFailed(`${traffic_branch_path} already exists!`);
                 return false;
             }
         }
 
     }
-    cp.execSync(`git clone ${clone_url} ${traffic_data_path} -b traffic`, function (error, stdout, stderr) {
-        if (error) {
-            console.log('error: ' + error);
-            console.log('traffic_data_path' + traffic_data_path);
-            return false;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + typeof stderr);
-    });
-    console.log(`Init traffic data into ${traffic_data_path}.`);
+    cp.execSync(`git clone ${clone_url} ${traffic_branch_path} -b ${traffic_branch}`,
+        function (error, stdout, stderr) {
+            if (error) {
+                console.log('error: ' + error);
+                console.log('traffic_branch_path' + traffic_branch_path);
+                return false;
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + typeof stderr);
+        });
+    console.log(`Init traffic data into ${traffic_branch_path}.`);
     return true;
 }
 
-let getClonesDate = async function (clones_data, traffic_clones) {
-    try {
-        var ClonesDate = JSON.parse(fs.readFileSync(traffic_clones, 'utf8').data);
-        var count = ClonesDate.count;
-        var uniques = ClonesDate.uniques;
-        var clones = ClonesDate.clones;
-        var traffic_data_latest = clones_data.clones.filter((item) => {
-            return !(clones.findIndex(a => { return a.timestamp === item.timestamp; }) != -1)
-        })
-        count = count + traffic_data_latest.reduce((a, b) => { a.count + b.count }, '0');
-        uniques = uniques + traffic_data_latest.reduce((a, b) => { a.uniques + b.uniques }, '0');
-        clones = Object.assign(clones, traffic_data_latest);
-        clones_data = Object.assign({ 'count': count }, { 'uniques': uniques }, { 'clones': clones });
-        console.log("clones_data: " + JSON.stringify(clones_data));
-        return clones_data;
-    } catch (error) {
-        if (error.code === 'ENOENT') {
-            console.log("clones_data: " + JSON.stringify(clones_data));
-            return clones_data;
-        } else {
-            throw error;
+let combineTrafficData = async function (traffic_data, traffic_data_path) {
+    var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
+    var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
+    function combineTypesData(data, data_path, data_type) {
+        try {
+            var origin_data = JSON.parse(fs.readFileSync(data_path, 'utf8').data);
+            var count = origin_data.count;
+            var uniques = origin_data.uniques;
+            var days_data = origin_data[data_type];
+            var days_data_latest = data[data_type].filter((item) => {
+                return !(days_data.findIndex(a => { return a.timestamp === item.timestamp; }) != -1);
+            });
+            count = count + days_data_latest.reduce((a, b) => { a.count + b.count; }, '0');
+            uniques = uniques + days_data_latest.reduce((a, b) => { a.uniques + b.uniques; }, '0');
+            days_data = Object.assign(days_data, days_data_latest);
+            data = Object.assign({ 'count': count }, { 'uniques': uniques }, { data_type: days_data });
+            console.log(`${data_type}: ${JSON.stringify(data)}`);
+            return data;
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                console.log(`${data_type}: ${JSON.stringify(data)}`);
+                return data;
+            } else {
+                throw error;
+            }
         }
+    }
+
+    traffic_data.views = combineTypesData(traffic_data.views, traffic_views_path, 'views');
+    traffic_data.clones = combineTypesData(traffic_data.clones, traffic_clones_path, 'clones');
+    return traffic_data;
+}
+
+let saveTrafficData = async function (traffic_data, traffic_data_path) {
+    var traffic_views_path = path.join(traffic_data_path, `traffic_views.json`);
+    var traffic_clones_path = path.join(traffic_data_path, `traffic_clones.json`);
+    var traffic_paths_path = path.join(traffic_data_path, `traffic_paths.json`);
+    var traffic_referrers_path = path.join(traffic_data_path, `traffic_referrers.json`);
+    function saveData(data, data_path) {
+        fs.writeFile(data_path, data, function (error) {
+            if (error) {
+                console.log(error);
+                throw error;
+            }
+            console.log(`文件保存成功，地址： ${data_path}`);
+        });
+    }
+
+    try {
+        saveData(traffic_data.views, traffic_views_path);
+        saveData(traffic_data.clones, traffic_clones_path);
+        saveData(traffic_data.paths, traffic_paths_path);
+        saveData(traffic_data.referrers, traffic_referrers_path);
+        return true;
+    } catch (error) {
+        console.error("Save data fail!");
     }
 }
 
-
-module.exports = { getFormatDate, getTraffic, initTafficDate, getClonesDate };
+let downloadSVG = async function (traffic_data, traffic_data_path) {
+    function downbadge(name, count) {
+        var options = {
+            url: `https://img.shields.io/badge/${name}-${count}-brightgreen`,
+            dest: `${traffic_data_path}/${name}.svg`
+        }
+        download.image(options)
+            .then(({ filename }) => {
+                console.log('Saved to', filename)
+            })
+            .catch((err) => console.error(err))
+    }
+    downbadge("views", traffic_data.views.count);
+    downbadge("clones", traffic_data.clones.count);
+}
+module.exports = { getFormatDate, getTraffic, initTafficData, combineTrafficData, saveTrafficData, downloadSVG };

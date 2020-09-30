@@ -1,4 +1,4 @@
-name: "units-test"
+name: "traffic to badge"
 on:
   pull_request:
   push:
@@ -16,11 +16,21 @@ jobs:
   #   - run: npm test
 
   # test action works running from the graph
-  test:
+  run:
+    name: test
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Get current repository name
+      id: info
+      uses: actions/github-script@v3.0.0
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        result-encoding: string
+        script: |
+          return context.repo.repo;
 
     - name: Set traffic
       uses: ./
@@ -28,18 +38,22 @@ jobs:
         views_per: day
         clones_per: week
         my_token: ${{ secrets.TRAFFIC_TOKEN }}
+        static_list: '${{ steps.info.outputs.result }}'
+        traffic_branch: traffic
 
-    # - name: Deploy
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: traffic
-    #     publish_dir: ./traffic
-    #     user_name: 'github-actions[bot]'
-    #     user_email: 'github-actions[bot]@users.noreply.github.com'
-    #     full_commit_message: ${{ github.event.head_commit.message }}
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: traffic
+        publish_dir: ./traffic
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        full_commit_message: ${{ github.event.head_commit.message }}
 
     - name: Show traffic data
       run: |
         cd ./traffic/
+        ls -a
+        cd ./traffic-traffic-to-badge/
         ls -a

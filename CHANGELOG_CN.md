@@ -16,7 +16,7 @@
 - 📝 [CHANGELOGE.md](./CHANGELOGE.md)
 - 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
-- 👷  prettier 格式化文件
+- 👷 prettier 格式化文件
 
 ### ♻️ 变化
 

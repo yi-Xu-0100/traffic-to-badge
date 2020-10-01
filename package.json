@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "format": "prettier --write **/*.{js,yml,json,md}",
+    "format": "prettier --write **/*.{js,yml,json,md} && git add ./*.js ./*.yml ./*.json ./*.md",
     "lint": "eslint .",
     "pre-commit": "npm run build && git add dist/",
     "build": "ncc build ./src/index.js --minify"

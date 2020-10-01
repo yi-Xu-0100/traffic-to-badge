@@ -1,17 +1,18 @@
 {
   "name": "javascript-action",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
-  "main": "index.js",
+  "description": "Use repository traffic data to generate badges that include views and clones.",
+  "main": "dist/index.js",
   "scripts": {
     "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint": "eslint .",
-    "prepare": "ncc build ./src/index.js -o ./dist/ --source-map",
-    "test": "jest",
+    "format": "prettier --write **/*.{js,yml,json}",
+    "prepare": "ncc build ./src/index.js -o dist/ --minify",
     "pre-commit": "npm run prepare && git add dist/"
   },
   "pre-commit": [
     "pre-commit-msg",
+    "format",
     "lint",
     "pre-commit"
   ],
@@ -22,7 +23,9 @@
   "keywords": [
     "GitHub",
     "Actions",
-    "JavaScript"
+    "JavaScript",
+    "Badge",
+    "Traffic"
   ],
   "author": "yi-Xu-0100",
   "license": "MIT",
@@ -35,13 +38,14 @@
     "@actions/github": "^4.0.0",
     "child_process": "^1.0.2",
     "image-downloader": "^4.0.1",
-    "simple-git": "^2.20.1",
     "underscore": "^1.11.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",
     "eslint": "^7.4.0",
-    "jest": "^26.1.0",
-    "pre-commit": "^1.2.2"
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "pre-commit": "^1.2.2",
+    "prettier": "2.1.2"
   }
 }

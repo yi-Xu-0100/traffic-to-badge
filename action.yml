@@ -24,7 +24,6 @@ inputs:
     description: 'Insert named logo or simple-icons into laber left.'
     required: false
     default: 'github'
-outputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'

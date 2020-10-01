@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "lint": "eslint .",
     "format": "prettier --write **/*.{js,yml,json}",
-    "prepare": "ncc build ./src/index.js -o dist/ --minify",
-    "pre-commit": "npm run prepare && git add dist/"
+    "lint": "eslint .",
+    "pre-commit": "npm run build && git add dist/",
+    "build": "ncc build ./src/index.js --minify"
   },
   "pre-commit": [
     "pre-commit-msg",

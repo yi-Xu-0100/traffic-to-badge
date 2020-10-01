@@ -28,11 +28,12 @@ jobs:
       - name: Set traffic
         uses: ./
         with:
-          views_per: day
-          clones_per: day
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           static_list: '${{ steps.info.outputs.result }}'
           traffic_branch: traffic
+          views_color: brightgreen
+          clones_color: brightgreen
+          logo: github
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

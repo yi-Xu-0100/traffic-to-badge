@@ -3,25 +3,25 @@ author: 'yi_Xu'
 description: 'Use repository traffic data to generate badges that include views and clones.'
 inputs:
   my_token:
-    description: 'Set a personal access token for getting the secret repository traffic data.'
+    description: 'Set up a personal access token to obtain the secret repository traffic data.'
     required: true
   static_list:
-    description: 'Set a list include repositories you want to use.'
+    description: 'Set up a list of repositories to get.'
     required: true
   traffic_branch:
-    description: 'If empty traffic data will backup in branch named traffic.'
+    description: 'If empty traffic data will be backed up to the branch named traffic.'
     required: false
     default: 'traffic'
   views_color:
-    description: 'Set hex or named colors for the views badge value background.'
+    description: 'Set a hex or named color value for the views badge background.'
     required: false
     default: 'brightgreen'
   clones_color:
-    description: 'Set hex or named colors for the clones badge value background.'
+    description: 'Set a hex or named color value for the clones badge background.'
     required: false
     default: 'brightgreen'
   logo:
-    description: 'Insert named logo or simple-icons into laber left.'
+    description: 'Insert a named logo or simple-icon to the left of the label.'
     required: false
     default: 'github'
 runs:

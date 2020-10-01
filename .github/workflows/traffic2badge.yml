@@ -36,7 +36,7 @@ jobs:
           logo: github
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3.6.4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: traffic
@@ -49,5 +49,5 @@ jobs:
         run: |
           cd ./traffic/
           ls -a
-          cd ./traffic-traffic-to-badge/
+          cd ./traffic-${{ steps.info.outputs.result }}/
           ls -a

@@ -1,5 +1,5 @@
 {
-  "name": "javascript-action",
+  "name": "traffic-to-badge",
   "version": "1.0.0",
   "description": "Use repository traffic data to generate badges that include views and clones.",
   "main": "dist/index.js",

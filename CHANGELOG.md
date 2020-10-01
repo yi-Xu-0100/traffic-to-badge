@@ -26,5 +26,5 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### 🗑 Deprecated
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

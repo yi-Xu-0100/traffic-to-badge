@@ -28,7 +28,7 @@
 
 ## 🚀 使用
 
-``` yaml
+```yaml
 input:
   my_token:
     description: '设置个人访问令牌以获取机密存储库流量数据。'
@@ -58,7 +58,7 @@ input:
 
 本示例使用 `peaceiris/actions-gh-pages@v3.6.4` 将流量数据发布到 `traffic branch` 。
 
-``` yaml
+```yaml
 name: traffic2badge
 on:
   pull_request:
@@ -74,7 +74,6 @@ jobs:
     name: Make GitHub Traffic data to Badge
     runs-on: ubuntu-latest
     steps:
-
       - name: Get current repository name
         id: info
         uses: actions/github-script@v3.0.0

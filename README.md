@@ -28,7 +28,7 @@ A GitHub actions that using repositories `Insights/traffic` data to generate bad
 
 ## 🚀 Usage
 
-``` yaml
+```yaml
 input:
   my_token:
     description: 'Set up a personal access token to obtain the secret repository traffic data.'
@@ -58,7 +58,7 @@ input:
 
 This example use `peaceiris/actions-gh-pages@v3.6.4` to publish traffic data to `traffic branch`.
 
-``` yaml
+```yaml
 name: traffic2badge
 on:
   pull_request:
@@ -73,7 +73,6 @@ jobs:
     name: Make GitHub Traffic data to Badge
     runs-on: ubuntu-latest
     steps:
-
       - name: Get current repository name
         id: info
         uses: actions/github-script@v3.0.0

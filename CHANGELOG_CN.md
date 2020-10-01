@@ -15,12 +15,12 @@
 - 🌐 [README_CN.md](./README_CN.md)
 - 📝 [CHANGELOGE.md](./CHANGELOGE.md)
 - 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
-- 👷自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
+- 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷  prettier 格式化文件
 
 ### ♻️ 变化
 
 ### 🐛 修复
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

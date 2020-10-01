@@ -1,27 +1,32 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Traffic to Badge'
+author: 'yi_Xu'
+description: 'Use repository traffic data to generate badges that include views and clones.'
 inputs:
-  views_per:  # id of input
-    description: 'views_per'
-    required: false
-    default: 'day'
-  clones_per:  # id of input
-    description: 'clones_per'
-    required: false
-    default: 'day'
-  my_token:  # id of input
-    description: 'my_token'
+  my_token:
+    description: 'Set a personal access token for getting the secret repository traffic data.'
     required: true
-  static_list: #repo static_list
-    description: 'static_list'
+  static_list:
+    description: 'Set a list include repositories you want to use.'
     required: true
-  traffic_branch: #traffic_branch
-    description: 'traffic_branch'
+  traffic_branch:
+    description: 'If empty traffic data will backup in branch named traffic.'
     required: false
     default: 'traffic'
-outputs:
-  views: # output will be available to future steps
-    description: 'page views'
+  views_color:
+    description: 'Set hex or named colors for the views badge value background.'
+    required: false
+    default: 'brightgreen'
+  clones_color:
+    description: 'Set hex or named colors for the clones badge value background.'
+    required: false
+    default: 'brightgreen'
+  logo:
+    description: 'Insert named logo or simple-icons into laber left.'
+    required: false
+    default: 'github'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'award'
+  color: 'green'

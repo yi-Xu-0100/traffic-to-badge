@@ -23,7 +23,7 @@
 
 ### ✨ 增加
 
-- 🎉 [taffic to badge](https://github.com/marketplace/actions/traffic-to-badge) 功能完成
+- 🎉 [traffic to badge](https://github.com/marketplace/actions/traffic-to-badge) 功能完成
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
 - 🌐 [CHANGELOGE.md](./CHANGELOGE.md)

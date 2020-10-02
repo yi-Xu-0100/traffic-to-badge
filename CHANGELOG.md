@@ -23,7 +23,7 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ✨ Added
 
-- 🎉 [taffic to badge](https://github.com/marketplace/actions/traffic-to-badge) function completed
+- 🎉 [traffic to badge](https://github.com/marketplace/actions/traffic-to-badge) function was completed
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
 - 🌐 [CHANGELOGE.md](./CHANGELOGE.md)

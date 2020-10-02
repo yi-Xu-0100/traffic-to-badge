@@ -25,8 +25,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
-- 📝 [CHANGELOGE.md](./CHANGELOGE.md)
-- 🌐 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
+- 🌐 [CHANGELOGE.md](./CHANGELOGE.md)
+- 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./package.json) to format files
 

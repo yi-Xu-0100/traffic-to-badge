@@ -23,12 +23,13 @@
 
 ### ✨ 增加
 
+- 🎉 [taffic to badge](https://github.com/marketplace/actions/traffic-to-badge) 功能完成
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
 - 🌐 [CHANGELOGE.md](./CHANGELOGE.md)
 - 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
-- 👷 prettier 格式化文件
+- 👷 [prettier](./.prettierrc.json) 格式化文件
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

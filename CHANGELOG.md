@@ -23,12 +23,13 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ✨ Added
 
+- 🎉 [taffic to badge](https://github.com/marketplace/actions/traffic-to-badge) function completed
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
 - 🌐 [CHANGELOGE.md](./CHANGELOGE.md)
 - 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
-- 👷 [prettier](./package.json) to format files
+- 👷 [prettier](./.prettierrc.json) to format files
 
 [unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

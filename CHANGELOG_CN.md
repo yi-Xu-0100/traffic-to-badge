@@ -1,6 +1,6 @@
 ## 更新日志
 
-此项目的所有显着更改将记录在此文件中。
+此项目的所有显著更改将记录在此文件中。
 
 格式基于 [维护日志](https://keepachangelog.com/zh-CN/1.0.0/) ，
 并且该项目遵循 [语义版本控制](https://semver.org/spec/v2.0.0.html) 。
@@ -10,6 +10,9 @@
 ## [未发布的]
 
 ### ✨ 增加
+
+- [ ] 💬 使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的方案
+- [ ] 📄 使用 `--license license.txt` 方案
 
 ### ♻️ 变化
 

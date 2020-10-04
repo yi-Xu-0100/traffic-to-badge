@@ -19,7 +19,7 @@ A GitHub actions that using repositories `Insights/traffic` data to generate bad
 
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 Table of Contents](#-table-of-contents)
-- [🚀 Usage](#-usage)
+- [🚀 Configuration](#-configuration)
 - [📝 Example](#-example)
   - [Use actions-gh-pages to push traffic branch](#use-actions-gh-pages-to-push-traffic-branch)
   - [Use dependabot to keep action up-to-date](#use-dependabot-to-keep-action-up-to-date)
@@ -28,7 +28,7 @@ A GitHub actions that using repositories `Insights/traffic` data to generate bad
 - [📄 LICENSE](#-license)
 - [🎉 Thanks](#-thanks)
 
-## 🚀 Usage
+## 🚀 Configuration
 
 ```yaml
 input:

@@ -4,24 +4,25 @@
   "description": "Use repository traffic data to generate badges that include views and clones.",
   "main": "dist/index.js",
   "scripts": {
-    "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
     "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
     "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
     "build": "rimraf -rf dist/* && ncc build src/index.js --minify  --license license.txt && git add dist/"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run build && npm run lint-check"
+    }
+  },
   "lint-staged": {
-    "**/*.{js,yml,json,md}": [
+    "**/*.{js}": [
       "prettier --write",
       "git add",
       "eslint"
-    ]
-  },
-  "husky": {
-    "hooks": [
-      "pre-commit-msg",
-      "lint-staged",
-      "lint-check",
-      "build"
+    ],
+    "**/*.{md,json,yml}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "repository": {

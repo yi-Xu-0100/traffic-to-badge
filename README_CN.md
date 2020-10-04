@@ -19,7 +19,7 @@
 
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 目录](#-目录)
-- [🚀 使用](#-使用)
+- [🚀 配置](#-配置)
 - [📝 示例](#-示例)
   - [使用 actions-gh-pages 来推送 traffic 分支](#使用-actions-gh-pages-来推送-traffic-分支)
   - [使用 dependabot 使 action 保持更新](#使用-dependabot-使-action-保持更新)
@@ -28,7 +28,7 @@
 - [📄 协议](#-协议)
 - [🎉 鸣谢](#-鸣谢)
 
-## 🚀 使用
+## 🚀 配置
 
 ```yaml
 input:

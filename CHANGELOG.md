@@ -11,8 +11,9 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ✨ Added
 
-- [ ] 💬 use [dependabot](./.github/dependabot.yml) proposal to make action auto updating
-- [ ] 📄 use `--license license.txt` proposal
+- [x] 💬 Add description that using [dependabot](./.github/dependabot.yml) to make action auto updating
+- [x] 📄 Use `--license license.txt`
+- [x] ➕ Use [rimraf](https://github.com/isaacs/rimraf) delete `dist/*`
 
 ### ♻️ Changed
 

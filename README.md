@@ -21,6 +21,8 @@ A GitHub actions that using repositories `Insights/traffic` data to generate bad
 - [🎨 Table of Contents](#-table-of-contents)
 - [🚀 Usage](#-usage)
 - [📝 Example](#-example)
+  - [Use actions-gh-pages to push traffic branch](#use-actions-gh-pages-to-push-traffic-branch)
+  - [Use dependabot to keep action up-to-date](#use-dependabot-to-keep-action-up-to-date)
 - [🙈 Generate `my_token`](#-generate-my_token)
 - [🔊 CHANGELOG](#-changelog)
 - [📄 LICENSE](#-license)
@@ -56,15 +58,13 @@ input:
 
 ## 📝 Example
 
+### Use actions-gh-pages to push traffic branch
+
 This example use `peaceiris/actions-gh-pages@v3.6.4` to publish traffic data to `traffic branch`.
 
 ```yaml
 name: traffic2badge
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '1 18 * * *' # UTC 18:01
 
@@ -108,6 +108,20 @@ jobs:
           ls -a
           cd ./traffic-${{ steps.info.outputs.result }}/
           ls -a
+```
+
+### Use dependabot to keep action up-to-date
+
+This file is build in `./github/dependabot.yml` to keep action up-to-date.
+
+```yaml
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
 ```
 
 ## 🙈 Generate `my_token`

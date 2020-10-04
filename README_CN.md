@@ -21,6 +21,8 @@
 - [🎨 目录](#-目录)
 - [🚀 使用](#-使用)
 - [📝 示例](#-示例)
+  - [使用 actions-gh-pages 来推送 traffic 分支](#使用-actions-gh-pages-来推送-traffic-分支)
+  - [使用 dependabot 使 action 保持更新](#使用-dependabot-使-action-保持更新)
 - [🙈 生成 `my_token`](#-生成-my_token)
 - [🔊 更新日志](#-更新日志)
 - [📄 协议](#-协议)
@@ -56,15 +58,13 @@ input:
 
 ## 📝 示例
 
+### 使用 actions-gh-pages 来推送 traffic 分支
+
 本示例使用 `peaceiris/actions-gh-pages@v3.6.4` 将流量数据发布到 `traffic branch` 。
 
 ```yaml
 name: traffic2badge
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   schedule:
     # UTC 18:00 -> CST (China) 2:00 see https://datetime360.com/cn/utc-cst-china-time/
     - cron: '1 18 * * *'
@@ -109,6 +109,20 @@ jobs:
           ls -a
           cd ./traffic-${{ steps.info.outputs.result }}/
           ls -a
+```
+
+### 使用 dependabot 使 action 保持更新
+
+该文件应该被创建于 `./github/dependabot.yml` 以使 action 保持更新。
+
+```yaml
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
 ```
 
 ## 🙈 生成 `my_token`

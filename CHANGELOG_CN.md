@@ -11,8 +11,9 @@
 
 ### ✨ 增加
 
-- [ ] 💬 使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的方案
-- [ ] 📄 使用 `--license license.txt` 方案
+- [x] 💬 添加使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的说明
+- [x] 📄 使用 `--license license.txt`
+- [x] ➕ 使用 [rimraf](https://github.com/isaacs/rimraf) 删除 `dist/*`
 
 ### ♻️ 变化
 

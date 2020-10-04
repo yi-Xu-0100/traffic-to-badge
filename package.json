@@ -5,17 +5,25 @@
   "main": "dist/index.js",
   "scripts": {
     "pre-commit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "format": "prettier --write **/*.{js,yml,json,md} && git add **/*.js **/*.yml **/*.json **/*.md",
-    "lint": "eslint .",
-    "pre-commit": "npm run build && git add dist/",
-    "build": "rimraf -rf dist/* && ncc build src/index.js --minify  --license license.txt"
+    "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
+    "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
+    "build": "rimraf -rf dist/* && ncc build src/index.js --minify  --license license.txt && git add dist/"
   },
-  "pre-commit": [
-    "pre-commit-msg",
-    "format",
-    "lint",
-    "pre-commit"
-  ],
+  "lint-staged": {
+    "**/*.{js,yml,json,md}": [
+      "prettier --write",
+      "git add",
+      "eslint"
+    ]
+  },
+  "husky": {
+    "hooks": [
+      "pre-commit-msg",
+      "lint-staged",
+      "lint-check",
+      "build"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yi-Xu-0100/traffic-to-badge.git"
@@ -45,7 +53,8 @@
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "pre-commit": "^1.2.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
     "prettier": "2.1.2",
     "rimraf": "^3.0.2"
   }

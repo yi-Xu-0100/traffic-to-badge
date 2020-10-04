@@ -14,6 +14,7 @@
 - [x] 💬 添加使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的说明
 - [x] 📄 使用 `--license license.txt`
 - [x] ➕ 使用 [rimraf](https://github.com/isaacs/rimraf) 删除 `dist/*`
+- [x] ➕ 使用 [husky](https://github.com/typicode/husky) 和 [lint-staged](https://github.com/okonet/lint-stage) 来制作 pre-commit hook
 
 ### ♻️ 变化
 

@@ -14,6 +14,7 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - [x] 💬 Add description that using [dependabot](./.github/dependabot.yml) to make action auto updating
 - [x] 📄 Use `--license license.txt`
 - [x] ➕ Use [rimraf](https://github.com/isaacs/rimraf) delete `dist/*`
+- [x] ➕ Use [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-stage) to make pre-commit hook
 
 ### ♻️ Changed
 

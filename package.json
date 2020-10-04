@@ -10,8 +10,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'pre-commit...' && lint-staged",
-      "pre-push": "echo 'pre-push...' && npm run build && npm run lint-check"
+      "pre-commit": "echo 'pre-commit...' && lint-staged && npm run build",
+      "pre-push": "echo 'pre-push...' && npm run lint-check"
     }
   },
   "lint-staged": {

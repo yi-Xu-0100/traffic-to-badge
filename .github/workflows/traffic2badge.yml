@@ -1,6 +1,5 @@
 name: traffic2badge
 on:
-  pull_request:
   push:
     branches:
       - main
@@ -15,6 +14,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.3
+
+      - name: Get Current Time
+        uses: 1466587594/get-current-time@v2.0.0
+        id: current-time
+        with:
+          format: YYYY-MM-DD hh:mm:ss
+          utcOffset: '+08:00'
+
+      - name: Get Commit Message
+        id: message
+        uses: actions/github-script@v3.0.0
+        env:
+          F_TIME: '${{ steps.current-time.outputs.formattedTime }}'
+          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          result-encoding: string
+          script: |
+            var message = `${process.env.EMPTY}`;
+            if (message != 'undefined') return message;
+            return `Get traffic data at ${process.env.F_TIME}`;
 
       - name: Get current repository name
         id: info
@@ -43,7 +63,7 @@ jobs:
           publish_dir: ./traffic
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          full_commit_message: ${{ github.event.head_commit.message }}
+          full_commit_message: ${{ steps.message.outputs.result }}
 
       - name: Show traffic data
         run: |

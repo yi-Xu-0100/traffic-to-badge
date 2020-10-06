@@ -1,6 +1,11 @@
 name: 'Traffic to Badge'
 author: 'yi_Xu'
 description: 'Use repository traffic data to generate badges that include views and clones.'
+
+branding:
+  icon: 'award'
+  color: 'green'
+
 inputs:
   my_token:
     description: 'Set up a personal access token to obtain the secret repository traffic data.'
@@ -24,9 +29,7 @@ inputs:
     description: 'Insert a named logo or simple-icon to the left of the label.'
     required: false
     default: 'github'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
-branding:
-  icon: 'award'
-  color: 'green'

@@ -33,7 +33,7 @@ jobs:
           result-encoding: string
           script: |
             var message = `${process.env.FULL_COMMIT_MESSAGE}`;
-            if (message != 'undefined') return message;
+            if (message != '') return message;
             return `Get traffic data at ${process.env.F_TIME}`;
 
       - name: Get current repository name

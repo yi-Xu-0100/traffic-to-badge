@@ -11,7 +11,7 @@
 
 [**English**](.README.md) | [简体中文](./README_CN.md)
 
-A GitHub actions that using repositories `Insights/traffic` data to generate badges that include views and clones.
+The GitHub action that using repositories `Insights/traffic` data to generate badges that include views and clones.
 
 **Notion: It will also backup your secret traffic data into `traffic branch` .**
 

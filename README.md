@@ -20,9 +20,8 @@ A GitHub actions that using repositories `Insights/traffic` data to generate bad
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 Table of Contents](#-table-of-contents)
 - [🚀 Configuration](#-configuration)
-- [📝 Example](#-example)
-  - [Use actions-gh-pages to push traffic branch](#use-actions-gh-pages-to-push-traffic-branch)
-  - [Use dependabot to keep action up-to-date](#use-dependabot-to-keep-action-up-to-date)
+- [📝 Example that using actions-gh-pages to push traffic branch](#-example-that-using-actions-gh-pages-to-push-traffic-branch)
+- [📝 Use dependabot to keep action up-to-date](#-use-dependabot-to-keep-action-up-to-date)
 - [🙈 Generate `my_token`](#-generate-my_token)
 - [🔊 CHANGELOG](#-changelog)
 - [📄 LICENSE](#-license)
@@ -56,11 +55,9 @@ input:
     default: 'github'
 ```
 
-## 📝 Example
+## 📝 Example that using actions-gh-pages to push traffic branch
 
-### Use actions-gh-pages to push traffic branch
-
-This example use `peaceiris/actions-gh-pages@v3.6.4` to publish traffic data to `traffic branch`.
+This example use [`peaceiris/actions-gh-pages@v3.6.4`](https://github.com/peaceiris/actions-gh-pages) to publish traffic data to `traffic branch`.
 
 ```yaml
 name: traffic2badge
@@ -110,9 +107,9 @@ jobs:
           ls -a
 ```
 
-### Use dependabot to keep action up-to-date
+## 📝 Use dependabot to keep action up-to-date
 
-This file is build in `./github/dependabot.yml` to keep action up-to-date.
+This file is build in [`./github/dependabot.yml`](./.github/dependabot.yml) to keep action up-to-date.
 
 ```yaml
 version: 2

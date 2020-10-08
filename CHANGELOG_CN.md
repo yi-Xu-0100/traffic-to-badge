@@ -11,11 +11,6 @@
 
 ### ✨ 增加
 
-- [x] 💬 添加使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的说明
-- [x] 📄 使用 `--license license.txt`
-- [x] ➕ 使用 [rimraf](https://github.com/isaacs/rimraf) 删除 `dist/*`
-- [x] ➕ 使用 [husky](https://github.com/typicode/husky) 和 [lint-staged](https://github.com/okonet/lint-stage) 来制作 pre-commit hook
-
 ### ♻️ 变化
 
 ### 🐛 修复
@@ -24,7 +19,16 @@
 
 ### 🗑 废弃
 
-## [1.0.0] - 2020-10.01
+## [1.0.1] - 2020-10-08
+
+### ✨ 增加
+
+- 💬 添加使用 [dependabot](./.github/dependabot.yml) 完成 action 的自动更新的说明
+- 📄 使用 `--license license.txt`
+- ➕ 使用 [rimraf](https://github.com/isaacs/rimraf) 删除 `dist/*`
+- ➕ 使用 [husky](https://github.com/typicode/husky) 和 [lint-staged](https://github.com/okonet/lint-stage) 来制作 pre-commit hook
+
+## [1.0.0] - 2020-10-01
 
 ### ✨ 增加
 
@@ -36,5 +40,6 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

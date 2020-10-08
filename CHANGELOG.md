@@ -11,11 +11,6 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ✨ Added
 
-- [x] 💬 Add description that using [dependabot](./.github/dependabot.yml) to make action auto updating
-- [x] 📄 Use `--license license.txt`
-- [x] ➕ Use [rimraf](https://github.com/isaacs/rimraf) delete `dist/*`
-- [x] ➕ Use [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-stage) to make pre-commit hook
-
 ### ♻️ Changed
 
 ### 🐛 Fixed
@@ -24,7 +19,16 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### 🗑 Deprecated
 
-## [1.0.0] - 2020-10.01
+## [1.0.1] - 2020-10-08
+
+### ✨ Added
+
+- 💬 Add description that using [dependabot](./.github/dependabot.yml) to make action auto updating
+- 📄 Use `--license license.txt`
+- ➕ Use [rimraf](https://github.com/isaacs/rimraf) delete `dist/*`
+- ➕ Use [husky](https://github.com/typicode/husky) and [lint-staged](https://github.com/okonet/lint-stage) to make pre-commit hook
+
+## [1.0.0] - 2020-10-01
 
 ### ✨ Added
 
@@ -36,5 +40,6 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

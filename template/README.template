@@ -1,0 +1,21 @@
+### [{repo}](https://github.com/{author}/{repo}/tree/{branch}/traffic-{repo})
+
+### badge of {repo} without link
+
+![views](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/views.svg)
+![clones](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/clones.svg)
+
+```md
+![views](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/views.svg)
+![clones](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/clones.svg)
+```
+
+### badge of {repo} with link
+
+[![views](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{repo}/tree/{branch}/README.md#badge-of-{repo}-without-link)
+[![clones](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{repo}/tree/{branch}/README.md#badge-of-{repo}-without-link)
+
+```md
+[![views](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{repo}/tree/{branch}/README.md#badge-of-{repo}-without-link)
+[![clones](https://raw.githubusercontent.com/{author}/{repo}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{repo}/tree/{branch}/README.md#badge-of-{repo}-without-link)
+```

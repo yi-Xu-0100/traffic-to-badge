@@ -15,41 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2.3.3
 
-      - name: Get Current Time
-        uses: 1466587594/get-current-time@v2.0.0
-        id: current-time
-        with:
-          format: YYYY-MM-DD hh:mm:ss
-          utcOffset: '+08:00'
-
       - name: Get Commit Message
         id: message
         uses: actions/github-script@v3.0.0
         env:
-          F_TIME: '${{ steps.current-time.outputs.formattedTime }}'
           FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           result-encoding: string
           script: |
+            core.setOutput('repo', context.repo.repo);
             var message = `${process.env.FULL_COMMIT_MESSAGE}`;
+            core.info(message);
             if (message != '') return message;
-            return `Get traffic data at ${process.env.F_TIME}`;
-
-      - name: Get current repository name
-        id: info
-        uses: actions/github-script@v3.0.0
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          result-encoding: string
-          script: |
-            return context.repo.repo;
+            return `Get traffic data at ${new Date(Date.now())}`;
 
       - name: Set traffic
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.info.outputs.result }}'
+          static_list: '${{ steps.message.outputs.repo }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen
@@ -69,5 +54,5 @@ jobs:
         run: |
           cd ./traffic/
           ls -a
-          cd ./traffic-${{ steps.info.outputs.result }}/
+          cd ./traffic-${{ steps.message.outputs.repo }}/
           ls -a

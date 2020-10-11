@@ -28,7 +28,9 @@ jobs:
             var message = `${process.env.FULL_COMMIT_MESSAGE}`;
             core.info(message);
             if (message != '') return message;
-            return `Get traffic data at ${new Date(Date.now())}`;
+            var time = new Date(Date.now()).toISOString();
+            core.info(time);
+            return `Get traffic data at ${time}`;
 
       - name: Set traffic
         uses: ./

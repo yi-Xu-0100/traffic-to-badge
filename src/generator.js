@@ -1,8 +1,9 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const path = require('path');
+const download = require('image-downloader');
 
-let generatorLicense = async function (root, branch, work, year, author) {
+let LicenseGenerator = async function (root, branch, work, year, author) {
   var template_path = path.join(root, 'template');
   var template = path.join(template_path, 'CC-BY-NC-ND-4.0.template');
   var license = path.join(branch, 'LICENSE');
@@ -25,7 +26,8 @@ let generatorLicense = async function (root, branch, work, year, author) {
   core.info('Write complete and the data is:');
   core.info(data);
 };
-let generatorReadme = function (root, author, repo, branch, number) {
+
+let ReadmeGenerator = function (root, author, repo, branch, number) {
   var template_path = path.join(root, 'template');
   var template = path.join(template_path, 'README.template');
   var README = path.join(branch, 'README.md');
@@ -42,7 +44,32 @@ let generatorReadme = function (root, author, repo, branch, number) {
   core.info('Write complete and the data is:');
   core.info(data);
 };
+
+let SVGGenerator = async function (
+  traffic_data,
+  traffic_data_path,
+  views_color,
+  clones_color,
+  logo
+) {
+  async function downloadBadge(name, count, color, logo) {
+    var options = {
+      url: `https://img.shields.io/badge/${name}-${count}-${color}?logo=${logo}`,
+      dest: `${traffic_data_path}/${name}.svg`
+    };
+    download
+      .image(options)
+      .then(({ filename }) => {
+        console.log('Saved to', filename);
+      })
+      .catch(err => console.error(err));
+  }
+  await downloadBadge('views', traffic_data.views.count, views_color, logo);
+  await downloadBadge('clones', traffic_data.clones.count, clones_color, logo);
+};
+
 module.exports = {
-  generatorLicense,
-  generatorReadme
+  LicenseGenerator,
+  ReadmeGenerator,
+  SVGGenerator
 };

@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const path = require('path');
-const util = require('./util');
+const traffic = require('./traffic');
+const generator = require('./generator');
 
 const src = path.join(__dirname, '..');
 
@@ -25,22 +26,22 @@ async function run() {
   core.info(`traffic_branch_path: ${traffic_branch_path}`);
   core.endGroup();
   core.startGroup('Init traffic data');
-  if (!(await util.initTrafficData(my_token, traffic_branch, traffic_branch_path))) {
+  if (!(await traffic.initData(my_token, traffic_branch, traffic_branch_path))) {
     core.setFailed(`Init traffic data into ${traffic_branch_path} fail!`);
   }
   core.endGroup();
   for (let i = 0; i < static_list.length; i++) {
     core.startGroup(`Set traffic data of ${static_list[i]}`);
     let traffic_data_path = path.join(traffic_branch_path, `traffic-${static_list[i]}`);
-    let latest_traffic_data = await util.getTraffic(
+    let latest_traffic_data = await traffic.getData(
       my_token,
       static_list[i],
       views_per,
       clones_per
     );
-    let traffic_data = await util.combineTrafficData(latest_traffic_data, traffic_data_path);
-    await util.saveTrafficData(traffic_data, traffic_data_path);
-    await util.downloadSVG(traffic_data, traffic_data_path, views_color, clones_color, logo);
+    let traffic_data = await traffic.combineData(latest_traffic_data, traffic_data_path);
+    await traffic.saveData(traffic_data, traffic_data_path);
+    await generator.SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
     core.endGroup();
   }
 }

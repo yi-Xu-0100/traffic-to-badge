@@ -16,7 +16,7 @@ async function run() {
   const traffic_branch_path = path.join(src, traffic_branch);
   for (let i = 0; i < static_list.length; i++) {
     let traffic_data_path = path.join(traffic_branch_path, `traffic-${static_list[i]}`);
-    if (!(await util.initTafficData(my_token, traffic_branch, traffic_branch_path))) {
+    if (!(await util.initTrafficData(my_token, traffic_branch, traffic_branch_path))) {
       core.setFailed(`Init traffic data into ${traffic_branch_path} fail!`);
     }
     let latest_traffic_data = await util.getTraffic(

@@ -59,7 +59,7 @@ let getTraffic = async function (my_token, traffic_repo, views_per = 'day', clon
   };
 };
 
-let initTafficData = async function (my_token, traffic_branch, traffic_branch_path) {
+let initTrafficData = async function (my_token, traffic_branch, traffic_branch_path) {
   const octokit = new github.getOctokit(my_token);
   try {
     await octokit.repos.getBranch({
@@ -190,7 +190,7 @@ let downloadSVG = async function (
 };
 module.exports = {
   getTraffic,
-  initTafficData,
+  initTrafficData,
   combineTrafficData,
   saveTrafficData,
   downloadSVG

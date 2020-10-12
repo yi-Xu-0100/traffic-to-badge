@@ -60,6 +60,11 @@ let getTraffic = async function (my_token, traffic_repo, views_per = 'day', clon
 };
 
 let initTrafficData = async function (my_token, traffic_branch, traffic_branch_path) {
+  if (!fs.existsSync(traffic_branch_path)) {
+    fs.mkdirSync(traffic_branch_path);
+  } else {
+    core.setFailed(`${traffic_branch_path} already exists!`);
+  }
   const octokit = new github.getOctokit(my_token);
   try {
     await octokit.repos.getBranch({
@@ -67,38 +72,18 @@ let initTrafficData = async function (my_token, traffic_branch, traffic_branch_p
       repo: repo,
       branch: traffic_branch
     });
+    cp.execSync(`git clone ${clone_url} ${traffic_branch_path} -b ${traffic_branch}`);
+    cp.execSync(`rm -rf ${path.join(traffic_branch, '.git')}`);
+    return true;
   } catch (error) {
-    if (error.message === 'Branch not found') {
-      if (!fs.existsSync(traffic_branch_path)) {
-        fs.mkdirSync(traffic_branch_path);
-      } else {
-        core.setFailed(`${traffic_branch_path} already exists!`);
-        return false;
-      }
+    if (error.message != 'Branch not found') core.setFailed(`error: ${error.message}`);
+    else {
+      core.info(`traffic_branch_path: ${traffic_branch_path}`);
+      core.info(`traffic_branch: ${traffic_branch}`);
+      core.info('Branch not found');
+      return false;
     }
   }
-  cp.execSync(`git clone ${clone_url} ${traffic_branch_path} -b ${traffic_branch}`, function (
-    error,
-    stdout,
-    stderr
-  ) {
-    if (error) {
-      console.log('traffic_branch_path' + traffic_branch_path);
-      console.error('error: ' + error);
-      return false;
-    }
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + typeof stderr);
-  });
-  cp.execSync(`rm -rf ${path.join(traffic_branch, '.git')}`, function (error, stdout, stderr) {
-    if (error) {
-      console.error('error: ' + error);
-      return false;
-    }
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + typeof stderr);
-  });
-  return true;
 };
 
 let combineTrafficData = async function (traffic_data, traffic_data_path) {

@@ -1,9 +1,9 @@
 const core = require('@actions/core');
-const path = require('path');
+const { join } = require('path');
 const traffic = require('./traffic');
 const generator = require('./generator');
 
-const src = path.join(__dirname, '..');
+const src = join(__dirname, '..');
 
 async function run() {
   core.startGroup('Get input value');
@@ -22,7 +22,7 @@ async function run() {
   core.info(`clones_color: ${clones_color}`);
   const logo = core.getInput('logo', { require: false });
   core.info(`logo: ${logo}`);
-  const traffic_branch_path = path.join(src, traffic_branch);
+  const traffic_branch_path = join(src, traffic_branch);
   core.info(`traffic_branch_path: ${traffic_branch_path}`);
   core.endGroup();
   core.startGroup('Init traffic data');
@@ -32,7 +32,7 @@ async function run() {
   core.endGroup();
   for (let i = 0; i < static_list.length; i++) {
     core.startGroup(`Set traffic data of ${static_list[i]}`);
-    let traffic_data_path = path.join(traffic_branch_path, `traffic-${static_list[i]}`);
+    let traffic_data_path = join(traffic_branch_path, `traffic-${static_list[i]}`);
     let latest_traffic_data = await traffic.getData(
       my_token,
       static_list[i],

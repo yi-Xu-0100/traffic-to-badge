@@ -1,12 +1,13 @@
 const core = require('@actions/core');
 const fs = require('fs');
-const path = require('path');
+const { join } = require('path');
 const download = require('image-downloader');
+const type_list = ['views', 'clones', 'paths', 'referrers'];
 
 let LicenseGenerator = async function (root, branch, work, year, author) {
-  var template_path = path.join(root, 'template');
-  var template = path.join(template_path, 'CC-BY-NC-ND-4.0.template');
-  var license = path.join(branch, 'LICENSE');
+  var template_path = join(root, 'template');
+  var template = join(template_path, 'CC-BY-NC-ND-4.0.template');
+  var license = join(branch, 'LICENSE');
   fs.copyFileSync(template, license);
   core.info('Copy complete, and the license template from:');
   core.info(template);
@@ -28,9 +29,9 @@ let LicenseGenerator = async function (root, branch, work, year, author) {
 };
 
 let ReadmeGenerator = function (root, author, repo, branch, number) {
-  var template_path = path.join(root, 'template');
-  var template = path.join(template_path, 'README.template');
-  var README = path.join(branch, 'README.md');
+  var template_path = join(root, 'template');
+  var template = join(template_path, 'README.template');
+  var README = join(branch, 'README.md');
   if (!fs.existsSync(README)) fs.mkdirSync(README);
   if (number === 0) fs.writeFileSync(README, '## ⚡️ Traffic to Badge GitHub Action\n', 'utf-8');
   var data = fs.readFileSync(template, 'utf-8');
@@ -45,27 +46,24 @@ let ReadmeGenerator = function (root, author, repo, branch, number) {
   core.info(data);
 };
 
-let SVGGenerator = async function (
-  traffic_data,
-  traffic_data_path,
-  views_color,
-  clones_color,
-  logo
-) {
-  async function downloadBadge(name, count, color, logo) {
+let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
+  var color = [views_color, clones_color];
+  for (let i = 0; i < 2; i++) {
     var options = {
-      url: `https://img.shields.io/badge/${name}-${count}-${color}?logo=${logo}`,
-      dest: `${traffic_data_path}/${name}.svg`
+      url:
+        `https://img.shields.io/badge/${type_list[i]}-` +
+        data[`${type_list[i]}`].count +
+        `-${color[i]}?logo=${logo}`,
+      dest: `${path}/${type_list[i]}.svg`
     };
-    download
+    await download
       .image(options)
-      .then(({ filename }) => {
-        console.log('Saved to', filename);
+      .then(({ fileName }) => {
+        core.info(`${type_list[i]}.svg saved at:`);
+        core.info(fileName);
       })
-      .catch(err => console.error(err));
+      .catch(err => core.setFailed(err));
   }
-  await downloadBadge('views', traffic_data.views.count, views_color, logo);
-  await downloadBadge('clones', traffic_data.clones.count, clones_color, logo);
 };
 
 module.exports = {

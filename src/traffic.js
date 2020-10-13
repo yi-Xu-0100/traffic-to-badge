@@ -90,13 +90,13 @@ let initData = async function (branch, path) {
   }
 };
 
-let combineData = async function (data, path) {
+let combineData = async function combineData(data, path) {
   if (!existsSync(path)) {
     mkdirSync(path);
   }
   var type_list = ['views', 'clones'];
   for (let i = 0; i < type_list.length; i++) {
-    let _path = join(path, `traffic_${type_list[i]}`.json);
+    let _path = join(path, `traffic_${type_list[i]}.json`);
     try {
       let origin_data = JSON.parse(readFileSync(_path, 'utf8'))[type_list[i]];
       debug('origin_data: ' + JSON.stringify(origin_data));

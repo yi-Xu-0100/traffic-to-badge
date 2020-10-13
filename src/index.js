@@ -40,8 +40,4 @@ async function run() {
   }
 }
 
-try {
-  run();
-} catch (error) {
-  setFailed(error);
-}
+run().catch(error => setFailed(error.message));

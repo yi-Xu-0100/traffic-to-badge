@@ -108,7 +108,7 @@ let combineData = async function combineData(data, path) {
       );
       debug('origin_data_filter: ' + JSON.stringify(origin_data));
       let today_data = union(origin_data, data[type_list[i]][type_list[i]]);
-      console.log('today_data_union: ' + JSON.stringify(today_data));
+      debug('today_data_union: ' + JSON.stringify(today_data));
       let count = today_data.map(el => parseInt(el.count)).reduce((a, b) => a + b, 0);
       let uniques = today_data.map(el => parseInt(el.uniques)).reduce((a, b) => a + b, 0);
       let _data = extend({ count: count }, { uniques: uniques }, { [type_list[i]]: today_data });

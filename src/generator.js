@@ -60,7 +60,7 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
     await download
       .image(options)
       .then(({ filename }) => {
-        info(`${type_list[i]}.svg saved at:`);
+        info(`${type_list[i]}.svg path:`);
         info(filename);
       })
       .catch(err => setFailed(err));
@@ -73,7 +73,7 @@ let dataGenerator = async function (data, path) {
     let file_data = data[type_list[i]];
     try {
       writeFileSync(file_path, JSON.stringify(file_data), 'utf-8');
-      info(`${type_list[i]} Traffic data saved at:`);
+      info(`${type_list[i]} Traffic data path:`);
       info(file_path);
     } catch (error) {
       info(file_data);

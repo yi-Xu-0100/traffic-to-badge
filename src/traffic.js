@@ -9,12 +9,12 @@ const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
 const octokit = new getOctokit(my_token);
 
-let getData = async function (repo, views_per = 'day', clones_per = 'day') {
+let getData = async function (repo) {
   try {
     var views = await octokit.repos.getViews({
       owner: owner,
       repo: repo,
-      per: views_per
+      per: 'day'
     });
     debug('latest views: ' + JSON.stringify(views.data));
   } catch (error) {
@@ -25,7 +25,7 @@ let getData = async function (repo, views_per = 'day', clones_per = 'day') {
     var clones = await octokit.repos.getClones({
       owner: owner,
       repo: repo,
-      per: clones_per
+      per: 'day'
     });
     debug('latest clones: ' + JSON.stringify(clones.data));
   } catch (error) {

@@ -1,53 +1,47 @@
-const core = require('@actions/core');
+const { startGroup, endGroup, info, setFailed, getInput } = require('@actions/core');
 const { join } = require('path');
-const traffic = require('./traffic');
-const generator = require('./generator');
+const { initData, getData, combineData } = require('./traffic');
+const { SVGGenerator, dataGenerator } = require('./generator');
 
 const src = join(__dirname, '..');
 
 async function run() {
-  core.startGroup('Get input value');
-  const views_per = core.getInput('views_per', { require: false });
-  core.info(`views_per: ${views_per}`);
-  const clones_per = core.getInput('clones_per', { require: false });
-  core.info(`clones_per: ${clones_per}`);
-  const my_token = core.getInput('my_token', { require: true });
-  const static_list = core.getInput('static_list', { require: true }).split(',');
-  core.info(`static_list: ${static_list}`);
-  const traffic_branch = core.getInput('traffic_branch', { require: false });
-  core.info(`traffic_branch: ${traffic_branch}`);
-  const views_color = core.getInput('views_color', { require: false });
-  core.info(`views_color: ${views_color}`);
-  const clones_color = core.getInput('clones_color', { require: false });
-  core.info(`clones_color: ${clones_color}`);
-  const logo = core.getInput('logo', { require: false });
-  core.info(`logo: ${logo}`);
+  startGroup('Get input value');
+  const views_per = getInput('views_per', { require: false });
+  info(`views_per: ${views_per}`);
+  const clones_per = getInput('clones_per', { require: false });
+  info(`clones_per: ${clones_per}`);
+  const static_list = getInput('static_list', { require: true }).split(',');
+  info(`static_list: ${static_list}`);
+  const traffic_branch = getInput('traffic_branch', { require: false });
+  info(`traffic_branch: ${traffic_branch}`);
+  const views_color = getInput('views_color', { require: false });
+  info(`views_color: ${views_color}`);
+  const clones_color = getInput('clones_color', { require: false });
+  info(`clones_color: ${clones_color}`);
+  const logo = getInput('logo', { require: false });
+  info(`logo: ${logo}`);
   const traffic_branch_path = join(src, traffic_branch);
-  core.info(`traffic_branch_path: ${traffic_branch_path}`);
-  core.endGroup();
-  core.startGroup('Init traffic data');
-  if (!(await traffic.initData(my_token, traffic_branch, traffic_branch_path))) {
-    core.setFailed(`Init traffic data into ${traffic_branch_path} fail!`);
+  info(`traffic_branch_path: ${traffic_branch_path}`);
+  endGroup();
+  startGroup('Init traffic data');
+  if (!(await initData(traffic_branch, traffic_branch_path))) {
+    setFailed(`Init traffic data into ${traffic_branch_path} fail!`);
   }
-  core.endGroup();
+  endGroup();
   for (let i = 0; i < static_list.length; i++) {
-    core.startGroup(`Set traffic data of ${static_list[i]}`);
+    startGroup(`Set traffic data of ${static_list[i]}`);
     let traffic_data_path = join(traffic_branch_path, `traffic-${static_list[i]}`);
-    let latest_traffic_data = await traffic.getData(
-      my_token,
-      static_list[i],
-      views_per,
-      clones_per
-    );
-    let traffic_data = await traffic.combineData(latest_traffic_data, traffic_data_path);
-    await traffic.saveData(traffic_data, traffic_data_path);
-    await generator.SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-    core.endGroup();
+    let latest_traffic_data = await getData(static_list[i], views_per, clones_per);
+    let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
+    await dataGenerator(traffic_data, traffic_data_path);
+    await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
+    endGroup();
   }
 }
 
 try {
   run();
 } catch (error) {
-  core.setFailed(error);
+  setFailed(error);
 }

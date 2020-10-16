@@ -1,4 +1,4 @@
-const { debug, info, setFailed } = require('@actions/core');
+const { debug, info } = require('@actions/core');
 const { copyFileSync, readFileSync, writeFileSync, existsSync, mkdirSync } = require('fs');
 const { join } = require('path');
 const download = require('image-downloader');
@@ -63,7 +63,9 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
         info(`${type_list[i]}.svg path:`);
         info(filename);
       })
-      .catch(err => setFailed(err));
+      .catch(err => {
+        throw Error(err.message);
+      });
   }
 };
 
@@ -72,12 +74,13 @@ let dataGenerator = async function (data, path) {
     let file_path = join(path, `traffic_${type_list[i]}.json`);
     let file_data = data[type_list[i]];
     try {
-      writeFileSync(file_path, JSON.stringify(file_data), 'utf-8');
+      writeFileSync(file_path, JSON.stringify(file_data, null, 2), 'utf-8');
       info(`${type_list[i]} Traffic data path:`);
       info(file_path);
     } catch (error) {
-      info(file_data);
-      setFailed(error);
+      debug(`${type_list[i]} file_data:`);
+      debug(file_data);
+      throw Error(error.message);
     }
   }
 };

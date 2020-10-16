@@ -1,4 +1,4 @@
-const { debug, info, setFailed, getInput } = require('@actions/core');
+const { debug, info, getInput } = require('@actions/core');
 const { execSync } = require('child_process');
 const { context, getOctokit } = require('@actions/github');
 const { existsSync, mkdirSync, readFileSync } = require('fs');
@@ -9,63 +9,10 @@ const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
 const octokit = new getOctokit(my_token);
 
-let getData = async function (repo) {
-  try {
-    var views = await octokit.repos.getViews({
-      owner: owner,
-      repo: repo,
-      per: 'day'
-    });
-    debug('latest views: ' + JSON.stringify(views.data));
-  } catch (error) {
-    debug(error);
-    setFailed(error.message);
-  }
-  try {
-    var clones = await octokit.repos.getClones({
-      owner: owner,
-      repo: repo,
-      per: 'day'
-    });
-    debug('latest clones: ' + JSON.stringify(clones.data));
-  } catch (error) {
-    debug(error);
-    setFailed(error.message);
-  }
-  try {
-    var paths = await octokit.repos.getTopPaths({
-      owner: owner,
-      repo: repo
-    });
-    debug('latest paths: ' + JSON.stringify(paths.data));
-  } catch (error) {
-    debug(error);
-    setFailed(error.message);
-  }
-  try {
-    var referrers = await octokit.repos.getTopReferrers({
-      owner: owner,
-      repo: repo
-    });
-    debug('latest referrers: ' + JSON.stringify(referrers.data));
-  } catch (error) {
-    debug(error);
-    setFailed(error.message);
-  }
-  return {
-    views: views.data,
-    clones: clones.data,
-    paths: paths.data,
-    referrers: referrers.data
-  };
-};
-
 let initData = async function (branch, path) {
-  if (!existsSync(path)) {
-    mkdirSync(path);
-  } else {
-    setFailed(`${path} already exists!`);
-  }
+  if (!existsSync(path)) mkdirSync(path);
+  else throw Error(`${path} directory already exists, can not init traffic data!`);
+
   try {
     await octokit.repos.getBranch({
       owner: owner,
@@ -78,22 +25,72 @@ let initData = async function (branch, path) {
   } catch (error) {
     if (error.message != 'Branch not found') {
       debug(error);
-      setFailed(`error: ${error.message}`);
+      throw Error(error.message);
     } else {
       debug('traffic_branch_path:');
       debug(path);
       debug('traffic_branch:');
       debug(branch);
-      info(`${branch} not found`);
+      info(`[Info]: ${branch} not found`);
       return false;
     }
   }
 };
 
-let combineData = async function combineData(data, path) {
-  if (!existsSync(path)) {
-    mkdirSync(path);
+let getData = async function (repo) {
+  try {
+    var views = await octokit.repos.getViews({
+      owner: owner,
+      repo: repo,
+      per: 'day'
+    });
+    debug('latest views: ' + JSON.stringify(views.data));
+  } catch (error) {
+    debug(error);
+    throw Error(error.message);
   }
+  try {
+    var clones = await octokit.repos.getClones({
+      owner: owner,
+      repo: repo,
+      per: 'day'
+    });
+    debug('latest clones: ' + JSON.stringify(clones.data));
+  } catch (error) {
+    debug(error);
+    throw Error(error.message);
+  }
+  try {
+    var paths = await octokit.repos.getTopPaths({
+      owner: owner,
+      repo: repo
+    });
+    debug('latest paths: ' + JSON.stringify(paths.data));
+  } catch (error) {
+    debug(error);
+    throw Error(error.message);
+  }
+  try {
+    var referrers = await octokit.repos.getTopReferrers({
+      owner: owner,
+      repo: repo
+    });
+    debug('latest referrers: ' + JSON.stringify(referrers.data));
+  } catch (error) {
+    debug(error);
+    throw Error(error.message);
+  }
+  return {
+    views: views.data,
+    clones: clones.data,
+    paths: paths.data,
+    referrers: referrers.data
+  };
+};
+
+let combineData = async function combineData(data, path) {
+  if (!existsSync(path)) mkdirSync(path);
+
   var type_list = ['views', 'clones'];
   for (let i = 0; i < type_list.length; i++) {
     let _path = join(path, `traffic_${type_list[i]}.json`);
@@ -116,10 +113,10 @@ let combineData = async function combineData(data, path) {
       data[type_list[i]] = _data;
     } catch (error) {
       if (error.code === 'ENOENT') {
-        info(`Not Found ${error.path}`);
+        info(`[Info]: Not Found ${error.path}`);
         debug(`${type_list[i]}: ${JSON.stringify(data[type_list[i]])}`);
       } else {
-        setFailed(error);
+        throw Error(error.message);
       }
     }
   }

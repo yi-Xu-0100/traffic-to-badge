@@ -1,6 +1,6 @@
 ## ⚡️ Traffic to Badge GitHub Action
 
-[![sync2gitee(cached)](<https://github.com/yi-Xu-0100/traffic-to-badge/workflows/sync2gitee(cached)/badge.svg>)](https://github.com/yi-Xu-0100/traffic-to-badge/actions?query=workflow%3Async2gitee%28cached%29)
+[![sync2gitee(list)](<https://github.com/yi-Xu-0100/hub-mirror/workflows/sync2gitee(list)/badge.svg>)](https://github.com/yi-Xu-0100/hub-mirror)
 [![traffic2badge](https://github.com/yi-Xu-0100/traffic-to-badge/workflows/traffic2badge/badge.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/actions?query=workflow%3Atraffic2badge)
 [![Github last commit](https://img.shields.io/github/last-commit/yi-Xu-0100/traffic-to-badge)](https://github.com/yi-Xu-0100/traffic-to-badge)
 [![Github latest release](https://img.shields.io/github/v/release/yi-Xu-0100/traffic-to-badge)](https://github.com/yi-Xu-0100/traffic-to-badge/releases)

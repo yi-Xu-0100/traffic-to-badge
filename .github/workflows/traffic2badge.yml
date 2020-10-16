@@ -45,7 +45,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.7.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: traffic
+          publish_branch: '.traffic'
           publish_dir: ./traffic
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -53,5 +53,5 @@ jobs:
 
       - name: Show traffic data
         run: |
-          cd ./traffic/
+          cd ./.traffic/
           ls -a

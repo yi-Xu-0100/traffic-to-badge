@@ -30,6 +30,10 @@ inputs:
     required: false
     default: 'github'
 
+outputs:
+  traffic_path:
+    description: 'Traffic data path'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -32,6 +32,7 @@ jobs:
             return `Get traffic data at ${time}`;
 
       - name: Set traffic
+        id: traffic
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
@@ -46,12 +47,12 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: traffic
-          publish_dir: ./.traffic
+          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           full_commit_message: ${{ steps.message.outputs.result }}
 
       - name: Show traffic data
         run: |
-          cd ./.traffic/
+          cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a

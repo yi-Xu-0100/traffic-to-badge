@@ -14,16 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2.3.3
 
+      - name: Get Repo List
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v0.1.0
+        with:
+          my_token: ${{ secrets.TRAFFIC_TOKEN }}
+
       - name: Get Commit Message
         id: message
         uses: actions/github-script@v3.0.0
         env:
           FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
           result-encoding: string
           script: |
-            core.setOutput('repo', context.repo.repo);
             var message = `${process.env.FULL_COMMIT_MESSAGE}`;
             core.info(message);
             if (message != '') return message;
@@ -36,7 +40,7 @@ jobs:
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.message.outputs.repo }},soulsign-scripts'
+          static_list: '${{ steps.repo.outputs.repoList }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen

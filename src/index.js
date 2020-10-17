@@ -25,7 +25,7 @@ async function run() {
     const logo = getInput('logo', { require: false });
     info(`[Info]: logo: ${logo}`);
     const traffic_branch_path = `.${traffic_branch}`;
-    info(`[Info]: set output traffic_path: .${traffic_branch_path}`);
+    info(`[Info]: set output traffic_path: ${traffic_branch_path}`);
     setOutput('traffic_path', traffic_branch_path);
     info(`[Info]: traffic_branch_path: ${traffic_branch_path}`);
     endGroup();

@@ -3,7 +3,8 @@ const { execSync } = require('child_process');
 const { context, getOctokit } = require('@actions/github');
 const { existsSync, mkdirSync, readFileSync } = require('fs');
 const { join } = require('path');
-const { pluck, filter, contains, union, extend } = require('underscore');
+const { pluck, filter, contains, union } = require('underscore');
+const { rmRF } = require('@actions/io');
 const { owner, repo } = context.repo;
 const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
@@ -20,18 +21,21 @@ let initData = async function (branch, path) {
       branch: branch
     });
     execSync(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
-    execSync(`rm -rf ${join(branch, '.git')}`);
+    rmRF(join(path, '.git'));
     return true;
   } catch (error) {
     if (error.message != 'Branch not found') {
-      debug(error);
+      debug('[initData]: ' + error);
       throw Error(error.message);
     } else {
-      debug('traffic_branch_path:');
-      debug(path);
-      debug('traffic_branch:');
-      debug(branch);
-      info(`[Info]: ${branch} not found`);
+      debug('owner:' + owner);
+      debug('repo:' + repo);
+      debug('traffic_branch:' + branch);
+      debug('clone_url:' + clone_url);
+      debug('traffic_branch_path:' + path);
+      info(`[INFO]: The branch ${branch} not found`);
+      rmRF(path);
+      info(`[INFO]: Successfully clean ${path}`);
       return false;
     }
   }
@@ -46,7 +50,7 @@ let getData = async function (repo) {
     });
     debug('latest views: ' + JSON.stringify(views.data));
   } catch (error) {
-    debug(error);
+    debug('[getData.views]: ' + error);
     throw Error(error.message);
   }
   try {
@@ -57,7 +61,7 @@ let getData = async function (repo) {
     });
     debug('latest clones: ' + JSON.stringify(clones.data));
   } catch (error) {
-    debug(error);
+    debug('[getData.clones]: ' + error);
     throw Error(error.message);
   }
   try {
@@ -67,7 +71,7 @@ let getData = async function (repo) {
     });
     debug('latest paths: ' + JSON.stringify(paths.data));
   } catch (error) {
-    debug(error);
+    debug('[getData.paths]: ' + error);
     throw Error(error.message);
   }
   try {
@@ -77,7 +81,7 @@ let getData = async function (repo) {
     });
     debug('latest referrers: ' + JSON.stringify(referrers.data));
   } catch (error) {
-    debug(error);
+    debug('[getData.referrers]: ' + error);
     throw Error(error.message);
   }
   return {
@@ -97,25 +101,27 @@ let combineData = async function combineData(data, path) {
     try {
       let origin_data = JSON.parse(readFileSync(_path, 'utf8'))[type_list[i]];
       debug('origin_data: ' + JSON.stringify(origin_data));
-      debug('data: ' + JSON.stringify(data[type_list[i]][type_list[i]]));
-      debug('pluck: ' + pluck(origin_data, 'timestamp'));
-      origin_data = filter(
-        origin_data,
-        a => !contains(pluck(data[type_list[i]][type_list[i]], 'timestamp'), a.timestamp)
-      );
+      let type_data_array = data[type_list[i]][type_list[i]];
+      debug('data: ' + JSON.stringify(type_data_array));
+      let type_data_timestamp = pluck(type_data_array, 'timestamp');
+      debug('pluck: ' + type_data_timestamp);
+      origin_data = filter(origin_data, a => !contains(type_data_timestamp, a.timestamp));
       debug('origin_data_filter: ' + JSON.stringify(origin_data));
-      let today_data = union(origin_data, data[type_list[i]][type_list[i]]);
+      let today_data = union(origin_data, type_data_array);
       debug('today_data_union: ' + JSON.stringify(today_data));
-      let count = today_data.map(el => parseInt(el.count)).reduce((a, b) => a + b, 0);
-      let uniques = today_data.map(el => parseInt(el.uniques)).reduce((a, b) => a + b, 0);
-      let _data = extend({ count: count }, { uniques: uniques }, { [type_list[i]]: today_data });
-      debug(`${type_list[i]}: ${JSON.stringify(_data)}`);
+      let count = today_data.map(el => parseInt(el.count, 10)).reduce((a, b) => a + b, 0);
+      debug('count: ' + count);
+      let uniques = today_data.map(el => parseInt(el.uniques, 10)).reduce((a, b) => a + b, 0);
+      debug('uniques: ' + uniques);
+      let _data = { count: count, uniques: uniques, [type_list[i]]: today_data };
+      debug(type_list[i] + ':' + JSON.stringify(_data));
       data[type_list[i]] = _data;
     } catch (error) {
       if (error.code === 'ENOENT') {
-        info(`[Info]: Not Found ${error.path}`);
-        debug(`${type_list[i]}: ${JSON.stringify(data[type_list[i]])}`);
+        info(`[INFO]: Not Found ${error.path}`);
+        debug(type_list[i] + ':' + JSON.stringify(data[type_list[i]]));
       } else {
+        debug('[combineData]: ' + error);
         throw Error(error.message);
       }
     }

@@ -50,6 +50,7 @@ let ReadmeGenerator = function (root, author, repo, branch, number) {
 let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
   var color = [views_color, clones_color];
   for (let i = 0; i < 2; i++) {
+    debug(`Start generate ${type_list[i]} SVG`);
     let options = {
       url:
         `https://img.shields.io/badge/${type_list[i]}-` +
@@ -63,14 +64,17 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
         info(`${type_list[i]}.svg path:`);
         info(filename);
       })
-      .catch(err => {
-        throw Error(err.message);
+      .catch(error => {
+        debug('[SVGGenerator]: ' + error);
+        throw Error(error.message);
       });
+    debug(`Successfully generate ${type_list[i]} SVG`);
   }
 };
 
 let dataGenerator = async function (data, path) {
   for (let i = 0; i < type_list.length; i++) {
+    debug(`Start generate traffic_${type_list[i]}.json`);
     let file_path = join(path, `traffic_${type_list[i]}.json`);
     let file_data = data[type_list[i]];
     try {
@@ -80,8 +84,10 @@ let dataGenerator = async function (data, path) {
     } catch (error) {
       debug(`${type_list[i]} file_data:`);
       debug(file_data);
+      debug('[dataGenerator]: ' + error);
       throw Error(error.message);
     }
+    debug(`Successfully generate traffic_${type_list[i]}.json`);
   }
 };
 

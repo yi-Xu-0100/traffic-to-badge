@@ -6,11 +6,14 @@
   "scripts": {
     "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
     "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
-    "build": "rimraf -rf dist/* && ncc build src/index.js --minify  --license license.txt && git add dist/"
+    "clear": "rimraf -rf dist/* .traffic/",
+    "build": "npm run clear && ncc build src/index.js --source-map --license license.txt",
+    "dry-test": "node --require dotenv/config dist/index.js",
+    "test": "npm run build && npm run dry-test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'pre-commit...' && lint-staged && npm run build && npm run lint-check"
+      "pre-commit": "echo 'pre-commit...' && lint-staged && npm run build && npm run lint-check && git add dist/"
     }
   },
   "lint-staged": {
@@ -44,7 +47,9 @@
   "dependencies": {
     "@actions/core": "^1.1.1",
     "@actions/github": "^4.0.0",
+    "@actions/io": "^1.0.2",
     "child_process": "^1.0.2",
+    "dotenv": "^8.2.0",
     "image-downloader": "^4.0.1",
     "underscore": "^1.11.0"
   },

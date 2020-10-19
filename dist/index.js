@@ -8403,7 +8403,6 @@ const {
   getInput,
   group,
   setOutput,
-  isDebug,
   debug
 } = __webpack_require__(2186);
 const { join } = __webpack_require__(5622);
@@ -8442,10 +8441,10 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
-      if (!isDebug()) {
+      if (process.env['local_debug'] != 'true') {
         debug('Start generate SVG');
+        await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       }
-      await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
   } catch (error) {

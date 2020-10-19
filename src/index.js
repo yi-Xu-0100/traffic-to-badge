@@ -6,7 +6,6 @@ const {
   getInput,
   group,
   setOutput,
-  isDebug,
   debug
 } = require('@actions/core');
 const { join } = require('path');
@@ -45,10 +44,10 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
-      if (!isDebug()) {
+      if (process.env['local_debug'] != 'true') {
         debug('Start generate SVG');
+        await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       }
-      await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
   } catch (error) {

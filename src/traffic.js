@@ -43,23 +43,39 @@ let initData = async function (branch, path) {
 
 let getData = async function (repo) {
   try {
-    var views = await octokit.repos.getViews({
+    let views = await octokit.repos.getViews({
       owner: owner,
       repo: repo,
       per: 'day'
     });
-    debug('latest views: ' + JSON.stringify(views.data));
+    let latest_views = views.data;
+    debug('latest_views: ' + JSON.stringify(latest_views));
+    let day = new Date();
+    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 11);
+    let timestamp = `${_day}00:00:00Z`;
+    debug('timestamp: ' + timestamp);
+    latest_views.views = filter(latest_views.views, a => timestamp != a.timestamp);
+    var latest_views_filter = latest_views;
+    debug('latest_views_filter: ' + JSON.stringify(latest_views_filter));
   } catch (error) {
     debug('[getData.views]: ' + error);
     throw Error(error.message);
   }
   try {
-    var clones = await octokit.repos.getClones({
+    let clones = await octokit.repos.getClones({
       owner: owner,
       repo: repo,
       per: 'day'
     });
-    debug('latest clones: ' + JSON.stringify(clones.data));
+    let latest_clones = clones.data;
+    debug('latest_clones: ' + JSON.stringify(latest_clones));
+    let day = new Date();
+    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 11);
+    let timestamp = `${_day}00:00:00Z`;
+    debug('timestamp: ' + timestamp);
+    latest_clones.clones = filter(latest_clones.clones, a => timestamp != a.timestamp);
+    var latest_clones_filter = latest_clones;
+    debug('latest_clones_filter: ' + JSON.stringify(latest_clones_filter));
   } catch (error) {
     debug('[getData.clones]: ' + error);
     throw Error(error.message);
@@ -85,8 +101,8 @@ let getData = async function (repo) {
     throw Error(error.message);
   }
   return {
-    views: views.data,
-    clones: clones.data,
+    views: latest_views_filter,
+    clones: latest_clones_filter,
     paths: paths.data,
     referrers: referrers.data
   };
@@ -101,29 +117,31 @@ let combineData = async function combineData(data, path) {
     try {
       let origin_data = JSON.parse(readFileSync(_path, 'utf8'))[type_list[i]];
       debug('origin_data: ' + JSON.stringify(origin_data));
-      let type_data_array = data[type_list[i]][type_list[i]];
-      debug('data: ' + JSON.stringify(type_data_array));
-      let type_data_timestamp = pluck(type_data_array, 'timestamp');
-      debug('pluck: ' + type_data_timestamp);
-      origin_data = filter(origin_data, a => !contains(type_data_timestamp, a.timestamp));
-      debug('origin_data_filter: ' + JSON.stringify(origin_data));
-      let today_data = union(origin_data, type_data_array);
-      debug('today_data_union: ' + JSON.stringify(today_data));
+      let new_data = data[type_list[i]][type_list[i]];
+      debug('new_data: ' + JSON.stringify(new_data));
+      let new_data_timestamp = pluck(new_data, 'timestamp');
+      debug('new_data_timestamp: ' + new_data_timestamp);
+      let origin_data_filter = filter(origin_data, a => !contains(new_data_timestamp, a.timestamp));
+      debug('origin_data_filter: ' + JSON.stringify(origin_data_filter));
+      let union_data = union(origin_data_filter, new_data);
+      debug('union_data: ' + JSON.stringify(union_data));
+      data[type_list[i]][type_list[i]] = union_data;
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        info(`[INFO]: Not Found ${error.path}`);
+      } else {
+        debug('[combineData]: ' + error);
+        throw Error(error.message);
+      }
+    } finally {
+      let today_data = data[type_list[i]][type_list[i]];
       let count = today_data.map(el => parseInt(el.count, 10)).reduce((a, b) => a + b, 0);
       debug('count: ' + count);
       let uniques = today_data.map(el => parseInt(el.uniques, 10)).reduce((a, b) => a + b, 0);
       debug('uniques: ' + uniques);
       let _data = { count: count, uniques: uniques, [type_list[i]]: today_data };
-      debug(type_list[i] + ':' + JSON.stringify(_data));
       data[type_list[i]] = _data;
-    } catch (error) {
-      if (error.code === 'ENOENT') {
-        info(`[INFO]: Not Found ${error.path}`);
-        debug(type_list[i] + ':' + JSON.stringify(data[type_list[i]]));
-      } else {
-        debug('[combineData]: ' + error);
-        throw Error(error.message);
-      }
+      debug(type_list[i] + ':' + JSON.stringify(data[type_list[i]]));
     }
   }
   return data;

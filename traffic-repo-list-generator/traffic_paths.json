@@ -2,14 +2,38 @@
   {
     "path": "/yi-Xu-0100/repo-list-generator",
     "title": "yi-Xu-0100/repo-list-generator: The GitHub action that generate repository li...",
-    "count": 11,
+    "count": 25,
     "uniques": 6
   },
   {
     "path": "/yi-Xu-0100/repo-list-generator/actions",
     "title": "Actions · yi-Xu-0100/repo-list-generator",
-    "count": 3,
+    "count": 18,
     "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/313377219",
+    "title": "📈 test root · yi-Xu-0100/repo-list-generator@712457e",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/313243628",
+    "title": "✅ test debug · yi-Xu-0100/repo-list-generator@a413151",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/repo-list-generator/commits/main",
+    "title": "Commits · yi-Xu-0100/repo-list-generator",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/repo-list-generator/runs/1270168945",
+    "title": "✅ test debug · yi-Xu-0100/repo-list-generator@a413151",
+    "count": 3,
+    "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/repo-list-generator/actions/runs/310698285",
@@ -18,45 +42,21 @@
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/repo-list-generator/commits/main",
-    "title": "Commits · yi-Xu-0100/repo-list-generator",
+    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/313270800",
+    "title": "🚑 fix bool test error · yi-Xu-0100/repo-list-generator@bb8ebb1",
     "count": 2,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/repo-list-generator/tree/main/.github/workflows",
-    "title": "repo-list-generator/.github/workflows at main · yi-Xu-0100/repo-list-generator",
+    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/313357179",
+    "title": "✅ test artifact · yi-Xu-0100/repo-list-generator@7e04aed",
     "count": 2,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/310698286",
-    "title": "🔖 release v0.1.0 · yi-Xu-0100/repo-list-generator@7d583ef · GitHub",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/repo-list-generator/blob/main/.github/workflows/autoRelease.yml",
-    "title": "repo-list-generator/autoRelease.yml at main · yi-Xu-0100/repo-list-generator",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/repo-list-generator/blob/main/.github/workflows/sync2gitee.cached.yml",
-    "title": "repo-list-generator/sync2gitee.cached.yml at main · yi-Xu-0100/repo-list-gene...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/repo-list-generator/blob/main/.github/workflows/test.yml",
-    "title": "repo-list-generator/test.yml at main · yi-Xu-0100/repo-list-generator",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/repo-list-generator/blob/main/src/index.js",
-    "title": "repo-list-generator/index.js at main · yi-Xu-0100/repo-list-generator",
-    "count": 1,
+    "path": "/yi-Xu-0100/repo-list-generator/actions/runs/313380308",
+    "title": "✅ test relate · yi-Xu-0100/repo-list-generator@e7afa56",
+    "count": 2,
     "uniques": 1
   }
 ]

@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "path": "/yi-Xu-0100/javascript-action/pull/1",
+    "title": "Bump eslint-config-prettier from 6.12.0 to 6.13.0 by dependabot · Pull Reques...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/javascript-action/pull/2",
+    "title": "Bump lint-staged from 10.4.0 to 10.4.2 by dependabot · Pull Request #2 · yi-X...",
+    "count": 1,
+    "uniques": 1
+  }
+]

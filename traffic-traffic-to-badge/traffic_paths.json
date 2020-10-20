@@ -2,31 +2,37 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 38,
-    "uniques": 5
+    "count": 49,
+    "uniques": 6
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/commits/traffic",
     "title": "Commits · yi-Xu-0100/traffic-to-badge",
-    "count": 20,
+    "count": 26,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
     "title": "yi-Xu-0100/traffic-to-badge at traffic",
-    "count": 16,
+    "count": 20,
     "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/actions",
     "title": "Actions · yi-Xu-0100/traffic-to-badge",
-    "count": 12,
-    "uniques": 1
+    "count": 18,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/commit/1db584a96b41fdb8ebacfe98c9e9f8f0d65beca5",
     "title": "Get traffic data at 2020-10-16T01:06:28.124Z · yi-Xu-0100/traffic-to-badge@1d...",
     "count": 8,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
+    "title": "Commits · yi-Xu-0100/traffic-to-badge",
+    "count": 7,
     "uniques": 1
   },
   {
@@ -48,14 +54,8 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
-    "title": "Commits · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/10",
-    "title": "Bump Yikun/hub-mirror-action from v0.09 to v0.10 by dependabot · Pull Request...",
+    "path": "/yi-Xu-0100/traffic-to-badge/graphs/traffic",
+    "title": "Traffic · yi-Xu-0100/traffic-to-badge",
     "count": 3,
     "uniques": 1
   }

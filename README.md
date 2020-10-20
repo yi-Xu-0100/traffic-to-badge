@@ -57,7 +57,7 @@ input:
 
 ## 📝 Example that using actions-gh-pages to push traffic branch
 
-This example use [`peaceiris/actions-gh-pages@v3.6.4`](https://github.com/peaceiris/actions-gh-pages) to publish traffic data to `traffic branch`.
+This example use [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator) to generate `static_list` and use [`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages) to publish traffic data to `traffic branch`.
 
 ```yaml
 name: traffic2badge
@@ -67,43 +67,57 @@ on:
 
 jobs:
   run:
-    name: Make GitHub Traffic data to Badge
+    name: Make GitHub Traffic to Badge
     runs-on: ubuntu-latest
     steps:
-      - name: Get current repository name
-        id: info
-        uses: actions/github-script@v3.0.0
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          result-encoding: string
-          script: |
-            return context.repo.repo;
+      - name: Checkout code
+        uses: actions/checkout@v2.3.3
 
-      - name: Set traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.0.0
+      - name: Get Repo List
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v0.2.1
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.info.outputs.result }}'
+
+      - name: Get Commit Message
+        id: message
+        uses: actions/github-script@v3.0.0
+        env:
+          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+        with:
+          result-encoding: string
+          script: |
+            var message = `${process.env.FULL_COMMIT_MESSAGE}`;
+            core.info(message);
+            if (message != '') return message;
+            var time = new Date(Date.now()).toISOString();
+            core.info(time);
+            return `Get traffic data at ${time}`;
+
+      - name: Set traffic
+        id: traffic
+        uses: ./
+        with:
+          my_token: ${{ secrets.TRAFFIC_TOKEN }}
+          static_list: '${{ steps.repo.outputs.repoList }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen
           logo: github
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.6.4
+        uses: peaceiris/actions-gh-pages@v3.7.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: traffic
-          publish_dir: ./traffic
+          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          full_commit_message: ${{ github.event.head_commit.message }}
+          full_commit_message: ${{ steps.message.outputs.result }}
 
       - name: Show traffic data
         run: |
-          cd ./traffic/
-          ls -a
-          cd ./traffic-${{ steps.info.outputs.result }}/
+          cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a
 ```
 
@@ -143,3 +157,6 @@ After you generated the PAT, go to `Settings(repository) -> Secrets -> New secre
 
 - [sangonzal/repository-traffic-action](https://github.com/sangonzal/repository-traffic-action)
 - [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+- [actions/checkout](https://github.com/actions/checkout)
+- [actions/github-script](https://github.com/actions/github-script)
+- [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator)

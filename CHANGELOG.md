@@ -19,6 +19,25 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### 🗑 Deprecated
 
+## [1.1.0] - 2020-10-20
+
+### ✨ Added
+
+- ✅ test static_list support
+- ✨ add output for traffic path
+
+### ♻️ Changed
+
+- ♻️ enhance log output
+- ♻️ enhance debug mode
+- ♻️ enhance resource name
+- 🔥 delete sync2gitee
+- 💚 update workflow
+
+### 🐛 Fixed
+
+- 🐛 fix count reset bug
+
 ## [1.0.1] - 2020-10-08
 
 ### ✨ Added
@@ -35,11 +54,12 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 🎉 [traffic to badge](https://github.com/marketplace/actions/traffic-to-badge) function was completed
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
-- 🌐 [CHANGELOGE.md](./CHANGELOGE.md)
-- 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
+- 🌐 [CHANGELOG.md](./CHANGELOG.md)
+- 📝 [CHANGELOG_CN.md](./CHANGELOG_CN.md)
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
 [1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

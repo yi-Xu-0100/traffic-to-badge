@@ -2,14 +2,14 @@
   {
     "path": "/yi-Xu-0100/soulsign-scripts",
     "title": "yi-Xu-0100/soulsign-scripts: 一部分是个人为魂签制作的签到脚本，还有一些个人使用的签到脚本。",
-    "count": 30,
-    "uniques": 20
+    "count": 23,
+    "uniques": 17
   },
   {
     "path": "/yi-Xu-0100/soulsign-scripts/issues",
     "title": "Issues · yi-Xu-0100/soulsign-scripts · GitHub",
-    "count": 17,
-    "uniques": 13
+    "count": 15,
+    "uniques": 12
   },
   {
     "path": "/yi-Xu-0100/soulsign-scripts/issues/6",
@@ -20,12 +20,6 @@
   {
     "path": "/yi-Xu-0100/soulsign-scripts/actions",
     "title": "Actions · yi-Xu-0100/soulsign-scripts · GitHub",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/soulsign-scripts/tree/main/scripts",
-    "title": "soulsign-scripts/scripts at main · yi-Xu-0100/soulsign-scripts · GitHub",
     "count": 2,
     "uniques": 2
   },
@@ -42,12 +36,6 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/soulsign-scripts/blob/main/scripts/zt.wps.cn.js",
-    "title": "soulsign-scripts/zt.wps.cn.js at main · yi-Xu-0100/soulsign-scripts",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/soulsign-scripts/graphs/traffic",
     "title": "Traffic · yi-Xu-0100/soulsign-scripts",
     "count": 1,
@@ -56,6 +44,18 @@
   {
     "path": "/yi-Xu-0100/soulsign-scripts/pulse",
     "title": "Pulse · yi-Xu-0100/soulsign-scripts",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/soulsign-scripts/runs/1267054911",
+    "title": "Merge pull request #7 from yi-Xu-0100/dependabot/github_actions/Yikun/hub-mir...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/soulsign-scripts/search",
+    "title": "Search · 魂签 · GitHub",
     "count": 1,
     "uniques": 1
   }

@@ -106,6 +106,7 @@ jobs:
 
       - name: Show Traffic Data
         run: |
+          echo ${{ steps.traffic.outputs.traffic_branch }}
           echo ${{ steps.traffic.outputs.traffic_path }}
           cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a

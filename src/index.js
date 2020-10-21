@@ -27,9 +27,10 @@ async function run() {
     const logo = getInput('logo', { require: false });
     info(`[INFO]: logo: ${logo}`);
     const traffic_branch_path = `.${traffic_branch}`;
+    info(`[INFO]: set output traffic_branch: ${traffic_branch}`);
+    setOutput('traffic_branch', traffic_branch);
     info(`[INFO]: set output traffic_path: ${traffic_branch_path}`);
     setOutput('traffic_path', traffic_branch_path);
-    info(`[INFO]: traffic_branch_path: ${traffic_branch_path}`);
     endGroup();
     await group('Init traffic data', async () => {
       if (!(await initData(traffic_branch, traffic_branch_path))) {
@@ -50,6 +51,7 @@ async function run() {
       }
       endGroup();
     }
+    info('[INFO]: Action successfully completed');
   } catch (error) {
     setFailed(error.message);
   }

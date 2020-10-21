@@ -31,6 +31,8 @@ inputs:
     default: 'github'
 
 outputs:
+  traffic_branch:
+    description: 'Traffic data branch name'
   traffic_path:
     description: 'Traffic data path'
 

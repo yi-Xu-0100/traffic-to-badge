@@ -6,8 +6,8 @@
 [![Github latest release](https://img.shields.io/github/v/release/yi-Xu-0100/traffic-to-badge)](https://github.com/yi-Xu-0100/traffic-to-badge/releases)
 [![Github license](https://img.shields.io/github/license/yi-Xu-0100/traffic-to-badge)](./LICENSE)
 
-[![GitHub views](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/views.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/tree/traffic/traffic-traffic-to-badge)
-[![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/tree/traffic/traffic-traffic-to-badge)
+[![GitHub views](https://raw.githubusercontent.com/yi-Xu-0100/traffic2badge/traffic/traffic-traffic-to-badge/views.svg)](https://github.com/yi-Xu-0100/traffic2badge#README)
+[![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic2badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic2badge#README)
 
 [**English**](.README.md) | [简体中文](./README_CN.md)
 
@@ -20,7 +20,7 @@ The GitHub action that using repositories `Insights/traffic` data to generate ba
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 Table of Contents](#-table-of-contents)
 - [🚀 Configuration](#-configuration)
-- [📝 Example that using actions-gh-pages to push traffic branch](#-example-that-using-actions-gh-pages-to-push-traffic-branch)
+- [📝 Example that using repo-list-generator to generate repository list](#-example-that-using-repo-list-generator-to-generate-repository-list)
 - [📝 Use dependabot to keep action up-to-date](#-use-dependabot-to-keep-action-up-to-date)
 - [🙈 Generate `my_token`](#-generate-my_token)
 - [🔊 CHANGELOG](#-changelog)
@@ -55,9 +55,9 @@ input:
     default: 'github'
 ```
 
-## 📝 Example that using actions-gh-pages to push traffic branch
+## 📝 Example that using repo-list-generator to generate repository list
 
-This example use [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator) to generate `static_list` and use [`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages) to publish traffic data to `traffic branch`.
+This example use [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator) to generate `static_list` and show the result of `traffic branch`.
 
 ```yaml
 name: traffic2badge
@@ -70,14 +70,13 @@ jobs:
     name: Make GitHub Traffic to Badge
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
       - name: Get Repo List
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v0.2.1
         with:
-          my_token: ${{ secrets.TRAFFIC_TOKEN }}
 
       - name: Get Commit Message
         id: message
@@ -94,29 +93,20 @@ jobs:
             core.info(time);
             return `Get traffic data at ${time}`;
 
-      - name: Set traffic
+      - name: Get Traffic
         id: traffic
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.repo.outputs.repoList }}'
+          static_list: '${{ steps.repo.outputs.repo }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen
           logo: github
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.7.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: traffic
-          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          full_commit_message: ${{ steps.message.outputs.result }}
-
-      - name: Show traffic data
+      - name: Show Traffic Data
         run: |
+          echo ${{ steps.traffic.outputs.traffic_path }}
           cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a
 ```
@@ -156,7 +146,6 @@ After you generated the PAT, go to `Settings(repository) -> Secrets -> New secre
 ## 🎉 Thanks
 
 - [sangonzal/repository-traffic-action](https://github.com/sangonzal/repository-traffic-action)
-- [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
 - [actions/checkout](https://github.com/actions/checkout)
 - [actions/github-script](https://github.com/actions/github-script)
 - [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator)

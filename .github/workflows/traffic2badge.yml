@@ -11,14 +11,13 @@ jobs:
     name: Make GitHub Traffic to Badge
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
       - name: Get Repo List
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v0.2.1
         with:
-          my_token: ${{ secrets.TRAFFIC_TOKEN }}
 
       - name: Get Commit Message
         id: message
@@ -35,28 +34,19 @@ jobs:
             core.info(time);
             return `Get traffic data at ${time}`;
 
-      - name: Set traffic
+      - name: Get Traffic
         id: traffic
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.repo.outputs.repoList }}'
+          static_list: '${{ steps.repo.outputs.repo }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen
           logo: github
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.7.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: traffic
-          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          full_commit_message: ${{ steps.message.outputs.result }}
-
-      - name: Show traffic data
+      - name: Show Traffic Data
         run: |
+          echo ${{ steps.traffic.outputs.traffic_path }}
           cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a

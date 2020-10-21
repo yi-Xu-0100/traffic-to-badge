@@ -19,6 +19,33 @@
 
 ### 🗑 废弃
 
+## [1.1.1] - 2020-10-21
+
+### ♻️ 变化
+
+- 📝 update readme
+- 🔥 delete branch traffic
+- ♻️ update workflow
+
+## [1.1.0] - 2020-10-20
+
+### ✨ 增加
+
+- ✅ 测试 static_list 支持
+- ✨ 增加 `traffic path` 作为输出值
+
+### ♻️ 变化
+
+- ♻️ 加强日志输出
+- ♻️ 加强 debug 模式
+- ♻️ 加强文件命名
+- 🔥 删除 sync2gitee
+- 💚 更新 workflow
+
+### 🐛 修复
+
+- 🐛 修复数据重置错误
+
 ## [1.0.1] - 2020-10-08
 
 ### ✨ 增加
@@ -35,11 +62,13 @@
 - 🎉 [traffic to badge](https://github.com/marketplace/actions/traffic-to-badge) 功能完成
 - 🌐 [README.md](./README.md)
 - 📝 [README_CN.md](./README_CN.md)
-- 🌐 [CHANGELOGE.md](./CHANGELOGE.md)
-- 📝 [CHANGELOGE_CN.md](./CHANGELOG_CN.md)
+- 🌐 [CHANGELOG.md](./CHANGELOG.md)
+- 📝 [CHANGELOG_CN.md](./CHANGELOG_CN.md)
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1
+[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0
 [1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
 [1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0

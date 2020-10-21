@@ -6,8 +6,8 @@
 [![Github latest release](https://img.shields.io/github/v/release/yi-Xu-0100/traffic-to-badge)](https://github.com/yi-Xu-0100/traffic-to-badge/releases)
 [![Github license](https://img.shields.io/github/license/yi-Xu-0100/traffic-to-badge)](./LICENSE)
 
-[![GitHub views](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/views.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/tree/traffic/traffic-traffic-to-badge)
-[![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/tree/traffic/traffic-traffic-to-badge)
+[![GitHub views](https://raw.githubusercontent.com/yi-Xu-0100/traffic2badge/traffic/traffic-traffic-to-badge/views.svg)](https://github.com/yi-Xu-0100/traffic2badge#README_CN)
+[![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic2badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic2badge#README_CN)
 
 [**简体中文**](./README_CN.md) | [English](.README.md)
 
@@ -20,7 +20,7 @@
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 目录](#-目录)
 - [🚀 配置](#-配置)
-- [📝 示例 - 使用 actions-gh-pages 来推送 traffic 分支](#-示例---使用-actions-gh-pages-来推送-traffic-分支)
+- [📝 示例 - 使用 repo-list-generator 获取仓库名列表](#-示例---使用-repo-list-generator-获取仓库名列表)
 - [📝 使用 dependabot 使 action 保持更新](#-使用-dependabot-使-action-保持更新)
 - [🙈 生成 `my_token`](#-生成-my_token)
 - [🔊 更新日志](#-更新日志)
@@ -55,56 +55,59 @@ input:
     default: 'github'
 ```
 
-## 📝 示例 - 使用 actions-gh-pages 来推送 traffic 分支
+## 📝 示例 - 使用 repo-list-generator 获取仓库名列表
 
-本示例使用 [`peaceiris/actions-gh-pages@v3.6.4`](https://github.com/peaceiris/actions-gh-pages) 将流量数据发布到 `traffic branch` 。
+本示例使用 [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator) 生成 `static_list` 对应的仓库名列表，并展示 `traffic_branch` 的内容。
 
 ```yaml
 name: traffic2badge
 on:
   schedule:
-    # UTC 18:00 -> CST (China) 2:00 see https://datetime360.com/cn/utc-cst-china-time/
-    - cron: '1 18 * * *'
+    - cron: '1 18 * * *' # UTC 18:01
 
 jobs:
   run:
-    name: Make GitHub Traffic data to Badge
+    name: Make GitHub Traffic to Badge
     runs-on: ubuntu-latest
     steps:
-      - name: Get current repository name
-        id: info
-        uses: actions/github-script@v3.0.0
+      - name: Checkout Code
+        uses: actions/checkout@v2.3.3
+
+      - name: Get Repo List
+        id: repo
+        uses: yi-Xu-0100/repo-list-generator@v0.2.1
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Get Commit Message
+        id: message
+        uses: actions/github-script@v3.0.0
+        env:
+          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+        with:
           result-encoding: string
           script: |
-            return context.repo.repo;
+            var message = `${process.env.FULL_COMMIT_MESSAGE}`;
+            core.info(message);
+            if (message != '') return message;
+            var time = new Date(Date.now()).toISOString();
+            core.info(time);
+            return `Get traffic data at ${time}`;
 
-      - name: Set traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.0.0
+      - name: Get Traffic
+        id: traffic
+        uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.info.outputs.result }}'
+          static_list: '${{ steps.repo.outputs.repo }}'
           traffic_branch: traffic
           views_color: brightgreen
           clones_color: brightgreen
           logo: github
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.6.4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: traffic
-          publish_dir: ./traffic
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          full_commit_message: ${{ github.event.head_commit.message }}
-
-      - name: Show traffic data
+      - name: Show Traffic Data
         run: |
-          cd ./traffic/
-          ls -a
-          cd ./traffic-${{ steps.info.outputs.result }}/
+          echo ${{ steps.traffic.outputs.traffic_path }}
+          cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a
 ```
 
@@ -143,4 +146,6 @@ updates:
 ## 🎉 鸣谢
 
 - [sangonzal/repository-traffic-action](https://github.com/sangonzal/repository-traffic-action)
-- [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)
+- [actions/checkout](https://github.com/actions/checkout)
+- [actions/github-script](https://github.com/actions/github-script)
+- [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator)

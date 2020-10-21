@@ -19,6 +19,12 @@
 
 ### 🗑 废弃
 
+## [1.1.3] - 2020-10-21
+
+### 🐛 修复
+
+- 🚑 修复 `repo-list-generator` 版本错误
+
 ## [1.1.2] - 2020-10-21
 
 ### 🐛 修复
@@ -74,7 +80,9 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
+[1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0
 [1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1

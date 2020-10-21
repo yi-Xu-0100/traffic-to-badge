@@ -19,9 +19,15 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### 🗑 Deprecated
 
+## [1.1.3] - 2020-10-21
+
+### 🐛 fix
+
+- 🚑 fix `repo-list-generator` version error
+
 ## [1.1.2] - 2020-10-21
 
-### 🐛 修复
+### 🐛 fix
 
 - 🚑 fix workflow bug
 
@@ -74,7 +80,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1
 [1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0

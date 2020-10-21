@@ -95,7 +95,7 @@ jobs:
 
       - name: Get Traffic
         id: traffic
-        uses: ./
+        uses: yi-Xu-0100/traffic-to-badge@v1.1.1
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           static_list: '${{ steps.repo.outputs.repo }}'

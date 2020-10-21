@@ -26,13 +26,14 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 📝 update readme
 - 🔥 delete branch traffic
 - ♻️ update workflow
+- ✨ add output for `traffic_branch`
 
 ## [1.1.0] - 2020-10-20
 
 ### ✨ Added
 
 - ✅ test static_list support
-- ✨ add output for traffic path
+- ✨ add output for `traffic_path`
 
 ### ♻️ Changed
 

@@ -75,7 +75,7 @@ jobs:
 
       - name: Get Repo List
         id: repo
-        uses: yi-Xu-0100/repo-list-generator@v0.2.1
+        uses: yi-Xu-0100/repo-list-generator@v0.3.0
 
       - name: Get Commit Message
         id: message

@@ -76,7 +76,6 @@ jobs:
       - name: Get Repo List
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v0.2.1
-        with:
 
       - name: Get Commit Message
         id: message
@@ -95,7 +94,7 @@ jobs:
 
       - name: Get Traffic
         id: traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.1.1
+        uses: yi-Xu-0100/traffic-to-badge@v1.1.2
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           static_list: '${{ steps.repo.outputs.repo }}'

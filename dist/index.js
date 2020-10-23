@@ -8413,9 +8413,8 @@ async function run() {
   try {
     info('[INFO]: Usage https://github.com/yi-Xu-0100/traffic-to-badge#readme');
     startGroup('Get input value');
-    var static_list = getInput('static_list', { require: false });
-    if (static_list === process.env.GITHUB_REPOSITORY) static_list.split(`/`).shift();
-    else static_list = static_list.split(`,`);
+    var static_list = getInput('static_list', { require: false }).split(`,`);
+    static_list[0] = static_list[0].split(`/`).pop();
     info(`[INFO]: static_list: ${static_list}`);
     const traffic_branch = getInput('traffic_branch', { require: false });
     info(`[INFO]: traffic_branch: ${traffic_branch}`);

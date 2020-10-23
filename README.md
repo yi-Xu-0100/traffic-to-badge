@@ -30,38 +30,47 @@ The GitHub action that using repositories `Insights/traffic` data to generate ba
 ```yaml
 inputs:
   my_token:
-    description: 'Set up a personal access token to obtain the secret repository traffic data.'
+    description: >
+    Set up a personal access token to obtain the secret repository traffic data.
     required: true
   static_list:
-    description: 'Set up a list of repositories to get.'
-    required: true
+    description: >
+      Set up a list of repositories to get.
+      Only when github.repository with setting into first item,
+      it can be correct to be current repository name.
+    required: false
+    default: ${{ github.repository }}
   traffic_branch:
-    description: 'If empty traffic data will be backed up to the branch named traffic.'
+    description: >
+      If empty traffic data will be backed up to the branch named traffic.
     required: false
-    default: 'traffic'
+    default: traffic
   views_color:
-    description: 'Set a hex or named color value for the views badge background.'
+    description: >
+      Set a hex or named color value for the views badge background.
     required: false
-    default: 'brightgreen'
+    default: brightgreen
   clones_color:
-    description: 'Set a hex or named color value for the clones badge background.'
+    description: >
+      Set a hex or named color value for the clones badge background.
     required: false
-    default: 'brightgreen'
+    default: brightgreen
   logo:
-    description: 'Insert a named logo or simple-icon to the left of the label.'
+    description: >
+      Insert a named logo or simple-icon to the left of the label.
     required: false
-    default: 'github'
+    default: github
 
 outputs:
   traffic_branch:
-    description: 'Origin traffic data branch name'
+    description: >
+      Origin traffic data branch name
   traffic_path:
-    description: 'Path to generate traffic data'
+    description: >
+      Path to generate traffic data
 ```
 
 ## 📝 Example usage
-
-**[`repo-list-generator`](https://github.com/marketplace/actions/repo-list-generator): The output `repo` only include current repository name.**
 
 ```yaml
 name: traffic2badge
@@ -80,16 +89,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
-      - name: Get Repo List
-        id: repo
-        uses: yi-Xu-0100/repo-list-generator@v0.3.0
-
       - name: Get Traffic
         id: traffic
         uses: yi-Xu-0100/traffic-to-badge@v1.1.3
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: ${{ steps.repo.outputs.repo }}
+          #(default) static_list: ${{ github.repository }}
           #(default) traffic_branch: traffic
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
@@ -105,7 +110,7 @@ jobs:
 
 **More usage example:**
 
-- [yi-Xu-0100/traffic2badge](https://github.com/yi-Xu-0100/traffic2badge) - Template repository for usage.
+- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - Template repository for usage with [`yi-Xu-0100/repo-list-generator`] which generate `repoList` for `static_list`.
 
 ## 📝 Use dependabot to keep action up-to-date
 

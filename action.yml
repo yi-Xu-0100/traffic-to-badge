@@ -1,6 +1,7 @@
 name: Traffic to Badge
 author: yi_Xu
-description: Use repository traffic data to generate badges that include views and clones.
+description: >
+  Use repository traffic data to generate badges that include views and clones.
 
 branding:
   icon: award
@@ -8,36 +9,44 @@ branding:
 
 inputs:
   my_token:
-    description: Set up a personal access token to obtain the secret repository traffic data.
+    description: >
+      Set up a personal access token to obtain the secret repository traffic data.
     required: true
   static_list:
     description: >
       Set up a list of repositories to get.
-      Only default value can be calculate to be current repository name.
+      Only when github.repository with setting into first item,
+      it can be correct to be current repository name.
     required: false
     default: ${{ github.repository }}
   traffic_branch:
-    description: If empty traffic data will be backed up to the branch named traffic.
+    description: >
+      If empty traffic data will be backed up to the branch named traffic.
     required: false
     default: traffic
   views_color:
-    description: Set a hex or named color value for the views badge background.
+    description: >
+      Set a hex or named color value for the views badge background.
     required: false
     default: brightgreen
   clones_color:
-    description: Set a hex or named color value for the clones badge background.
+    description: >
+      Set a hex or named color value for the clones badge background.
     required: false
     default: brightgreen
   logo:
-    description: Insert a named logo or simple-icon to the left of the label.
+    description: >
+      Insert a named logo or simple-icon to the left of the label.
     required: false
     default: github
 
 outputs:
   traffic_branch:
-    description: Origin traffic data branch name
+    description: >
+      Origin traffic data branch name
   traffic_path:
-    description: Path to generate traffic data
+    description: >
+      Path to generate traffic data
 
 runs:
   using: node12

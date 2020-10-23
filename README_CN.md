@@ -30,38 +30,46 @@
 ```yaml
 input:
   my_token:
-    description: '设置用以获取私密存储库流量数据的个人访问令牌。'
+    description: >
+      '设置用以获取私密存储库流量数据的个人访问令牌。'
     required: true
   static_list:
-    description: '设置一个想要获取的存储库列表。'
-    required: true
+    description: >
+      '设置一个想要获取的存储库列表。
+      只有 github.repository 设置为第一个值时才可以被修正为当前仓库名。'
+    required: false
+    default: ${{ github.repository }}
   traffic_branch:
-    description: '如果为空，则流量数据将备份到名为 traffic 的分支中。'
+    description: >
+      '如果为空，则流量数据将备份到名为 traffic 的分支中。'
     required: false
     default: 'traffic'
   views_color:
-    description: '为 views 徽章背景设置一个十六进制或命名的颜色值。'
+    description: >
+      '为 views 徽章背景设置一个十六进制或命名的颜色值。'
     required: false
     default: 'brightgreen'
   clones_color:
-    description: '为 clones 徽章背景设置一个十六进制或命名的颜色值。'
+    description: >
+      '为 clones 徽章背景设置一个十六进制或命名的颜色值。'
     required: false
     default: 'brightgreen'
   logo:
-    description: '在标签左侧插入命名的徽标或简单图标。'
+    description: >
+      '在标签左侧插入命名的徽标或简单图标。'
     required: false
     default: 'github'
 
 outputs:
   traffic_branch:
-    description: '原 traffic 分支名'
+    description: >
+      '原 traffic 分支名'
   traffic_path:
-    description: '生成 traffic 数据的路径'
+    description: >
+      '生成 traffic 数据的路径'
 ```
 
 ## 📝 示例
-
-**[`repo-list-generator`](https://github.com/marketplace/actions/repo-list-generator) ：输出值 `repo` 仅包含当前仓库名称。**
 
 ```yaml
 name: traffic2badge
@@ -80,16 +88,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
-      - name: Get Repo List
-        id: repo
-        uses: yi-Xu-0100/repo-list-generator@v0.3.0
-
       - name: Get Traffic
         id: traffic
         uses: yi-Xu-0100/traffic-to-badge@v1.1.3
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: ${{ steps.repo.outputs.repo }}
+          #(default) static_list: ${{ github.repository }}
           #(default) traffic_branch: traffic
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
@@ -105,7 +109,7 @@ jobs:
 
 **更多使用示例：**
 
-- [yi-Xu-0100/traffic2badge](https://github.com/yi-Xu-0100/traffic2badge) - 模板仓库.
+- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - 使用 [`yi-Xu-0100/repo-list-generator`] 的模板仓库，其中 `repo-list-generator` 产生 `repoList` 用于 `static_list`.
 
 ## 📝 使用 `dependabot` 使 `action` 保持更新
 
@@ -123,7 +127,7 @@ updates:
 
 ## 🙈 生成 `my_token`
 
-> 这部分是从 [sangonzal/repository-traffic-action](https://github.com/sangonzal/repository-traffic-action) 获得的。
+> 这部分是从 [`sangonzal/repository-traffic-action`](https://github.com/sangonzal/repository-traffic-action) 获得的。
 
 首先，您需要创建一个个人访问令牌（`PAT`），使该操作可以访问 `GitHub API`。
 

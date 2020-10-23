@@ -109,7 +109,7 @@ jobs:
 
 **更多使用示例：**
 
-- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - 使用 [`yi-Xu-0100/repo-list-generator`] 的模板仓库，其中 `repo-list-generator` 产生 `repoList` 用于 `static_list`.
+- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - 使用 [`yi-Xu-0100/repo-list-generator`](https://github.com/marketplace/actions/repo-list-generator) 的模板仓库，其中 `repo-list-generator` 产生 `repoList` 用于 `static_list`.
 
 ## 📝 使用 `dependabot` 使 `action` 保持更新
 

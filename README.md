@@ -110,7 +110,7 @@ jobs:
 
 **More usage example:**
 
-- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - Template repository for usage with [`yi-Xu-0100/repo-list-generator`] which generate `repoList` for `static_list`.
+- [`yi-Xu-0100/traffic2badge`](https://github.com/yi-Xu-0100/traffic2badge) - Template repository for usage with [`yi-Xu-0100/repo-list-generator`](https://github.com/marketplace/actions/repo-list-generator) which generate `repoList` for `static_list`.
 
 ## 📝 Use dependabot to keep action up-to-date
 
@@ -128,7 +128,7 @@ updates:
 
 ## 🙈 Generate `my_token`
 
-> This part is obtained from [sangonzal/repository-traffic-action](https://github.com/sangonzal/repository-traffic-action).
+> This part is obtained from [`sangonzal/repository-traffic-action`](https://github.com/sangonzal/repository-traffic-action).
 
 You'll first need to create a personal access token (PAT) which make the action having the access to the GitHub API.
 

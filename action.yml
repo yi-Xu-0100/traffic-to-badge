@@ -32,9 +32,9 @@ inputs:
 
 outputs:
   traffic_branch:
-    description: 'Traffic data branch name'
+    description: 'Origin traffic data branch name'
   traffic_path:
-    description: 'Traffic data path'
+    description: 'Path to generate traffic data'
 
 runs:
   using: 'node12'

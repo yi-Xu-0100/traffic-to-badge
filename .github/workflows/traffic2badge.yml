@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '1 0 * * *'
+    - cron: '1 0 * * *' #UTC
 
 jobs:
   run:
@@ -18,31 +18,16 @@ jobs:
         id: repo
         uses: yi-Xu-0100/repo-list-generator@v0.3.0
 
-      - name: Get Commit Message
-        id: message
-        uses: actions/github-script@v3.0.0
-        env:
-          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
-        with:
-          result-encoding: string
-          script: |
-            var message = `${process.env.FULL_COMMIT_MESSAGE}`;
-            core.info(message);
-            if (message != '') return message;
-            var time = new Date(Date.now()).toISOString();
-            core.info(time);
-            return `Get traffic data at ${time}`;
-
       - name: Get Traffic
         id: traffic
         uses: ./
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
-          static_list: '${{ steps.repo.outputs.repo }}'
-          traffic_branch: traffic
-          views_color: brightgreen
-          clones_color: brightgreen
-          logo: github
+          static_list: ${{ steps.repo.outputs.repo }}
+          #(default) traffic_branch: traffic
+          #(default) views_color: brightgreen
+          #(default) clones_color: brightgreen
+          #(default) logo: github
 
       - name: Show Traffic Data
         run: |

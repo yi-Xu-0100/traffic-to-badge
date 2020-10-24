@@ -13,13 +13,21 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ♻️ Changed
 
-- 📝 update readme for template usage.
-
 ### 🐛 Fixed
 
 ### 🔒 Security
 
 ### 🗑 Deprecated
+
+## [1.1.4] - 2020-10-24
+
+### ✨ Added
+
+- ✨ use `github.repository` to be the `static_list` default value.
+
+### ♻️ Changed
+
+- 📝 update readme for template usage.
 
 ## [1.1.3] - 2020-10-21
 
@@ -82,7 +90,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4...HEAD
+[1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
 [1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1

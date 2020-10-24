@@ -13,13 +13,21 @@
 
 ### ♻️ 变化
 
-- 📝 更新模板使用说明。
-
 ### 🐛 修复
 
 ### 🔒 安全
 
 ### 🗑 废弃
+
+## [1.1.4] - 2020-10-24
+
+### ✨ 增加
+
+- ✨ 使用 `github.repository` 作为 `static_list` 的默认值。
+
+### ♻️ 变化
+
+- 📝 更新模板使用说明。
 
 ## [1.1.3] - 2020-10-21
 
@@ -82,7 +90,8 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4...HEAD
+[1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
 [1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
 [1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1

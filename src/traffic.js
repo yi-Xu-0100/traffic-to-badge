@@ -22,9 +22,9 @@ let initData = async function (branch, path) {
     });
     execSync(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
     rmRF(join(path, '.git'));
-    return true;
   } catch (error) {
     if (error.message != 'Branch not found') {
+      rmRF(path);
       debug('[initData]: ' + error);
       throw Error(error.message);
     } else {
@@ -34,9 +34,6 @@ let initData = async function (branch, path) {
       debug('clone_url:' + clone_url);
       debug('traffic_branch_path:' + path);
       info(`[INFO]: The branch ${branch} not found`);
-      rmRF(path);
-      info(`[INFO]: Successfully clean ${path}`);
-      return false;
     }
   }
 };

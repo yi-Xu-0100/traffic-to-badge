@@ -34,9 +34,7 @@ async function run() {
     setOutput('traffic_path', traffic_branch_path);
     endGroup();
     await group('Init traffic data', async () => {
-      if (!(await initData(traffic_branch, traffic_branch_path))) {
-        throw Error(`Init traffic data into ${traffic_branch_path} fail!`);
-      }
+      await initData(traffic_branch, traffic_branch_path);
     });
     for (let i = 0; i < static_list.length; i++) {
       startGroup(`Set traffic data of ${static_list[i]}`);

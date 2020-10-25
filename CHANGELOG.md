@@ -19,6 +19,12 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### 🗑 Deprecated
 
+## [1.1.5] - 2020-10-25
+
+### 🐛 Fixed
+
+- 🐛 Fix init new repo error. #21
+
 ## [1.1.4] - 2020-10-24
 
 ### ✨ Added
@@ -90,7 +96,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5...HEAD
+[1.1.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5
 [1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
 [1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2

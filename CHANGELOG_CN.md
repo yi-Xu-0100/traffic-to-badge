@@ -19,6 +19,12 @@
 
 ### 🗑 废弃
 
+## [1.1.5] - 2020-10-25
+
+### 🐛 修复
+
+- 🐛 修复初始化新仓库失败问题。#21
+
 ## [1.1.4] - 2020-10-24
 
 ### ✨ 增加
@@ -90,7 +96,8 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4...HEAD
+[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5...HEAD
+[1.1.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5
 [1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
 [1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
 [1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2

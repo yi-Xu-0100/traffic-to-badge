@@ -13,6 +13,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ### ♻️ Changed
 
+- 📝 update README for deployment
+
 ### 🐛 Fixed
 
 ### 🔒 Security

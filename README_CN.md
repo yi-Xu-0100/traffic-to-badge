@@ -71,6 +71,8 @@ outputs:
 
 ## 📝 示例
 
+如果你要为自己的仓库进行部署，则需要添加部署步骤，如 [`peaceiris/actions-gh-pages`](https://github.com/marketplace/actions/github-pages-action) 。 使用如下示例并添加到你的工作流。
+
 ```yaml
 name: traffic2badge
 on:
@@ -88,7 +90,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
-      - name: Get Traffic
+      - name: Get Commit Message
+        id: message
+        uses: actions/github-script@v3.0.0
+        env:
+          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+        with:
+          result-encoding: string
+          script: |
+            var message = `${process.env.FULL_COMMIT_MESSAGE}`;
+            core.info(message);
+            if (message != '') return message;
+            var time = new Date(Date.now()).toISOString();
+            core.info(time);
+            return `Get traffic data at ${time}`;
+
+      - name: Set Traffic
         id: traffic
         uses: yi-Xu-0100/traffic-to-badge@v1.1.5
         with:
@@ -99,6 +116,16 @@ jobs:
           #(default) clones_color: brightgreen
           #(default) logo: github
 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: ${{ steps.traffic.outputs.traffic_branch }}
+          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          full_commit_message: ${{ steps.message.outputs.result }}
+
       - name: Show Traffic Data
         run: |
           echo ${{ steps.traffic.outputs.traffic_branch }}
@@ -106,6 +133,13 @@ jobs:
           cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a
 ```
+
+**说明:**
+
+1. [`actions/github-script`](https://github.com/marketplace/actions/github-script) 生成提交信息。
+2. [`peaceiris/actions-gh-pages`](https://github.com/marketplace/actions/github-pages-action) 将流量数据推送到 `traffic_branch` 。 使用的选项参考 [使用手册](https://github.com/marketplace/actions/github-pages-action#table-of-contents) 。
+3. 需要生成 `TRAFFIC_TOKEN` ， 教程在 [生成 `my_token`](#-生成-my_token) 。
+4. 不需要生成 `GITHUB_TOKEN` ，按照配置填写即可，说明文档在 [在工作流程中使用 `GITHUB_TOKEN`](https://docs.github.com/cn/free-pro-team@latest/actions/reference/authentication-in-a-workflow#在工作流程中使用-github_token) 。
 
 **更多使用示例：**
 
@@ -149,3 +183,4 @@ updates:
 - [actions/checkout](https://github.com/actions/checkout)
 - [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator)
 - [yi-Xu-0100/traffic2badge](https://github.com/yi-Xu-0100/traffic2badge)
+- [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)

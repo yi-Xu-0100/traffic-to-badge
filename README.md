@@ -72,6 +72,8 @@ outputs:
 
 ## 📝 Example usage
 
+If you want to deploy for your repository, the deployment step used [peaceiris/actions-gh-pages](https://github.com/marketplace/actions/github-pages-action) need to be added. Add the follow code for your workflow.
+
 ```yaml
 name: traffic2badge
 on:
@@ -89,7 +91,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.3
 
-      - name: Get Traffic
+      - name: Get Commit Message
+        id: message
+        uses: actions/github-script@v3.0.0
+        env:
+          FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
+        with:
+          result-encoding: string
+          script: |
+            var message = `${process.env.FULL_COMMIT_MESSAGE}`;
+            core.info(message);
+            if (message != '') return message;
+            var time = new Date(Date.now()).toISOString();
+            core.info(time);
+            return `Get traffic data at ${time}`;
+
+      - name: Set Traffic
         id: traffic
         uses: yi-Xu-0100/traffic-to-badge@v1.1.5
         with:
@@ -100,6 +117,16 @@ jobs:
           #(default) clones_color: brightgreen
           #(default) logo: github
 
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: ${{ steps.traffic.outputs.traffic_branch }}
+          publish_dir: ${{ steps.traffic.outputs.traffic_path }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          full_commit_message: ${{ steps.message.outputs.result }}
+
       - name: Show Traffic Data
         run: |
           echo ${{ steps.traffic.outputs.traffic_branch }}
@@ -107,6 +134,13 @@ jobs:
           cd ${{ steps.traffic.outputs.traffic_path }}
           ls -a
 ```
+
+**Explanation:**
+
+1. The [`actions/github-script`](https://github.com/marketplace/actions/github-script) generates message for commit.
+2. The [`peaceiris/actions-gh-pages`](https://github.com/marketplace/actions/github-pages-action) publish traffic data to `traffic_branch`. The options follow this [`guide`](https://github.com/marketplace/actions/github-pages-action#table-of-contents).
+3. The `TRAFFIC_TOKEN` needs to be generated, the guild in [Generate `my_token`](#-generate-my_token).
+4. The `GITHUB_TOKEN` does not need to be generated，only reference it in your workflow file，and the document in [Using the `GITHUB_TOKEN` in a workflow](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow#using-the-github_token-in-a-workflow).
 
 **More usage example:**
 
@@ -150,3 +184,4 @@ After you generated the PAT, go to `Settings(repository) -> Secrets -> New secre
 - [actions/checkout](https://github.com/actions/checkout)
 - [yi-Xu-0100/repo-list-generator](https://github.com/yi-Xu-0100/repo-list-generator)
 - [yi-Xu-0100/traffic2badge](https://github.com/yi-Xu-0100/traffic2badge)
+- [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)

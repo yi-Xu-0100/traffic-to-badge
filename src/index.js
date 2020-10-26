@@ -17,7 +17,7 @@ async function run() {
     info('[INFO]: Usage https://github.com/yi-Xu-0100/traffic-to-badge#readme');
     startGroup('Get input value');
     var static_list = getInput('static_list', { require: false }).split(`,`);
-    static_list[0] = static_list[0].split(`/`).pop();
+    static_list = static_list.map(item => item.split(`/`).pop());
     info(`[INFO]: static_list: ${static_list}`);
     const traffic_branch = getInput('traffic_branch', { require: false });
     info(`[INFO]: traffic_branch: ${traffic_branch}`);

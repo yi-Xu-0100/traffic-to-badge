@@ -1,5 +1,5 @@
 const { debug, info, getInput } = require('@actions/core');
-const { execSync } = require('child_process');
+const { exec } = require('@actions/exec');
 const { context, getOctokit } = require('@actions/github');
 const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
@@ -20,7 +20,7 @@ let initData = async function (branch, path) {
       repo: repo,
       branch: branch
     });
-    execSync(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
+    await exec(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
     await rmRF(join(path, '.git'));
   } catch (error) {
     if (error.message != 'Branch not found') {

@@ -16,6 +16,7 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 📝 update README for deployment
 - ✨ add support for `aaa/bbb` to get the `bbb` value in `static_list`. (`github.repository` can be in anywhere)
 - ✨ add LICENSE and README for traffic.
+- ➕ add `@actions/exec`.
 
 ### 🐛 Fixed
 

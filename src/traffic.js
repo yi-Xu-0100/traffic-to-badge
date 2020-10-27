@@ -1,17 +1,17 @@
 const { debug, info, getInput } = require('@actions/core');
 const { execSync } = require('child_process');
 const { context, getOctokit } = require('@actions/github');
-const { existsSync, mkdirSync, readFileSync } = require('fs');
+const { existsSync, readFileSync } = require('fs');
 const { join } = require('path');
 const { pluck, filter, contains, union } = require('underscore');
-const { rmRF } = require('@actions/io');
+const { rmRF, mkdirP } = require('@actions/io');
 const { owner, repo } = context.repo;
 const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
 const octokit = new getOctokit(my_token);
 
 let initData = async function (branch, path) {
-  if (!existsSync(path)) mkdirSync(path);
+  if (!existsSync(path)) await mkdirP(path);
   else throw Error(`${path} directory already exists, can not init traffic data!`);
 
   try {
@@ -21,10 +21,10 @@ let initData = async function (branch, path) {
       branch: branch
     });
     execSync(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
-    rmRF(join(path, '.git'));
+    await rmRF(join(path, '.git'));
   } catch (error) {
     if (error.message != 'Branch not found') {
-      rmRF(path);
+      await rmRF(path);
       debug('[initData]: ' + error);
       throw Error(error.message);
     } else {
@@ -106,7 +106,7 @@ let getData = async function (repo) {
 };
 
 let combineData = async function combineData(data, path) {
-  if (!existsSync(path)) mkdirSync(path);
+  if (!existsSync(path)) await mkdirP(path);
 
   var type_list = ['views', 'clones'];
   for (let i = 0; i < type_list.length; i++) {

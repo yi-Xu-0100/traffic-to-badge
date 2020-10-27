@@ -8290,10 +8290,10 @@ function wrappy (fn, cb) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 const { debug, info } = __webpack_require__(2186);
-const { copyFileSync, readFileSync, writeFileSync, existsSync } = __webpack_require__(5747);
+const { readFileSync, writeFileSync, existsSync } = __webpack_require__(5747);
 const { join } = __webpack_require__(5622);
 const download = __webpack_require__(2628);
-const { rmRF } = __webpack_require__(7436);
+const { rmRF, cp } = __webpack_require__(7436);
 const type_list = ['views', 'clones', 'paths', 'referrers'];
 const repository = process.env['GITHUB_REPOSITORY'].split(`/`);
 const author = repository[0];
@@ -8306,7 +8306,8 @@ let LICENSEGenerator = async function (branch, year) {
   var template = __webpack_require__.ab + "CC-BY-NC-ND-4.0.template";
   var LICENSE = join(branch, 'LICENSE');
   try {
-    copyFileSync(__webpack_require__.ab + "CC-BY-NC-ND-4.0.template", LICENSE);
+    if (existsSync(LICENSE)) await rmRF(LICENSE);
+    await cp(__webpack_require__.ab + "CC-BY-NC-ND-4.0.template", LICENSE, { recursive: true, force: false });
     info('[INFO]: Copy completed, and the LICENSE template from:');
     info('[INFO]: ' + template);
     var data = readFileSync(LICENSE, 'utf-8');
@@ -8323,6 +8324,7 @@ let LICENSEGenerator = async function (branch, year) {
       .replace(/{work}/g, work);
     writeFileSync(LICENSE, data, 'utf-8');
     info('[INFO]: Successfully generate LICENSE');
+    info('[INFO]: LICENSE in ' + LICENSE);
     debug('Write completed and the data is:');
     debug(data);
   } catch (error) {
@@ -8331,12 +8333,12 @@ let LICENSEGenerator = async function (branch, year) {
   }
 };
 
-let READMEGenerator = function (branch_path, repos) {
+let READMEGenerator = async function (branch_path, repos) {
   const branch = branch_path.substr(1);
   var template = __webpack_require__.ab + "README.template";
   var README = join(branch_path, 'README.md');
   try {
-    if (existsSync(README)) rmRF(README);
+    if (existsSync(README)) await rmRF(README);
     info('[INFO]: Clear completed, and the README from');
     info('[INFO]: ' + README);
     var _data = readFileSync(__webpack_require__.ab + "README.template", 'utf-8');
@@ -8357,6 +8359,7 @@ let READMEGenerator = function (branch_path, repos) {
     }
     writeFileSync(README, data, 'utf-8');
     info('[INFO]: Successfully generate README');
+    info('[INFO]: README in ' + README);
     debug('Write completed and the data is:');
     debug(data);
   } catch (error) {
@@ -8497,17 +8500,17 @@ run();
 const { debug, info, getInput } = __webpack_require__(2186);
 const { execSync } = __webpack_require__(3129);
 const { context, getOctokit } = __webpack_require__(5438);
-const { existsSync, mkdirSync, readFileSync } = __webpack_require__(5747);
+const { existsSync, readFileSync } = __webpack_require__(5747);
 const { join } = __webpack_require__(5622);
 const { pluck, filter, contains, union } = __webpack_require__(4987);
-const { rmRF } = __webpack_require__(7436);
+const { rmRF, mkdirP } = __webpack_require__(7436);
 const { owner, repo } = context.repo;
 const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
 const octokit = new getOctokit(my_token);
 
 let initData = async function (branch, path) {
-  if (!existsSync(path)) mkdirSync(path);
+  if (!existsSync(path)) await mkdirP(path);
   else throw Error(`${path} directory already exists, can not init traffic data!`);
 
   try {
@@ -8517,10 +8520,10 @@ let initData = async function (branch, path) {
       branch: branch
     });
     execSync(`git clone ${clone_url} ${path} -b ${branch} --depth=1`);
-    rmRF(join(path, '.git'));
+    await rmRF(join(path, '.git'));
   } catch (error) {
     if (error.message != 'Branch not found') {
-      rmRF(path);
+      await rmRF(path);
       debug('[initData]: ' + error);
       throw Error(error.message);
     } else {
@@ -8602,7 +8605,7 @@ let getData = async function (repo) {
 };
 
 let combineData = async function combineData(data, path) {
-  if (!existsSync(path)) mkdirSync(path);
+  if (!existsSync(path)) await mkdirP(path);
 
   var type_list = ['views', 'clones'];
   for (let i = 0; i < type_list.length; i++) {

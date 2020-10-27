@@ -1,8 +1,8 @@
 const { debug, info } = require('@actions/core');
-const { copyFileSync, readFileSync, writeFileSync, existsSync } = require('fs');
+const { readFileSync, writeFileSync, existsSync } = require('fs');
 const { join } = require('path');
 const download = require('image-downloader');
-const { rmRF } = require('@actions/io');
+const { rmRF, cp } = require('@actions/io');
 const type_list = ['views', 'clones', 'paths', 'referrers'];
 const repository = process.env['GITHUB_REPOSITORY'].split(`/`);
 const author = repository[0];
@@ -15,7 +15,8 @@ let LICENSEGenerator = async function (branch, year) {
   var template = join(__dirname, '../template/CC-BY-NC-ND-4.0.template');
   var LICENSE = join(branch, 'LICENSE');
   try {
-    copyFileSync(template, LICENSE);
+    if (existsSync(LICENSE)) await rmRF(LICENSE);
+    await cp(template, LICENSE, { recursive: true, force: false });
     info('[INFO]: Copy completed, and the LICENSE template from:');
     info('[INFO]: ' + template);
     var data = readFileSync(LICENSE, 'utf-8');
@@ -32,6 +33,7 @@ let LICENSEGenerator = async function (branch, year) {
       .replace(/{work}/g, work);
     writeFileSync(LICENSE, data, 'utf-8');
     info('[INFO]: Successfully generate LICENSE');
+    info('[INFO]: LICENSE in ' + LICENSE);
     debug('Write completed and the data is:');
     debug(data);
   } catch (error) {
@@ -40,12 +42,12 @@ let LICENSEGenerator = async function (branch, year) {
   }
 };
 
-let READMEGenerator = function (branch_path, repos) {
+let READMEGenerator = async function (branch_path, repos) {
   const branch = branch_path.substr(1);
   var template = join(__dirname, '../template/README.template');
   var README = join(branch_path, 'README.md');
   try {
-    if (existsSync(README)) rmRF(README);
+    if (existsSync(README)) await rmRF(README);
     info('[INFO]: Clear completed, and the README from');
     info('[INFO]: ' + README);
     var _data = readFileSync(template, 'utf-8');
@@ -66,6 +68,7 @@ let READMEGenerator = function (branch_path, repos) {
     }
     writeFileSync(README, data, 'utf-8');
     info('[INFO]: Successfully generate README');
+    info('[INFO]: README in ' + README);
     debug('Write completed and the data is:');
     debug(data);
   } catch (error) {

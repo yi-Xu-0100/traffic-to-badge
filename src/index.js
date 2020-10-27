@@ -10,7 +10,7 @@ const {
 } = require('@actions/core');
 const { join } = require('path');
 const { initData, getData, combineData } = require('./traffic');
-const { SVGGenerator, dataGenerator } = require('./generator');
+const { LICENSEGenerator, READMEGenerator, SVGGenerator, dataGenerator } = require('./generator');
 
 async function run() {
   try {
@@ -27,6 +27,8 @@ async function run() {
     info(`[INFO]: clones_color: ${clones_color}`);
     const logo = getInput('logo', { require: false });
     info(`[INFO]: logo: ${logo}`);
+    const year = getInput('year', { require: false });
+    info(`[INFO]: year: ${year}`);
     const traffic_branch_path = `.${traffic_branch}`;
     info(`[INFO]: set output traffic_branch: ${traffic_branch}`);
     setOutput('traffic_branch', traffic_branch);
@@ -50,6 +52,10 @@ async function run() {
       }
       endGroup();
     }
+    startGroup(`Generate LICENSE and README.md`);
+    await LICENSEGenerator(traffic_branch_path, year);
+    await READMEGenerator(traffic_branch_path, static_list);
+    endGroup();
     info('[INFO]: Action successfully completed');
   } catch (error) {
     setFailed(error.message);

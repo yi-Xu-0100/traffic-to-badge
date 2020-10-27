@@ -1,50 +1,77 @@
 const { debug, info } = require('@actions/core');
-const { copyFileSync, readFileSync, writeFileSync, existsSync, mkdirSync } = require('fs');
+const { copyFileSync, readFileSync, writeFileSync, existsSync } = require('fs');
 const { join } = require('path');
 const download = require('image-downloader');
+const { rmRF } = require('@actions/io');
 const type_list = ['views', 'clones', 'paths', 'referrers'];
+const repository = process.env['GITHUB_REPOSITORY'].split(`/`);
+const author = repository[0];
+const work = repository[1];
 
-let LicenseGenerator = async function (root, branch, work, year, author) {
-  var template_path = join(root, 'template');
-  var template = join(template_path, 'CC-BY-NC-ND-4.0.template');
-  var license = join(branch, 'LICENSE');
-  copyFileSync(template, license);
-  info('Copy complete, and the license template from:');
-  info(template);
-  var data = readFileSync(license, 'utf-8');
-  info('Read complete, and the license from');
-  info(license);
-  var _year = new Date().getFullYear();
-  info(`Now year: ${_year}`);
-  if (year === 'none') year = _year;
-  if (parseInt(year) != _year) _year = `${year}-${_year}`;
-  info(`License year: ${_year}`);
-  data = data
-    .replace(/{author}/g, author)
-    .replace(/{year}/g, _year)
-    .replace(/{work}/g, work);
-  writeFileSync(license, data, 'utf-8');
-  info('Write complete and the data is:');
-  info(data);
+let LICENSEGenerator = async function (branch, year) {
+  debug(`work: ${work}`);
+  debug(`author: ${author}`);
+  debug(`branch: ${branch}`);
+  var template = join(__dirname, '../template/CC-BY-NC-ND-4.0.template');
+  var LICENSE = join(branch, 'LICENSE');
+  try {
+    copyFileSync(template, LICENSE);
+    info('[INFO]: Copy completed, and the LICENSE template from:');
+    info('[INFO]: ' + template);
+    var data = readFileSync(LICENSE, 'utf-8');
+    info('[INFO]: Read completed, and the LICENSE from');
+    info('[INFO]: ' + LICENSE);
+    var _year = new Date().getFullYear();
+    info(`[INFO]: Now year: ${_year}`);
+    if (year === '') year = _year;
+    if (parseInt(year) != _year) _year = `${year}-${_year}`;
+    info(`[INFO]: LICENSE year: ${_year}`);
+    data = data
+      .replace(/{author}/g, author)
+      .replace(/{year}/g, _year)
+      .replace(/{work}/g, work);
+    writeFileSync(LICENSE, data, 'utf-8');
+    info('[INFO]: Successfully generate LICENSE');
+    debug('Write completed and the data is:');
+    debug(data);
+  } catch (error) {
+    debug('[LICENSEGenerator]: ' + error);
+    throw Error(error.message);
+  }
 };
 
-let ReadmeGenerator = function (root, author, repo, branch, number) {
-  var template_path = join(root, 'template');
-  var template = join(template_path, 'README.template');
-  var README = join(branch, 'README.md');
-  if (!existsSync(README)) mkdirSync(README);
-  if (number === 0) writeFileSync(README, '## ⚡️ Traffic to Badge GitHub Action\n', 'utf-8');
-  var data = readFileSync(template, 'utf-8');
-  info('Read complete, and the template from');
-  info(template);
-  data = data
-    .replace(/{author}/g, author)
-    .replace(/{repo}/g, repo)
-    .replace(/{branch}/g, branch);
-  writeFileSync(README, data, { encoding: 'utf-8', flag: 'a' });
-  info('Write complete!');
-  debug('The data is:');
-  debug(data);
+let READMEGenerator = function (branch_path, repos) {
+  const branch = branch_path.substr(1);
+  var template = join(__dirname, '../template/README.template');
+  var README = join(branch_path, 'README.md');
+  try {
+    if (existsSync(README)) rmRF(README);
+    info('[INFO]: Clear completed, and the README from');
+    info('[INFO]: ' + README);
+    var _data = readFileSync(template, 'utf-8');
+    info('[INFO]: Read completed, and the README template from:');
+    info('[INFO]: ' + template);
+    var data =
+      '## ⚡️ Generate by [Traffic to Badge - GitHub Action]\
+(https://github.com/marketplace/actions/traffic-to-badge)\n';
+    for (let i = 0; i < repos.length; i++) {
+      data =
+        data +
+        '\n' +
+        _data
+          .replace(/{author}/g, author)
+          .replace(/{work}/g, work)
+          .replace(/{branch}/g, branch)
+          .replace(/{repo}/g, repos[i]);
+    }
+    writeFileSync(README, data, 'utf-8');
+    info('[INFO]: Successfully generate README');
+    debug('Write completed and the data is:');
+    debug(data);
+  } catch (error) {
+    debug('[READMEGenerator]: ' + error);
+    throw Error(error.message);
+  }
 };
 
 let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
@@ -61,8 +88,8 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
     await download
       .image(options)
       .then(({ filename }) => {
-        info(`${type_list[i]}.svg path:`);
-        info(filename);
+        info(`[INFO]: ${type_list[i]}.svg path:`);
+        info('[INFO]: ' + filename);
       })
       .catch(error => {
         debug('[SVGGenerator]: ' + error);
@@ -79,8 +106,8 @@ let dataGenerator = async function (data, path) {
     let file_data = data[type_list[i]];
     try {
       writeFileSync(file_path, JSON.stringify(file_data, null, 2), 'utf-8');
-      info(`${type_list[i]} Traffic data path:`);
-      info(file_path);
+      info(`[INFO]: ${type_list[i]} Traffic data path:`);
+      info('[INFO]: ' + file_path);
     } catch (error) {
       debug(`${type_list[i]} file_data:`);
       debug(file_data);
@@ -92,8 +119,8 @@ let dataGenerator = async function (data, path) {
 };
 
 module.exports = {
-  LicenseGenerator,
-  ReadmeGenerator,
+  LICENSEGenerator,
+  READMEGenerator,
   SVGGenerator,
   dataGenerator
 };

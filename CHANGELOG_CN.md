@@ -15,6 +15,7 @@
 
 - 📝 更新部署的说明文档
 - ✨ 增加支持获取 `static_list` 中的 `aaa/bbb` 形式的字符串获取 `bbb` 的值。(`github.repository` 可以放置在任何位置了！)
+- ✨ 增加 LICENSE 和 README 。
 
 ### 🐛 修复
 

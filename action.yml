@@ -39,6 +39,11 @@ inputs:
       Insert a named logo or simple-icon to the left of the label.
     required: false
     default: github
+  year:
+    description: >
+      Set a year number for license year beginning.
+      If empty, it will no beginning year.
+    required: false
 
 outputs:
   traffic_branch:

@@ -12,10 +12,10 @@
 
 ### 🔗 Badge of {repo} with link
 
-[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}/README.md#-{repo})
-[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}/README.md#-{repo})
+[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 
 ```md
-[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}/README.md#-{repo})
-[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}/README.md#-{repo})
+[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 ```

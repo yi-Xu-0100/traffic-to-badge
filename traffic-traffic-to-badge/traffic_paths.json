@@ -2,13 +2,19 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 156,
+    "count": 164,
     "uniques": 11
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
     "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 49,
+    "count": 53,
+    "uniques": 4
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
+    "title": "yi-Xu-0100/traffic-to-badge at traffic",
+    "count": 39,
     "uniques": 3
   },
   {
@@ -21,12 +27,6 @@
     "path": "/yi-Xu-0100/traffic-to-badge/actions",
     "title": "Actions · yi-Xu-0100/traffic-to-badge",
     "count": 35,
-    "uniques": 4
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
-    "title": "yi-Xu-0100/traffic-to-badge at traffic",
-    "count": 29,
     "uniques": 4
   },
   {
@@ -44,7 +44,7 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
     "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 12,
+    "count": 13,
     "uniques": 8
   },
   {

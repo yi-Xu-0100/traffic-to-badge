@@ -46,10 +46,8 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
-      if (process.env['local_debug'] != 'true') {
-        debug('Start generate SVG');
-        await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-      }
+      debug('Start generate SVG');
+      await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
     startGroup(`Generate LICENSE and README.md`);

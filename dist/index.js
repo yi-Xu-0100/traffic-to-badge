@@ -9027,27 +9027,53 @@ let READMEGenerator = async function (branch_path, repos) {
 };
 
 let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
-  var color = [views_color, clones_color];
+  const color = [views_color, clones_color];
   for (let i = 0; i < 2; i++) {
-    debug(`Start generate ${type_list[i]} SVG`);
-    let options = {
-      url:
-        `https://img.shields.io/badge/${type_list[i]}-` +
-        data[type_list[i]].count +
-        `-${color[i]}?logo=${logo}`,
-      dest: `${path}/${type_list[i]}.svg`
-    };
-    await download
-      .image(options)
-      .then(({ filename }) => {
-        info(`[INFO]: ${type_list[i]}.svg path:`);
-        info('[INFO]: ' + filename);
-      })
-      .catch(error => {
-        debug('[SVGGenerator]: ' + error);
-        throw Error(error.message);
-      });
-    debug(`Successfully generate ${type_list[i]} SVG`);
+    for (let k = 1; k < 100000; k = k * 10) {
+      const type_default = [58, 62]; //left-label-width
+      debug(`type: ${type_list[i]}`);
+      var type_left = type_default[i];
+      debug(`type_left: ${type_left}`);
+      var left_x = type_default[i] * 5 + 95;
+      debug(`left_x: ${left_x}`);
+      var text_length = type_default[i] * 10 - 270;
+      debug(`text_length: ${text_length}`);
+      var number = parseInt(k, 10); //data[type_list[i]].count
+      debug(`k: ${k}`);
+      debug(`number: ${number}`);
+      var number_magnitude = number.toString().length;
+      debug(`number_magnitude: ${number_magnitude}`);
+      var right_width =
+        (number_magnitude % 2 ? 31 : 23) + (parseInt(number_magnitude / 2, 10) - 1) * 14;
+      debug(`right_width: ${right_width}`);
+      var SVG_width = type_left + right_width;
+      debug(`SVG_width: ${SVG_width}`);
+      var right_x = right_width * 5 + 570;
+      debug(`right_x: ${right_x}`);
+      var number_length = right_width * 10 - 100;
+      debug(`number_length: ${number_length}`);
+    }
+    if (process.env['local_debug'] != 'true') {
+      debug(`Start generate ${type_list[i]} SVG`);
+      let options = {
+        url:
+          `https://img.shields.io/badge/${type_list[i]}-` +
+          data[type_list[i]].count +
+          `-${color[i]}?logo=${logo}`,
+        dest: `${path}/${type_list[i]}.svg`
+      };
+      await download
+        .image(options)
+        .then(({ filename }) => {
+          info(`[INFO]: ${type_list[i]}.svg path:`);
+          info('[INFO]: ' + filename);
+        })
+        .catch(error => {
+          debug('[SVGGenerator]: ' + error);
+          throw Error(error.message);
+        });
+      debug(`Successfully generate ${type_list[i]} SVG`);
+    }
   }
 };
 
@@ -9131,10 +9157,8 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
-      if (process.env['local_debug'] != 'true') {
-        debug('Start generate SVG');
-        await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-      }
+      debug('Start generate SVG');
+      await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
     startGroup(`Generate LICENSE and README.md`);

@@ -80,7 +80,8 @@ let READMEGenerator = async function (branch_path, repos) {
 let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
   const color = [views_color, clones_color];
   for (let i = 0; i < 2; i++) {
-    for (let k = 1; k < 100000; k = k * 10) {
+    if (views_color === 'brightgreen' && clones_color === 'brightgreen' && logo === 'github') {
+      info(`[INFO]:Start generate ${type_list[i]} SVG`);
       const type_default = [58, 62]; //left-label-width
       debug(`type: ${type_list[i]}`);
       var type_left = type_default[i];
@@ -89,8 +90,8 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
       debug(`left_x: ${left_x}`);
       var text_length = type_default[i] * 10 - 270;
       debug(`text_length: ${text_length}`);
-      var number = parseInt(k, 10); //data[type_list[i]].count
-      debug(`k: ${k}`);
+      var number = parseInt(data[type_list[i]].count, 10);
+      debug(`data[type_list[i]].count: ${data[type_list[i]].count}`);
       debug(`number: ${number}`);
       var number_magnitude = number.toString().length;
       debug(`number_magnitude: ${number_magnitude}`);
@@ -99,13 +100,33 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
       debug(`right_width: ${right_width}`);
       var SVG_width = type_left + right_width;
       debug(`SVG_width: ${SVG_width}`);
-      var right_x = right_width * 5 + 570;
+      var right_x = right_width * 5 + type_left * 10 - 10;
       debug(`right_x: ${right_x}`);
       var number_length = right_width * 10 - 100;
       debug(`number_length: ${number_length}`);
-    }
-    if (process.env['local_debug'] != 'true') {
-      debug(`Start generate ${type_list[i]} SVG`);
+      var template = join(__dirname, '../template/SVG.template');
+      var SVG = join(path, `${type_list[i]}.svg`);
+      var _data = readFileSync(template, 'utf-8');
+      writeFileSync(
+        SVG,
+        _data
+          .replace(/{type}/g, `${type_list[i]}`)
+          .replace(/{number}/g, `${number}`)
+          .replace(/{SVG_width}/g, `${SVG_width}`)
+          .replace(/{type_left}/g, `${type_left}`)
+          .replace(/{right_width}/g, `${right_width}`)
+          .replace(/{left_x}/g, `${left_x}`)
+          .replace(/{text_length}/g, `${text_length}`)
+          .replace(/{right_x}/g, `${right_x}`)
+          .replace(/{number_length}/g, `${number_length}`),
+        'utf-8'
+      );
+      info(`[INFO]: Successfully generate ${type_list[i]} SVG`);
+      info(`[INFO]: ${type_list[i]}.svg path: ${SVG}`);
+    } else if (process.env['local_debug'] === 'true') {
+      info(`[INFO]: Skip download ${type_list[i]} SVG`);
+    } else {
+      info(`[INFO]:Start download ${type_list[i]} SVG`);
       let options = {
         url:
           `https://img.shields.io/badge/${type_list[i]}-` +
@@ -116,6 +137,7 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
       await download
         .image(options)
         .then(({ filename }) => {
+          info(`[INFO]: Successfully download ${type_list[i]} SVG`);
           info(`[INFO]: ${type_list[i]}.svg path:`);
           info('[INFO]: ' + filename);
         })
@@ -123,7 +145,6 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
           debug('[SVGGenerator]: ' + error);
           throw Error(error.message);
         });
-      debug(`Successfully generate ${type_list[i]} SVG`);
     }
   }
 };

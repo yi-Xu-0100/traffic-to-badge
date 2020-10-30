@@ -16,12 +16,14 @@
 - 📝 更新部署的说明文档
 - ✨ 增加支持获取 `static_list` 中的 `aaa/bbb` 形式的字符串获取 `bbb` 的值。(`github.repository` 可以放置在任何位置了！)
 - ✨ 增加 LICENSE 和 README 。
-- ➕ 增加 `@actions/exec` 依赖。
-- ➖ 删除 child_process 依赖。
+- ✨ 默认使用 SVG 模板。
 
 ### 🐛 修复
 
 ### 🔒 安全
+
+- ➕ 增加 `@actions/exec` 依赖。
+- ➖ 删除 child_process 依赖。
 
 ### 🗑 废弃
 

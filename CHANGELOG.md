@@ -9,23 +9,22 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ## [Unreleased]
 
+## [1.1.6] - 2020-10-31
+
 ### ✨ Added
 
-### ♻️ Changed
-
-- 📝 update README for deployment
 - ✨ add support for `aaa/bbb` to get the `bbb` value in `static_list`. (`github.repository` can be in anywhere)
 - ✨ add LICENSE and README for traffic.
 - ✨ use SVG template for default options.
 
-### 🐛 Fixed
+### ♻️ Changed
+
+- 📝 update README for deployment
 
 ### 🔒 Security
 
 - ➕ add `@actions/exec` dependency.
 - ➖ delete `child_process` dependency.
-
-### 🗑 Deprecated
 
 ## [1.1.5] - 2020-10-25
 
@@ -104,12 +103,13 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5...HEAD
-[1.1.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5
-[1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
-[1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
-[1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
-[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1
-[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0
-[1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
-[1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.1.6...HEAD
+[1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6
+[1.1.5]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.5
+[1.1.4]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.4
+[1.1.3]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.3
+[1.1.2]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.2
+[1.1.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.1
+[1.1.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.0
+[1.0.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.0.1
+[1.0.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.0

@@ -9,23 +9,22 @@
 
 ## [未发布的]
 
+## [1.1.6] - 2020-10-31
+
 ### ✨ 增加
 
-### ♻️ 变化
-
-- 📝 更新部署的说明文档
 - ✨ 增加支持获取 `static_list` 中的 `aaa/bbb` 形式的字符串获取 `bbb` 的值。(`github.repository` 可以放置在任何位置了！)
 - ✨ 增加 LICENSE 和 README 。
 - ✨ 默认使用 SVG 模板。
 
-### 🐛 修复
+### ♻️ 变化
+
+- 📝 更新部署的说明文档
 
 ### 🔒 安全
 
 - ➕ 增加 `@actions/exec` 依赖。
 - ➖ 删除 child_process 依赖。
-
-### 🗑 废弃
 
 ## [1.1.5] - 2020-10-25
 
@@ -104,12 +103,13 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5...HEAD
-[1.1.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.5
-[1.1.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.4
-[1.1.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.3
-[1.1.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.2
-[1.1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.1
-[1.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.1.0
-[1.0.1]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.1
-[1.0.0]: https://github.com/mindsers/changelog-reader-action/compare/v1.0.0
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.1.6...HEAD
+[1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6
+[1.1.5]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.5
+[1.1.4]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.4
+[1.1.3]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.3
+[1.1.2]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.2
+[1.1.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.1
+[1.1.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.0
+[1.0.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.0.1
+[1.0.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.0

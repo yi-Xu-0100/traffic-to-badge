@@ -31,42 +31,47 @@
 input:
   my_token:
     description: >
-      '设置用以获取私密存储库流量数据的个人访问令牌。'
+      设置用以获取私密存储库流量数据的个人访问令牌。
     required: true
   static_list:
     description: >
-      '设置一个想要获取的存储库列表。
-      只有 github.repository 设置为第一个值时才可以被修正为当前仓库名。'
+      设置一个想要获取的存储库列表。
+      只有 github.repository 设置为第一个值时才可以被修正为当前仓库名。
     required: false
     default: ${{ github.repository }}
   traffic_branch:
     description: >
-      '如果为空，则流量数据将备份到名为 traffic 的分支中。'
+      如果为空，则流量数据将备份到名为 traffic 的分支中。
     required: false
-    default: 'traffic'
+    default: traffic
   views_color:
     description: >
-      '为 views 徽章背景设置一个十六进制或命名的颜色值。'
+      为 views 徽章背景设置一个十六进制或命名的颜色值。
     required: false
-    default: 'brightgreen'
+    default: brightgreen
   clones_color:
     description: >
-      '为 clones 徽章背景设置一个十六进制或命名的颜色值。'
+      为 clones 徽章背景设置一个十六进制或命名的颜色值。
     required: false
-    default: 'brightgreen'
+    default: brightgreen
   logo:
     description: >
-      '在标签左侧插入命名的徽标或简单图标。'
+      在标签左侧插入命名的徽标或简单图标。
     required: false
-    default: 'github'
+    default: github
+  year:
+    description: >
+      设置协议的起始年份。
+      如果为空，则没有起始年份。
+    required: false
 
 outputs:
   traffic_branch:
     description: >
-      '原 traffic 分支名'
+      原 traffic 分支名
   traffic_path:
     description: >
-      '生成 traffic 数据的路径'
+      生成 traffic 数据的路径
 ```
 
 ## 📝 示例
@@ -107,7 +112,7 @@ jobs:
 
       - name: Set Traffic
         id: traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.1.5
+        uses: yi-Xu-0100/traffic-to-badge@v1.1.6
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           #(default) static_list: ${{ github.repository }}
@@ -115,6 +120,7 @@ jobs:
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
           #(default) logo: github
+          #(default) year:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3

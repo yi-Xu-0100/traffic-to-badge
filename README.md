@@ -31,7 +31,7 @@ The GitHub action that using repositories `Insights/traffic` data to generate ba
 inputs:
   my_token:
     description: >
-    Set up a personal access token to obtain the secret repository traffic data.
+      Set up a personal access token to obtain the secret repository traffic data.
     required: true
   static_list:
     description: >
@@ -60,6 +60,11 @@ inputs:
       Insert a named logo or simple-icon to the left of the label.
     required: false
     default: github
+  year:
+    description: >
+      Set a year number for license year beginning.
+      If empty, it will no beginning year.
+    required: false
 
 outputs:
   traffic_branch:
@@ -108,7 +113,7 @@ jobs:
 
       - name: Set Traffic
         id: traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.1.5
+        uses: yi-Xu-0100/traffic-to-badge@v1.1.6
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           #(default) static_list: ${{ github.repository }}
@@ -116,6 +121,7 @@ jobs:
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
           #(default) logo: github
+          #(default) year:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3

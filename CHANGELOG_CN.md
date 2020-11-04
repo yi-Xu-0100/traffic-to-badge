@@ -9,6 +9,8 @@
 
 ## [未发布的]
 
+## [1.2.0] - 2020-11-04
+
 ### ✨ 增加
 
 - ✨ 增加 `views/week` 和 `clones/week` 徽章。
@@ -111,7 +113,8 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.1.6...HEAD
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.0
 [1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6
 [1.1.5]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.5
 [1.1.4]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.4

@@ -3,19 +3,27 @@
 ### 📷 Badge of {repo} without link
 
 ![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)
+![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)
 ![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)
+![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)
 
 ```md
 ![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)
+![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)
 ![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)
+![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)
 ```
 
 ### 🔗 Badge of {repo} with link
 
 [![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 [![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 
 ```md
 [![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 [![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 ```

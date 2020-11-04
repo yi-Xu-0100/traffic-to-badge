@@ -13,6 +13,10 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 - ✨ add `views/week` and `clones/week` badge.
 
+### ♻️ Changed
+
+- 📝 update readme template of `traffic_branch` for badge 。
+
 ## [1.1.6] - 2020-10-31
 
 ### ✨ Added

@@ -9117,11 +9117,37 @@ let dataGenerator = async function (data, path) {
   }
 };
 
+let Week_SVGGenerator = async function (data, path, views_color, clones_color, logo) {
+  const color = [views_color, clones_color];
+  for (let i = 0; i < 2; i++) {
+    info(`[INFO]:Start download ${type_list[i]} per week SVG`);
+    let options = {
+      url:
+        `https://img.shields.io/badge/${type_list[i]}-` +
+        data[type_list[i]].count +
+        `/week-${color[i]}?logo=${logo}`,
+      dest: `${path}/${type_list[i]}_per_week.svg`
+    };
+    await download
+      .image(options)
+      .then(({ filename }) => {
+        info(`[INFO]: Successfully download ${type_list[i]} per week SVG`);
+        info(`[INFO]: ${type_list[i]}_per_week.svg path:`);
+        info('[INFO]: ' + filename);
+      })
+      .catch(error => {
+        debug('[Week_SVGGenerator]: ' + error);
+        throw Error(error.message);
+      });
+  }
+};
+
 module.exports = {
   LICENSEGenerator,
   READMEGenerator,
   SVGGenerator,
-  dataGenerator
+  dataGenerator,
+  Week_SVGGenerator
 };
 
 
@@ -9142,7 +9168,13 @@ const {
 } = __webpack_require__(2186);
 const { join } = __webpack_require__(5622);
 const { initData, getData, combineData } = __webpack_require__(7317);
-const { LICENSEGenerator, READMEGenerator, SVGGenerator, dataGenerator } = __webpack_require__(4941);
+const {
+  LICENSEGenerator,
+  READMEGenerator,
+  SVGGenerator,
+  dataGenerator,
+  Week_SVGGenerator
+} = __webpack_require__(4941);
 
 async function run() {
   try {
@@ -9174,12 +9206,13 @@ async function run() {
       startGroup(`Set traffic data of ${static_list[i]}`);
       let traffic_data_path = join(traffic_branch_path, `traffic-${static_list[i]}`);
       debug('Start get data');
-      let latest_traffic_data = await getData(static_list[i]);
+      let [latest_traffic_data, latest_week_data] = await getData(static_list[i]);
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
+      await Week_SVGGenerator(latest_week_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
     startGroup(`Generate LICENSE and README.md`);
@@ -9211,6 +9244,22 @@ const { owner, repo } = context.repo;
 const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
 const octokit = new getOctokit(my_token);
+const type_list = ['views', 'clones'];
+
+let calculateData = function (data) {
+  for (let i = 0; i < type_list.length; i++) {
+    debug('calculateData: ' + type_list[i]);
+    let type_data = data[type_list[i]][type_list[i]];
+    let count = type_data.map(el => parseInt(el.count, 10)).reduce((a, b) => a + b, 0);
+    debug('count: ' + count);
+    let uniques = type_data.map(el => parseInt(el.uniques, 10)).reduce((a, b) => a + b, 0);
+    debug('uniques: ' + uniques);
+    let _data = { count: count, uniques: uniques, [type_list[i]]: type_data };
+    data[type_list[i]] = _data;
+    debug(type_list[i] + ':' + JSON.stringify(data[type_list[i]]));
+  }
+  return data;
+};
 
 let initData = async function (branch, path) {
   if (!existsSync(path)) await mkdirP(path);
@@ -9250,12 +9299,26 @@ let getData = async function (repo) {
     let latest_views = views.data;
     debug('latest_views: ' + JSON.stringify(latest_views));
     let day = new Date();
-    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 11);
-    let timestamp = `${_day}00:00:00Z`;
+    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000);
+    let week = new Date(day.getTime() - 7 * 24 * 60 * 60 * 1000);
+    let timestamp = `${day.toISOString().slice(0, 11)}00:00:00Z`;
+    let _timestamp = `${_day.toISOString().slice(0, 11)}00:00:00Z`;
+    let week_timestamp = `${week.toISOString().slice(0, 11)}00:00:00Z`;
     debug('timestamp: ' + timestamp);
-    latest_views.views = filter(latest_views.views, a => timestamp != a.timestamp);
-    var latest_views_filter = latest_views;
+    debug('_timestamp: ' + _timestamp);
+    debug('week_timestamp: ' + week_timestamp);
+    latest_views.views = filter(
+      latest_views.views,
+      a => a.timestamp != _timestamp && a.timestamp != timestamp
+    );
+    var latest_views_filter = JSON.parse(JSON.stringify(latest_views));
     debug('latest_views_filter: ' + JSON.stringify(latest_views_filter));
+    latest_views.views = filter(
+      latest_views.views,
+      a => new Date(a.timestamp) >= new Date(week_timestamp)
+    );
+    var latest_views_week = latest_views;
+    debug('latest_views_week: ' + JSON.stringify(latest_views_week));
   } catch (error) {
     debug('[getData.views]: ' + error);
     throw Error(error.message);
@@ -9269,12 +9332,26 @@ let getData = async function (repo) {
     let latest_clones = clones.data;
     debug('latest_clones: ' + JSON.stringify(latest_clones));
     let day = new Date();
-    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000).toISOString().slice(0, 11);
-    let timestamp = `${_day}00:00:00Z`;
+    let _day = new Date(day.getTime() - 14 * 24 * 60 * 60 * 1000);
+    let week = new Date(day.getTime() - 7 * 24 * 60 * 60 * 1000);
+    let timestamp = `${day.toISOString().slice(0, 11)}00:00:00Z`;
+    let _timestamp = `${_day.toISOString().slice(0, 11)}00:00:00Z`;
+    let week_timestamp = `${week.toISOString().slice(0, 11)}00:00:00Z`;
     debug('timestamp: ' + timestamp);
-    latest_clones.clones = filter(latest_clones.clones, a => timestamp != a.timestamp);
-    var latest_clones_filter = latest_clones;
+    debug('_timestamp: ' + _timestamp);
+    debug('week_timestamp: ' + week_timestamp);
+    latest_clones.clones = filter(
+      latest_clones.clones,
+      a => _timestamp != a.timestamp && timestamp != a.timestamp
+    );
+    var latest_clones_filter = JSON.parse(JSON.stringify(latest_clones));
     debug('latest_clones_filter: ' + JSON.stringify(latest_clones_filter));
+    latest_clones.clones = filter(
+      latest_clones.clones,
+      a => new Date(a.timestamp) >= new Date(week_timestamp)
+    );
+    var latest_clones_week = latest_clones;
+    debug('latest_clones_week: ' + JSON.stringify(latest_clones_week));
   } catch (error) {
     debug('[getData.clones]: ' + error);
     throw Error(error.message);
@@ -9299,18 +9376,22 @@ let getData = async function (repo) {
     debug('[getData.referrers]: ' + error);
     throw Error(error.message);
   }
-  return {
+  var data = {
     views: latest_views_filter,
     clones: latest_clones_filter,
     paths: paths.data,
     referrers: referrers.data
   };
+  var week_data = {
+    views: latest_views_week,
+    clones: latest_clones_week
+  };
+  return [calculateData(data), calculateData(week_data)];
 };
 
-let combineData = async function combineData(data, path) {
+let combineData = async function (data, path) {
   if (!existsSync(path)) await mkdirP(path);
 
-  var type_list = ['views', 'clones'];
   for (let i = 0; i < type_list.length; i++) {
     let _path = join(path, `traffic_${type_list[i]}.json`);
     try {
@@ -9332,24 +9413,16 @@ let combineData = async function combineData(data, path) {
         debug('[combineData]: ' + error);
         throw Error(error.message);
       }
-    } finally {
-      let today_data = data[type_list[i]][type_list[i]];
-      let count = today_data.map(el => parseInt(el.count, 10)).reduce((a, b) => a + b, 0);
-      debug('count: ' + count);
-      let uniques = today_data.map(el => parseInt(el.uniques, 10)).reduce((a, b) => a + b, 0);
-      debug('uniques: ' + uniques);
-      let _data = { count: count, uniques: uniques, [type_list[i]]: today_data };
-      data[type_list[i]] = _data;
-      debug(type_list[i] + ':' + JSON.stringify(data[type_list[i]]));
     }
   }
-  return data;
+  return calculateData(data);
 };
 
 module.exports = {
   getData,
   initData,
-  combineData
+  combineData,
+  calculateData
 };
 
 

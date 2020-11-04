@@ -10,7 +10,13 @@ const {
 } = require('@actions/core');
 const { join } = require('path');
 const { initData, getData, combineData } = require('./traffic');
-const { LICENSEGenerator, READMEGenerator, SVGGenerator, dataGenerator } = require('./generator');
+const {
+  LICENSEGenerator,
+  READMEGenerator,
+  SVGGenerator,
+  dataGenerator,
+  Week_SVGGenerator
+} = require('./generator');
 
 async function run() {
   try {
@@ -42,12 +48,13 @@ async function run() {
       startGroup(`Set traffic data of ${static_list[i]}`);
       let traffic_data_path = join(traffic_branch_path, `traffic-${static_list[i]}`);
       debug('Start get data');
-      let latest_traffic_data = await getData(static_list[i]);
+      let [latest_traffic_data, latest_week_data] = await getData(static_list[i]);
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
+      await Week_SVGGenerator(latest_week_data, traffic_data_path, views_color, clones_color, logo);
       endGroup();
     }
     startGroup(`Generate LICENSE and README.md`);

@@ -168,9 +168,35 @@ let dataGenerator = async function (data, path) {
   }
 };
 
+let Week_SVGGenerator = async function (data, path, views_color, clones_color, logo) {
+  const color = [views_color, clones_color];
+  for (let i = 0; i < 2; i++) {
+    info(`[INFO]:Start download ${type_list[i]} per week SVG`);
+    let options = {
+      url:
+        `https://img.shields.io/badge/${type_list[i]}-` +
+        data[type_list[i]].count +
+        `/week-${color[i]}?logo=${logo}`,
+      dest: `${path}/${type_list[i]}_per_week.svg`
+    };
+    await download
+      .image(options)
+      .then(({ filename }) => {
+        info(`[INFO]: Successfully download ${type_list[i]} per week SVG`);
+        info(`[INFO]: ${type_list[i]}_per_week.svg path:`);
+        info('[INFO]: ' + filename);
+      })
+      .catch(error => {
+        debug('[Week_SVGGenerator]: ' + error);
+        throw Error(error.message);
+      });
+  }
+};
+
 module.exports = {
   LICENSEGenerator,
   READMEGenerator,
   SVGGenerator,
-  dataGenerator
+  dataGenerator,
+  Week_SVGGenerator
 };

@@ -9,6 +9,10 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ## [Unreleased]
 
+### ✨ Added
+
+- ✨ add `views/week` and `clones/week` badge.
+
 ## [1.1.6] - 2020-10-31
 
 ### ✨ Added

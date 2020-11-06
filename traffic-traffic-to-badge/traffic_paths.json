@@ -2,13 +2,13 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 116,
+    "count": 103,
     "uniques": 12
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
     "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 62,
+    "count": 67,
     "uniques": 4
   },
   {
@@ -24,39 +24,39 @@
     "uniques": 3
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/actions",
-    "title": "Actions · yi-Xu-0100/traffic-to-badge",
-    "count": 13,
-    "uniques": 3
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/29",
+    "title": "question about analyze time of view counts · Issue #29 · yi-Xu-0100/traffic-t...",
+    "count": 19,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
     "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 12,
-    "uniques": 8
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
-    "title": "Commits · yi-Xu-0100/traffic-to-badge",
-    "count": 9,
-    "uniques": 1
+    "uniques": 9
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/new",
     "title": "New Issue · yi-Xu-0100/traffic-to-badge",
-    "count": 8,
+    "count": 7,
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/runs/1297477435",
-    "title": "test new feature · yi-Xu-0100/traffic-to-badge@384a744",
-    "count": 8,
-    "uniques": 1
+    "path": "/yi-Xu-0100/traffic-to-badge/actions",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 5,
+    "uniques": 4
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
     "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
-    "count": 7,
+    "count": 5,
     "uniques": 3
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
+    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 5,
+    "uniques": 2
   }
 ]

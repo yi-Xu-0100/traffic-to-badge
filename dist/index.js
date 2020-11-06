@@ -9189,6 +9189,10 @@ async function run() {
     info(`[INFO]: views_color: ${views_color}`);
     const clones_color = getInput('clones_color', { require: false });
     info(`[INFO]: clones_color: ${clones_color}`);
+    const views_week_color = getInput('views_week_color', { require: false });
+    info(`[INFO]: views_week_color: ${views_week_color}`);
+    const clones_week_color = getInput('clones_week_color', { require: false });
+    info(`[INFO]: clones_week_color: ${clones_week_color}`);
     const logo = getInput('logo', { require: false });
     info(`[INFO]: logo: ${logo}`);
     const year = getInput('year', { require: false });
@@ -9212,7 +9216,13 @@ async function run() {
       await dataGenerator(traffic_data, traffic_data_path);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-      await Week_SVGGenerator(latest_week_data, traffic_data_path, views_color, clones_color, logo);
+      await Week_SVGGenerator(
+        latest_week_data,
+        traffic_data_path,
+        views_week_color,
+        clones_week_color,
+        logo
+      );
       endGroup();
     }
     startGroup(`Generate LICENSE and README.md`);

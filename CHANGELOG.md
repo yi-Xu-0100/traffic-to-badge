@@ -9,6 +9,16 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ## [Unreleased]
 
+## [1.2.1] - 2020-11-06
+
+### ✨ Added
+
+- ✨ support set color for `views/week` and `clones/week` badge.
+
+### ♻️ Changed
+
+- 📝 update readme.
+
 ## [1.2.0] - 2020-11-04
 
 ### ✨ Added
@@ -113,7 +123,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.2.0...HEAD
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.1
 [1.2.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.0
 [1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6
 [1.1.5]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.5

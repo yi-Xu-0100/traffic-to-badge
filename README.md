@@ -57,6 +57,16 @@ inputs:
       Set a hex or named color value for the clones badge background.
     required: false
     default: brightgreen
+  views_week_color:
+    description: >
+      Set a hex or named color value for the views per week badge background.
+    required: false
+    default: brightgreen
+  clones_week_color:
+    description: >
+      Set a hex or named color value for the clones per week badge background.
+    required: false
+    default: brightgreen
   logo:
     description: >
       Insert a named logo or simple-icon to the left of the label.
@@ -115,13 +125,15 @@ jobs:
 
       - name: Set Traffic
         id: traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.1.6
+        uses: yi-Xu-0100/traffic-to-badge@v1.2.1
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           #(default) static_list: ${{ github.repository }}
           #(default) traffic_branch: traffic
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
+          #(default) views_week_color: brightgreen
+          #(default) clones_week_color: brightgreen
           #(default) logo: github
           #(default) year:
 

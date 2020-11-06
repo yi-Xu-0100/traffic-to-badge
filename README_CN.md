@@ -56,6 +56,16 @@ input:
       为 clones 徽章背景设置一个十六进制或命名的颜色值。
     required: false
     default: brightgreen
+  views_week_color:
+    description: >
+      为 views/week 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
+  clones_week_color:
+    description: >
+      为 clones/week 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
   logo:
     description: >
       在标签左侧插入命名的徽标或简单图标。
@@ -114,13 +124,15 @@ jobs:
 
       - name: Set Traffic
         id: traffic
-        uses: yi-Xu-0100/traffic-to-badge@v1.1.6
+        uses: yi-Xu-0100/traffic-to-badge@v1.2.1
         with:
           my_token: ${{ secrets.TRAFFIC_TOKEN }}
           #(default) static_list: ${{ github.repository }}
           #(default) traffic_branch: traffic
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
+          #(default) views_week_color: brightgreen
+          #(default) clones_week_color: brightgreen
           #(default) logo: github
           #(default) year:
 

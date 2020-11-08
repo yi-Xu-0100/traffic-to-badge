@@ -15,6 +15,8 @@
 
 使用存储库 `Insights/traffic` 数据来生成包含访问数和克隆数的徽章。
 
+**注意：徽章会计算备份在 `traffic_branch` 中的所有流量数据，其中只有最近 2 周的数据是官方流量数据。其中其他数据是较早的计划任务生成的获或个人给出的信息生成的。 `count/week` 徽章由行动之前一周的官方流量数据生成。**
+
 ## 🎨 目录
 
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)

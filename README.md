@@ -15,6 +15,8 @@
 
 The GitHub action that using repositories `Insights/traffic` data to generate badges that include views and clones.
 
+**Note: The badge counts the all traffic data which backed up in `traffic_branch`, and only the latest 2 weeks data is official traffic data among them. In which the other data generated with older schedule action or the personal given. The `count/week` badge generates by the official traffic data of a week before action done.**
+
 ## 🎨 Table of contents
 
 - [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)

@@ -2,13 +2,13 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 77,
+    "count": 68,
     "uniques": 8
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
     "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 52,
+    "count": 49,
     "uniques": 3
   },
   {
@@ -20,14 +20,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
     "title": "yi-Xu-0100/traffic-to-badge at traffic",
-    "count": 19,
+    "count": 18,
     "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 9,
-    "uniques": 4
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/new",
@@ -36,26 +30,32 @@
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
-    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 4
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/traffic/README.md",
     "title": "traffic-to-badge/README.md at traffic · yi-Xu-0100/traffic-to-badge",
     "count": 4,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
-    "title": "Commits · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/31",
+    "title": "Add note for traffic data · Issue #31 · yi-Xu-0100/traffic-to-badge",
     "count": 4,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/33",
     "title": "Add color option for week badge · Issue #33 · yi-Xu-0100/traffic-to-badge",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
+    "title": "Pull requests · yi-Xu-0100/traffic-to-badge",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/releases",
+    "title": "Releases · yi-Xu-0100/traffic-to-badge",
     "count": 4,
     "uniques": 1
   }

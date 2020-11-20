@@ -2,32 +2,26 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 36,
+    "count": 24,
     "uniques": 12
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues",
-    "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 30,
-    "uniques": 3
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pulls",
     "title": "Pull requests · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 9,
+    "count": 8,
     "uniques": 3
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/29",
-    "title": "Add new badges for views/week and clones/week · Issue #29 · yi-Xu-0100/traffi...",
-    "count": 9,
-    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/35",
     "title": "Bump eslint from 7.12.1 to 7.13.0 by dependabot · Pull Request #35 · yi-Xu-01...",
     "count": 8,
     "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues",
+    "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 7,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
@@ -38,25 +32,31 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/actions",
     "title": "Actions · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 4,
-    "uniques": 4
+    "count": 2,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/releases",
     "title": "Releases · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 4,
-    "uniques": 3
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
+    "title": "Commits · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/find/main",
+    "title": "File Finder · GitHub",
+    "count": 2,
+    "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/31",
     "title": "Add note for traffic data · Issue #31 · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/33",
-    "title": "Add color option for week badge · Issue #33 · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
+    "count": 2,
     "uniques": 1
   }
 ]

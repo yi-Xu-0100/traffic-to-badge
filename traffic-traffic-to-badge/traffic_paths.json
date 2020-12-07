@@ -6,26 +6,20 @@
     "uniques": 4
   },
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/32",
+    "title": "Use template for week badge · Issue #32 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 4,
+    "uniques": 4
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge/actions",
     "title": "Actions · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 1,
-    "uniques": 1
+    "count": 2,
+    "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
-    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/autoRelease.yml",
-    "title": "traffic-to-badge/autoRelease.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
-    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
+    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   },
@@ -44,12 +38,6 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/22",
     "title": "Init traffic data into .traffic fail! · Issue #22 · yi-Xu-0100/traffic-to-bad...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/32",
-    "title": "Use template for week badge · Issue #32 · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   },

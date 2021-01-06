@@ -6,6 +6,12 @@
     "uniques": 3
   },
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/9f175924879e238dbf553f9ac091951c5e449dbc",
+    "title": "Update actions/checkout requirement to v2.3.3 · yi-Xu-0100/traffic-to-badge@9...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
     "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
@@ -14,6 +20,12 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/network/members",
     "title": "Forks · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/45",
+    "title": "Bump eslint-config-prettier from 6.15.0 to 7.0.0 by dependabot · Pull Request...",
     "count": 1,
     "uniques": 1
   }

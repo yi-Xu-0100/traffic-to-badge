@@ -9003,8 +9003,8 @@ let READMEGenerator = async function (branch_path, repos) {
     info('[INFO]: Read completed, and the README template from:');
     info('[INFO]: ' + template);
     var data =
-      '## ⚡️ Generate by [Traffic to Badge - GitHub Action]\
-(https://github.com/marketplace/actions/traffic-to-badge)\n';
+      '# ⚡️ Generate by [Traffic to Badge - GitHub Action]' +
+      '(https://github.com/marketplace/actions/traffic-to-badge)\n';
     for (let i = 0; i < repos.length; i++) {
       data =
         data +

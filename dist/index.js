@@ -9026,11 +9026,11 @@ let READMEGenerator = async function (branch_path, repos) {
   }
 };
 
-let SVGGenerator = async function (data, path, views_color, clones_color, logo) {
+let SVGGenerator = async function (data, path, views_color, clones_color, logo, week = false) {
   const color = [views_color, clones_color];
   for (let i = 0; i < 2; i++) {
     if (views_color === 'brightgreen' && clones_color === 'brightgreen' && logo === 'github') {
-      info(`[INFO]:Start generate ${type_list[i]} SVG`);
+      info(`[INFO]:Start generate ${type_list[i]}${(week && ' per week') || ''} SVG`);
       const type_default = [58, 62]; //left-label-width
       debug(`type: ${type_list[i]}`);
       var type_left = type_default[i];
@@ -9040,7 +9040,10 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
       var text_length = type_default[i] * 10 - 270;
       debug(`text_length: ${text_length}`);
       var number = parseInt(data[type_list[i]].count, 10);
-      debug(`data[type_list[i]].count: ${data[type_list[i]].count}`);
+      debug(
+        `data[${type_list[i]}${(week && ' in latest week') || ''}].count: ` +
+          data[type_list[i]].count
+      );
       debug(`number: ${number}`);
       var number_magnitude = number.toString().length;
       debug(`number_magnitude: ${number_magnitude}`);
@@ -9054,40 +9057,41 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo) 
       var number_length = right_width * 10 - 100;
       debug(`number_length: ${number_length}`);
       var template = __webpack_require__.ab + "SVG.template";
-      var SVG = join(path, `${type_list[i]}.svg`);
+      var SVG = join(path, `${type_list[i]}${(week && '_per_week') || ''}.svg`);
       var _data = readFileSync(__webpack_require__.ab + "SVG.template", 'utf-8');
       writeFileSync(
         SVG,
         _data
           .replace(/{type}/g, `${type_list[i]}`)
-          .replace(/{number}/g, `${number}`)
-          .replace(/{SVG_width}/g, `${SVG_width}`)
+          .replace(/{number}/g, `${number}${(week && '/week') || ''}`)
+          .replace(/{SVG_width}/g, `${SVG_width + ((week && 34) || 0)}`)
           .replace(/{type_left}/g, `${type_left}`)
-          .replace(/{right_width}/g, `${right_width}`)
+          .replace(/{right_width}/g, `${right_width + ((week && 34) || 0)}`)
           .replace(/{left_x}/g, `${left_x}`)
           .replace(/{text_length}/g, `${text_length}`)
-          .replace(/{right_x}/g, `${right_x}`)
-          .replace(/{number_length}/g, `${number_length}`),
+          .replace(/{right_x}/g, `${right_x + ((week && 170) || 0)}`)
+          .replace(/{number_length}/g, `${number_length + ((week && 340) || 0)}`),
         'utf-8'
       );
-      info(`[INFO]: Successfully generate ${type_list[i]} SVG`);
-      info(`[INFO]: ${type_list[i]}.svg path: ${SVG}`);
+      info(`[INFO]: Successfully generate ${type_list[i]}${(week && ' per week') || ''} SVG`);
+      info(`[INFO]: ${type_list[i]}${(week && '_per_week') || ''}.svg path: ${SVG}`);
     } else if (process.env['local_debug'] === 'true') {
-      info(`[INFO]: Skip download ${type_list[i]} SVG`);
+      info(`[INFO]: Skip download ${type_list[i]}${(week && ' per week') || ''} SVG`);
     } else {
-      info(`[INFO]:Start download ${type_list[i]} SVG`);
+      info(`[INFO]:Start download ${type_list[i]}${(week && ' per week') || ''} SVG`);
       let options = {
         url:
           `https://img.shields.io/badge/${type_list[i]}-` +
           data[type_list[i]].count +
+          ((week && '/week') || '') +
           `-${color[i]}?logo=${logo}`,
-        dest: `${path}/${type_list[i]}.svg`
+        dest: `${path}/${type_list[i]}${(week && '_per_week') || ''}.svg`
       };
       await download
         .image(options)
         .then(({ filename }) => {
-          info(`[INFO]: Successfully download ${type_list[i]} SVG`);
-          info(`[INFO]: ${type_list[i]}.svg path:`);
+          info(`[INFO]: Successfully download ${type_list[i]}${(week && ' per week') || ''} SVG`);
+          info(`[INFO]: ${type_list[i]}${(week && '_per_week') || ''}.svg path:`);
           info('[INFO]: ' + filename);
         })
         .catch(error => {
@@ -9168,13 +9172,7 @@ const {
 } = __webpack_require__(2186);
 const { join } = __webpack_require__(5622);
 const { initData, getData, combineData } = __webpack_require__(7317);
-const {
-  LICENSEGenerator,
-  READMEGenerator,
-  SVGGenerator,
-  dataGenerator,
-  Week_SVGGenerator
-} = __webpack_require__(4941);
+const { LICENSEGenerator, READMEGenerator, SVGGenerator, dataGenerator } = __webpack_require__(4941);
 
 async function run() {
   try {
@@ -9216,12 +9214,13 @@ async function run() {
       await dataGenerator(traffic_data, traffic_data_path);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-      await Week_SVGGenerator(
+      await SVGGenerator(
         latest_week_data,
         traffic_data_path,
         views_week_color,
         clones_week_color,
-        logo
+        logo,
+        true
       );
       endGroup();
     }

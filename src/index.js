@@ -10,13 +10,7 @@ const {
 } = require('@actions/core');
 const { join } = require('path');
 const { initData, getData, combineData } = require('./traffic');
-const {
-  LICENSEGenerator,
-  READMEGenerator,
-  SVGGenerator,
-  dataGenerator,
-  Week_SVGGenerator
-} = require('./generator');
+const { LICENSEGenerator, READMEGenerator, SVGGenerator, dataGenerator } = require('./generator');
 
 async function run() {
   try {
@@ -58,12 +52,13 @@ async function run() {
       await dataGenerator(traffic_data, traffic_data_path);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
-      await Week_SVGGenerator(
+      await SVGGenerator(
         latest_week_data,
         traffic_data_path,
         views_week_color,
         clones_week_color,
-        logo
+        logo,
+        true
       );
       endGroup();
     }

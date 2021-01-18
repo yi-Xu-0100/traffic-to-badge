@@ -1,4 +1,4 @@
-## ⚡️ Traffic to Badge GitHub Action
+# ⚡️ Traffic to Badge GitHub Action
 
 [![sync2gitee(list)](<https://github.com/yi-Xu-0100/hub-mirror/workflows/sync2gitee(list)/badge.svg>)](https://github.com/yi-Xu-0100/hub-mirror)
 [![traffic2badge](https://github.com/yi-Xu-0100/traffic-to-badge/workflows/traffic2badge/badge.svg)](https://github.com/yi-Xu-0100/traffic-to-badge/actions?query=workflow%3Atraffic2badge)
@@ -19,7 +19,6 @@ The GitHub action that using repositories `Insights/traffic` data to generate ba
 
 ## 🎨 Table of contents
 
-- [⚡️ Traffic to Badge GitHub Action](#️-traffic-to-badge-github-action)
 - [🎨 Table of contents](#-table-of-contents)
 - [🚀 Action configuration](#-action-configuration)
 - [📝 Example usage](#-example-usage)
@@ -108,11 +107,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v2.3.4
 
       - name: Get Commit Message
         id: message
-        uses: actions/github-script@v3.0.0
+        uses: actions/github-script@v3.1.0
         env:
           FULL_COMMIT_MESSAGE: '${{ github.event.head_commit.message }}'
         with:
@@ -137,7 +136,7 @@ jobs:
           #(default) views_week_color: brightgreen
           #(default) clones_week_color: brightgreen
           #(default) logo: github
-          #(default) year:
+          year: 2021
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3

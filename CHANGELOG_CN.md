@@ -1,4 +1,4 @@
-## 更新日志
+# 更新日志
 
 此项目的所有显著更改将记录在此文件中。
 
@@ -9,9 +9,13 @@
 
 ## [未发布的]
 
+## [1.3.0] - 2021-01-19
+
 ### ♻️ 变化
 
 - 📝 更新 README，注意流量数据的可信度。
+- 📝 更新 svg 和 readme 的模板。
+- ⚡️ 更新了 svg 和 readme 的生成方法.
 
 ## [1.2.1] - 2020-11-06
 
@@ -127,7 +131,8 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.2.1...HEAD
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.3.0
 [1.2.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.1
 [1.2.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.0
 [1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6

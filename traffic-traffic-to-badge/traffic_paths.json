@@ -2,8 +2,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 15,
-    "uniques": 5
+    "count": 18,
+    "uniques": 6
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/releases",
@@ -30,6 +30,18 @@
     "uniques": 1
   },
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
+    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
+    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
     "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
@@ -44,18 +56,6 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/traffic.js",
     "title": "traffic-to-badge/traffic.js at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/branches",
-    "title": "Branches · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commit/738527755490d435aa7395183d338575381f5e6f",
-    "title": "📝 update readme to add note(#31) · yi-Xu-0100/traffic-to-badge@7385277",
     "count": 1,
     "uniques": 1
   }

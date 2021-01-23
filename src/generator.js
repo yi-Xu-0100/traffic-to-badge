@@ -75,7 +75,7 @@ let READMEGenerator = async function (branch_path, repos) {
           .replace(/{repo}/g, repos[i])
           .replace(/{link}/g, branch + `/traffic-${repos[i]}`)
           .replace(/total /g, '')
-          .replace(/total_/g, '');
+          .replace(/total_/g, `traffic-${repos[i]}/`);
     }
     writeFileSync(README, data, 'utf-8');
     info('[INFO]: Successfully generate README');

@@ -11,6 +11,11 @@
 [![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
 [![GitHub clones per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
 
+[![GitHub total views](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_views.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
+[![GitHub total views per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_views_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
+[![GitHub total clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
+[![GitHub total clones per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_clones_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README_CN)
+
 [**简体中文**](./README_CN.md) | [English](.README.md)
 
 使用存储库 `Insights/traffic` 数据来生成包含访问数和克隆数的徽章。
@@ -65,6 +70,26 @@ input:
   clones_week_color:
     description: >
       为 clones/week 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
+  total_views_color:
+    description: >
+      为 total views 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
+  total_clones_color:
+    description: >
+      为 total clones 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
+  total_views_week_color:
+    description: >
+      为 total views/week 徽章背景设置一个十六进制或命名的颜色值。
+    required: false
+    default: brightgreen
+  total_clones_week_color:
+    description: >
+      为 total clones/week 徽章背景设置一个十六进制或命名的颜色值。
     required: false
     default: brightgreen
   logo:
@@ -134,6 +159,10 @@ jobs:
           #(default) clones_color: brightgreen
           #(default) views_week_color: brightgreen
           #(default) clones_week_color: brightgreen
+          #(default) total_views_color: brightgreen
+          #(default) total_clones_color: brightgreen
+          #(default) total_views_week_color: brightgreen
+          #(default) total_clones_week_color: brightgreen
           #(default) logo: github
           year: 2021
 

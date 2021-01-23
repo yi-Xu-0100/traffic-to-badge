@@ -11,6 +11,11 @@
 [![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
 [![GitHub clones per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/traffic-traffic-to-badge/clones_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
 
+[![GitHub views](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_views.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
+[![GitHub views per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_views_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
+[![GitHub clones](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_clones.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
+[![GitHub clones per week](https://raw.githubusercontent.com/yi-Xu-0100/traffic-to-badge/traffic/total_clones_per_week.svg)](https://github.com/yi-Xu-0100/traffic-to-badge#README)
+
 [**English**](.README.md) | [简体中文](./README_CN.md)
 
 The GitHub action that using repositories `Insights/traffic` data to generate badges that include views and clones.
@@ -66,6 +71,26 @@ inputs:
   clones_week_color:
     description: >
       Set a hex or named color value for the clones per week badge background.
+    required: false
+    default: brightgreen
+  total_views_color:
+    description: >
+      Set a hex or named color value for the total views badge background.
+    required: false
+    default: brightgreen
+  total_clones_color:
+    description: >
+      Set a hex or named color value for the total clones badge background.
+    required: false
+    default: brightgreen
+  total_views_week_color:
+    description: >
+      Set a hex or named color value for the total views per week badge background.
+    required: false
+    default: brightgreen
+  total_clones_week_color:
+    description: >
+      Set a hex or named color value for the total clones per week badge background.
     required: false
     default: brightgreen
   logo:
@@ -135,6 +160,10 @@ jobs:
           #(default) clones_color: brightgreen
           #(default) views_week_color: brightgreen
           #(default) clones_week_color: brightgreen
+          #(default) total_views_color: brightgreen
+          #(default) total_clones_color: brightgreen
+          #(default) total_views_week_color: brightgreen
+          #(default) total_clones_week_color: brightgreen
           #(default) logo: github
           year: 2021
 

@@ -9,6 +9,17 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ## [Unreleased]
 
+### ✨ Added
+
+- ✨ add total badge support (#64)
+- 🍱 add latest week traffic data
+
+### ♻️ Changed
+
+- 📝 Update README template for total traffic data badge.
+- 📝 Update SVG template for total traffic data badge.
+- 🔥 delete not used function: calculateData
+
 ## [1.3.0] - 2021-01-19
 
 ### ♻️ Changed

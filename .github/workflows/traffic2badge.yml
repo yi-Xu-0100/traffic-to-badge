@@ -21,8 +21,14 @@ jobs:
           #(default) traffic_branch: traffic
           #(default) views_color: brightgreen
           #(default) clones_color: brightgreen
+          #(default) views_week_color: brightgreen
+          #(default) clones_week_color: brightgreen
+          #(default) total_views_color: brightgreen
+          #(default) total_clones_color: brightgreen
+          #(default) total_views_week_color: brightgreen
+          #(default) total_clones_week_color: brightgreen
           #(default) logo: github
-          year: 2019 #test
+          year: 2019
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3

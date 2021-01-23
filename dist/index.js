@@ -9028,11 +9028,20 @@ let READMEGenerator = async function (branch_path, repos) {
   }
 };
 
-let SVGGenerator = async function (data, path, views_color, clones_color, logo, week = false) {
+let SVGGenerator = async function (
+  data,
+  path,
+  views_color,
+  clones_color,
+  logo,
+  week = false,
+  total = false
+) {
   const color = [views_color, clones_color];
   for (let i = 0; i < 2; i++) {
+    let _SVGType = `${(total && 'total ') || ''}${type_list[i]}${(week && ' per week') || ''}`;
     if (views_color === 'brightgreen' && clones_color === 'brightgreen' && logo === 'github') {
-      info(`[INFO]:Start generate ${type_list[i]}${(week && ' per week') || ''} SVG`);
+      info(`[INFO]:Start generate ${_SVGType} SVG`);
       const type_default = [58, 62]; //left-label-width
       debug(`type: ${type_list[i]}`);
       var type_left = type_default[i];
@@ -9042,10 +9051,7 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo, 
       var text_length = type_default[i] * 10 - 270;
       debug(`text_length: ${text_length}`);
       var number = parseInt(data[type_list[i]].count, 10);
-      debug(
-        `data[${type_list[i]}${(week && ' in latest week') || ''}].count: ` +
-          data[type_list[i]].count
-      );
+      debug(`data[${_SVGType}].count: ` + data[type_list[i]].count);
       debug(`number: ${number}`);
       var number_magnitude = number.toString().length;
       debug(`number_magnitude: ${number_magnitude}`);
@@ -9059,41 +9065,41 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo, 
       var number_length = right_width * 10 - 100;
       debug(`number_length: ${number_length}`);
       var template = __webpack_require__.ab + "SVG.template";
-      var SVG = join(path, `${type_list[i]}${(week && '_per_week') || ''}.svg`);
+      var SVG = join(path, `${_SVGType.replace(/ /g, '_')}.svg`);
       var _data = readFileSync(__webpack_require__.ab + "SVG.template", 'utf-8');
       writeFileSync(
         SVG,
         _data
-          .replace(/{type}/g, `${type_list[i]}`)
+          .replace(/{type}/g, `${(total && 'total ') || ''}${type_list[i]}`)
           .replace(/{number}/g, `${number}${(week && '/week') || ''}`)
-          .replace(/{SVG_width}/g, `${SVG_width + ((week && 34) || 0)}`)
-          .replace(/{type_left}/g, `${type_left}`)
+          .replace(/{SVG_width}/g, `${SVG_width + ((week && 34) || 0) + ((total && 28) || 0)}`)
+          .replace(/{type_left}/g, `${type_left + ((total && 28) || 0)}`)
           .replace(/{right_width}/g, `${right_width + ((week && 34) || 0)}`)
-          .replace(/{left_x}/g, `${left_x}`)
-          .replace(/{text_length}/g, `${text_length}`)
-          .replace(/{right_x}/g, `${right_x + ((week && 170) || 0)}`)
+          .replace(/{left_x}/g, `${left_x + ((total && 140) || 0)}`)
+          .replace(/{text_length}/g, `${text_length + ((total && 280) || 0)}`)
+          .replace(/{right_x}/g, `${right_x + ((week && 170) || 0) + ((total && 280) || 0)}`)
           .replace(/{number_length}/g, `${number_length + ((week && 340) || 0)}`),
         'utf-8'
       );
-      info(`[INFO]: Successfully generate ${type_list[i]}${(week && ' per week') || ''} SVG`);
-      info(`[INFO]: ${type_list[i]}${(week && '_per_week') || ''}.svg path: ${SVG}`);
+      info(`[INFO]: Successfully generate ${_SVGType} SVG`);
+      info(`[INFO]: ${_SVGType.replace(/ /g, '_')}.svg path: ${SVG}`);
     } else if (process.env['local_debug'] === 'true') {
-      info(`[INFO]: Skip download ${type_list[i]}${(week && ' per week') || ''} SVG`);
+      info(`[INFO]: Skip download ${_SVGType} SVG`);
     } else {
-      info(`[INFO]:Start download ${type_list[i]}${(week && ' per week') || ''} SVG`);
+      info(`[INFO]:Start download ${_SVGType} SVG`);
       let options = {
         url:
-          `https://img.shields.io/badge/${type_list[i]}-` +
+          `https://img.shields.io/badge/${(total && 'total%20') || ''}${type_list[i]}-` +
           data[type_list[i]].count +
           ((week && '/week') || '') +
           `-${color[i]}?logo=${logo}`,
-        dest: `${path}/${type_list[i]}${(week && '_per_week') || ''}.svg`
+        dest: `${path}/${_SVGType.replace(/ /g, '_')}.svg`
       };
       await download
         .image(options)
         .then(({ filename }) => {
-          info(`[INFO]: Successfully download ${type_list[i]}${(week && ' per week') || ''} SVG`);
-          info(`[INFO]: ${type_list[i]}${(week && '_per_week') || ''}.svg path:`);
+          info(`[INFO]: Successfully download ${_SVGType} SVG`);
+          info(`[INFO]: ${_SVGType.replace(/ /g, '_')}.svg path:`);
           info('[INFO]: ' + filename);
         })
         .catch(error => {
@@ -9168,6 +9174,14 @@ async function run() {
     info(`[INFO]: views_week_color: ${views_week_color}`);
     const clones_week_color = getInput('clones_week_color', { require: false });
     info(`[INFO]: clones_week_color: ${clones_week_color}`);
+    const total_views_color = getInput('total_views_color', { require: false });
+    info(`[INFO]: total_views_color: ${total_views_color}`);
+    const total_clones_color = getInput('total_clones_color', { require: false });
+    info(`[INFO]: total_clones_color: ${total_clones_color}`);
+    const total_views_week_color = getInput('total_views_week_color', { require: false });
+    info(`[INFO]: total_views_week_color: ${total_views_week_color}`);
+    const total_clones_week_color = getInput('total_clones_week_color', { require: false });
+    info(`[INFO]: total_clones_week_color: ${total_clones_week_color}`);
     const logo = getInput('logo', { require: false });
     info(`[INFO]: logo: ${logo}`);
     const year = getInput('year', { require: false });
@@ -9181,6 +9195,8 @@ async function run() {
     await group('Init traffic data', async () => {
       await initData(traffic_branch, traffic_branch_path);
     });
+    var total_traffic_data = { views: { count: 0 }, clones: { count: 0 } };
+    var total_latest_week_data = { views: { count: 0 }, clones: { count: 0 } };
     for (let i = 0; i < static_list.length; i++) {
       startGroup(`Set traffic data of ${static_list[i]}`);
       let traffic_data_path = join(traffic_branch_path, `traffic-${static_list[i]}`);
@@ -9188,16 +9204,51 @@ async function run() {
       let [latest_traffic_data, latest_week_data] = await getData(static_list[i]);
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
+      total_traffic_data.views.count += traffic_data.views.count;
+      total_traffic_data.clones.count += traffic_data.clones.count;
+      total_latest_week_data.views.count += latest_week_data.views.count;
+      total_latest_week_data.clones.count += latest_week_data.clones.count;
       await dataGenerator(traffic_data, traffic_data_path);
       await dataGenerator(latest_week_data, traffic_data_path, true);
       debug('Start generate SVG');
-      await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
+      await SVGGenerator(
+        traffic_data,
+        traffic_data_path,
+        views_color,
+        clones_color,
+        logo,
+        false,
+        false
+      );
       await SVGGenerator(
         latest_week_data,
         traffic_data_path,
         views_week_color,
         clones_week_color,
         logo,
+        true,
+        false
+      );
+      endGroup();
+    }
+    if (static_list.length > 1) {
+      startGroup(`Generate total traffic data badge SVG`);
+      await SVGGenerator(
+        total_traffic_data,
+        traffic_branch_path,
+        total_views_color,
+        total_clones_color,
+        logo,
+        false,
+        true
+      );
+      await SVGGenerator(
+        total_latest_week_data,
+        traffic_branch_path,
+        total_views_week_color,
+        total_clones_week_color,
+        logo,
+        true,
         true
       );
       endGroup();

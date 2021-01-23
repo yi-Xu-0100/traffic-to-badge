@@ -44,6 +44,26 @@ inputs:
       Set a hex or named color value for the clones per week badge background.
     required: false
     default: brightgreen
+  total_views_color:
+    description: >
+      Set a hex or named color value for the total views badge background.
+    required: false
+    default: brightgreen
+  total_clones_color:
+    description: >
+      Set a hex or named color value for the total clones badge background.
+    required: false
+    default: brightgreen
+  total_views_week_color:
+    description: >
+      Set a hex or named color value for the total views per week badge background.
+    required: false
+    default: brightgreen
+  total_clones_week_color:
+    description: >
+      Set a hex or named color value for the total clones per week badge background.
+    required: false
+    default: brightgreen
   logo:
     description: >
       Insert a named logo or simple-icon to the left of the label.

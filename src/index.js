@@ -16,30 +16,31 @@ async function run() {
   try {
     info('[INFO]: Usage https://github.com/yi-Xu-0100/traffic-to-badge#readme');
     startGroup('Get input value');
-    var static_list = getInput('static_list', { require: false }).split(`,`);
-    static_list = static_list.map(item => item.split(`/`).pop());
+    const static_list = getInput('static_list')
+      .split(`,`)
+      .map(item => item.split(`/`).pop());
     info(`[INFO]: static_list: ${static_list}`);
-    const traffic_branch = getInput('traffic_branch', { require: false });
+    const traffic_branch = getInput('traffic_branch');
     info(`[INFO]: traffic_branch: ${traffic_branch}`);
-    const views_color = getInput('views_color', { require: false });
+    const views_color = getInput('views_color');
     info(`[INFO]: views_color: ${views_color}`);
-    const clones_color = getInput('clones_color', { require: false });
+    const clones_color = getInput('clones_color');
     info(`[INFO]: clones_color: ${clones_color}`);
-    const views_week_color = getInput('views_week_color', { require: false });
+    const views_week_color = getInput('views_week_color');
     info(`[INFO]: views_week_color: ${views_week_color}`);
-    const clones_week_color = getInput('clones_week_color', { require: false });
+    const clones_week_color = getInput('clones_week_color');
     info(`[INFO]: clones_week_color: ${clones_week_color}`);
-    const total_views_color = getInput('total_views_color', { require: false });
+    const total_views_color = getInput('total_views_color');
     info(`[INFO]: total_views_color: ${total_views_color}`);
-    const total_clones_color = getInput('total_clones_color', { require: false });
+    const total_clones_color = getInput('total_clones_color');
     info(`[INFO]: total_clones_color: ${total_clones_color}`);
-    const total_views_week_color = getInput('total_views_week_color', { require: false });
+    const total_views_week_color = getInput('total_views_week_color');
     info(`[INFO]: total_views_week_color: ${total_views_week_color}`);
-    const total_clones_week_color = getInput('total_clones_week_color', { require: false });
+    const total_clones_week_color = getInput('total_clones_week_color');
     info(`[INFO]: total_clones_week_color: ${total_clones_week_color}`);
-    const logo = getInput('logo', { require: false });
+    const logo = getInput('logo');
     info(`[INFO]: logo: ${logo}`);
-    const year = getInput('year', { require: false });
+    const year = getInput('year');
     info(`[INFO]: year: ${year}`);
     const traffic_branch_path = `.${traffic_branch}`;
     info(`[INFO]: set output traffic_branch: ${traffic_branch}`);
@@ -86,28 +87,26 @@ async function run() {
       );
       endGroup();
     }
-    if (static_list.length > 1) {
-      startGroup(`Generate total traffic data badge SVG`);
-      await SVGGenerator(
-        total_traffic_data,
-        traffic_branch_path,
-        total_views_color,
-        total_clones_color,
-        logo,
-        false,
-        true
-      );
-      await SVGGenerator(
-        total_latest_week_data,
-        traffic_branch_path,
-        total_views_week_color,
-        total_clones_week_color,
-        logo,
-        true,
-        true
-      );
-      endGroup();
-    }
+    startGroup(`Generate total traffic data badge SVG`);
+    await SVGGenerator(
+      total_traffic_data,
+      traffic_branch_path,
+      total_views_color,
+      total_clones_color,
+      logo,
+      false,
+      true
+    );
+    await SVGGenerator(
+      total_latest_week_data,
+      traffic_branch_path,
+      total_views_week_color,
+      total_clones_week_color,
+      logo,
+      true,
+      true
+    );
+    endGroup();
     startGroup(`Generate LICENSE and README.md`);
     await LICENSEGenerator(traffic_branch_path, year);
     await READMEGenerator(traffic_branch_path, static_list);

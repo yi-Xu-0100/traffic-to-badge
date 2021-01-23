@@ -89,35 +89,35 @@ let SVGGenerator = async function (
   total = false
 ) {
   const color = [views_color, clones_color];
+  const type_default = [58, 62]; //left-label-width
   for (let i = 0; i < 2; i++) {
     let _SVGType = `${(total && 'total ') || ''}${type_list[i]}${(week && ' per week') || ''}`;
-    if (views_color === 'brightgreen' && clones_color === 'brightgreen' && logo === 'github') {
+    if (color[i] === 'brightgreen' && logo === 'github') {
       info(`[INFO]:Start generate ${_SVGType} SVG`);
-      const type_default = [58, 62]; //left-label-width
       debug(`type: ${type_list[i]}`);
-      var type_left = type_default[i];
+      let type_left = type_default[i];
       debug(`type_left: ${type_left}`);
-      var left_x = type_default[i] * 5 + 95;
+      let left_x = type_left * 5 + 95;
       debug(`left_x: ${left_x}`);
-      var text_length = type_default[i] * 10 - 270;
+      let text_length = type_left * 10 - 270;
       debug(`text_length: ${text_length}`);
-      var number = parseInt(data[type_list[i]].count, 10);
+      let number = parseInt(data[type_list[i]].count, 10);
       debug(`data[${_SVGType}].count: ` + data[type_list[i]].count);
       debug(`number: ${number}`);
-      var number_magnitude = number.toString().length;
+      let number_magnitude = number.toString().length;
       debug(`number_magnitude: ${number_magnitude}`);
-      var right_width =
+      let right_width =
         (number_magnitude % 2 ? 31 : 23) + (parseInt(number_magnitude / 2, 10) - 1) * 14;
       debug(`right_width: ${right_width}`);
-      var SVG_width = type_left + right_width;
+      let SVG_width = type_left + right_width;
       debug(`SVG_width: ${SVG_width}`);
-      var right_x = right_width * 5 + type_left * 10 - 10;
+      let right_x = right_width * 5 + type_left * 10 - 10;
       debug(`right_x: ${right_x}`);
-      var number_length = right_width * 10 - 100;
+      let number_length = right_width * 10 - 100;
       debug(`number_length: ${number_length}`);
-      var template = join(__dirname, '../template/SVG.template');
-      var SVG = join(path, `${_SVGType.replace(/ /g, '_')}.svg`);
-      var _data = readFileSync(template, 'utf-8');
+      let template = join(__dirname, '../template/SVG.template');
+      let SVG = join(path, `${_SVGType.replace(/ /g, '_')}.svg`);
+      let _data = readFileSync(template, 'utf-8');
       writeFileSync(
         SVG,
         _data
@@ -140,10 +140,10 @@ let SVGGenerator = async function (
       info(`[INFO]:Start download ${_SVGType} SVG`);
       let options = {
         url:
-          `https://img.shields.io/badge/${(total && 'total%20') || ''}${type_list[i]}-` +
+          `https://img.shields.io/badge/${(total && 'total_') || ''}${type_list[i]}-` +
           data[type_list[i]].count +
           ((week && '/week') || '') +
-          `-${color[i]}?logo=${logo}`,
+          `-${color[i].replace('#', '')}?logo=${logo}`,
         dest: `${path}/${_SVGType.replace(/ /g, '_')}.svg`
       };
       await download

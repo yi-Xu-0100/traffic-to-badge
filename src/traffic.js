@@ -186,6 +186,5 @@ let combineData = async function (data, path) {
 module.exports = {
   getData,
   initData,
-  combineData,
-  calculateData
+  combineData
 };

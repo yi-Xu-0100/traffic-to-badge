@@ -50,6 +50,7 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
+      await dataGenerator(latest_week_data, traffic_data_path, true);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       await SVGGenerator(

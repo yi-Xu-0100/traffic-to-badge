@@ -9104,22 +9104,23 @@ let SVGGenerator = async function (data, path, views_color, clones_color, logo, 
   }
 };
 
-let dataGenerator = async function (data, path) {
+let dataGenerator = async function (data, path, week) {
   for (let i = 0; i < type_list.length; i++) {
-    debug(`Start generate traffic_${type_list[i]}.json`);
-    let file_path = join(path, `traffic_${type_list[i]}.json`);
+    debug(`Start generate traffic_${type_list[i]}${(week && '_per_week') || ''}.json`);
+    let file_path = join(path, `traffic_${type_list[i]}${(week && '_per_week') || ''}.json`);
     let file_data = data[type_list[i]];
     try {
       writeFileSync(file_path, JSON.stringify(file_data, null, 2), 'utf-8');
-      info(`[INFO]: ${type_list[i]} Traffic data path:`);
+      info(`[INFO]: ${type_list[i]}${(week && '_per_week') || ''} Traffic data path:`);
       info('[INFO]: ' + file_path);
     } catch (error) {
-      debug(`${type_list[i]} file_data:`);
+      debug(`${type_list[i]}${(week && '_per_week') || ''} file_data:`);
       debug(file_data);
       debug('[dataGenerator]: ' + error);
       throw Error(error.message);
     }
-    debug(`Successfully generate traffic_${type_list[i]}.json`);
+    debug(`Successfully generate traffic_${type_list[i]}${(week && '_per_week') || ''}.json`);
+    if (week && i === 1) break;
   }
 };
 
@@ -9188,6 +9189,7 @@ async function run() {
       debug('Start generate data');
       let traffic_data = await combineData(latest_traffic_data, traffic_data_path);
       await dataGenerator(traffic_data, traffic_data_path);
+      await dataGenerator(latest_week_data, traffic_data_path, true);
       debug('Start generate SVG');
       await SVGGenerator(traffic_data, traffic_data_path, views_color, clones_color, logo);
       await SVGGenerator(
@@ -9406,8 +9408,7 @@ let combineData = async function (data, path) {
 module.exports = {
   getData,
   initData,
-  combineData,
-  calculateData
+  combineData
 };
 
 

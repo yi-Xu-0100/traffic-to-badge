@@ -1,29 +1,29 @@
-## 📚 [{repo}](https://github.com/{author}/{work}/tree/{branch}/traffic-{repo})
+## 📚 [{repo}](https://github.com/{author}/{work}/tree/{link})
 
-### 📷 Badge of {repo} without link
+### 📷 Badges without link of [{repo}](https://github.com/{author}/{work}/tree/{link})
 
-![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)
-![views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)
-![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)
-![clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)
+![total views](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views.svg)
+![total views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views_per_week.svg)
+![total clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones.svg)
+![total clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones_per_week.svg)
 
 ```markdown
-![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)
-![views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)
-![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)
-![clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)
+![total views](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views.svg)
+![total views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views_per_week.svg)
+![total clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones.svg)
+![total clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones_per_week.svg)
 ```
 
-### 🔗 Badge of {repo} with link
+### 🔗 Badges with link of [{repo}](https://github.com/{author}/{work}/tree/{link})
 
-[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total views](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 
 ```markdown
-[![views](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
-[![clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/traffic-{repo}/clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total views](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total views per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_views_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total clones](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
+[![total clones per week](https://raw.githubusercontent.com/{author}/{work}/{branch}/total_clones_per_week.svg)](https://github.com/{author}/{work}/tree/{branch}#-{repo})
 ```

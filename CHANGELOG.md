@@ -9,6 +9,8 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 
 ## [Unreleased]
 
+## [1.4.0] - 2021-01-24
+
 ### ✨ Added
 
 - ✨ add total badge support (#64)
@@ -142,8 +144,9 @@ The emoji used in the `GitHub` commit message is based on [gitmoji](https://gitm
 - 👷 [workflows](./.github/workflows/autoRelease.yml) to auto release
 - 👷 [prettier](./.prettierrc.json) to format files
 
-[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.3.0...HEAD
-[1.2.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.3.0
+[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.4.0
+[1.3.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.3.0
 [1.2.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.1
 [1.2.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.0
 [1.1.6]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.1.6

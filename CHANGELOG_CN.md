@@ -9,12 +9,14 @@
 
 ## [未发布的]
 
+## [1.4.0] - 2021-01-24
+
 ### ✨ 增加
 
 - ✨ 增加 total badge 的支持 (#64)
 - 🍱 增加最新一周数据
 
-### ♻️ Changed
+### ♻️ 变化
 
 - 📝 更新 readme 模板。
 - 📝 更新 SVG 模板。
@@ -142,7 +144,8 @@
 - 👷 自动发布 release 的 [工作流](./.github/workflows/autoRelease.yml)
 - 👷 [prettier](./.prettierrc.json) 格式化文件
 
-[unreleased]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.3.0...HEAD
+[未发布的]: https://github.com/yi-Xu-0100/traffic-to-badge/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.4.0
 [1.3.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.3.0
 [1.2.1]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.1
 [1.2.0]: https://github.com/yi-Xu-0100/traffic-to-badge/tree/v1.2.0

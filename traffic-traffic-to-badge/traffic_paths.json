@@ -2,24 +2,36 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 5,
-    "uniques": 5
+    "count": 8,
+    "uniques": 7
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/24",
-    "title": "use promise api for fs module · Issue #24 · yi-Xu-0100/traffic-to-badge · Git...",
-    "count": 2,
-    "uniques": 2
+    "path": "/yi-Xu-0100/traffic-to-badge/releases",
+    "title": "Releases · yi-Xu-0100/traffic-to-badge",
+    "count": 3,
+    "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/64",
-    "title": "Total Weekly Visit Count - All repositories · Issue #64 · yi-Xu-0100/traffic-...",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
+    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/738527755490d435aa7395183d338575381f5e6f",
+    "title": "📝 update readme to add note(#31) · yi-Xu-0100/traffic-to-badge@7385277 · Git...",
     "count": 1,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pulls",
     "title": "Pull requests · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tags",
+    "title": "Tags · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

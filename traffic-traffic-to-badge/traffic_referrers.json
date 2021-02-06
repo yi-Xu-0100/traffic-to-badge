@@ -1,7 +1,12 @@
 [
   {
     "referrer": "github.com",
-    "count": 4,
-    "uniques": 4
+    "count": 6,
+    "uniques": 5
+  },
+  {
+    "referrer": "cn.bing.com",
+    "count": 2,
+    "uniques": 1
   }
 ]

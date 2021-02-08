@@ -8,5 +8,10 @@
     "referrer": "cn.bing.com",
     "count": 2,
     "uniques": 1
+  },
+  {
+    "referrer": "Baidu",
+    "count": 1,
+    "uniques": 1
   }
 ]

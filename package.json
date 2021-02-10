@@ -4,17 +4,15 @@
   "description": "Use repository traffic data to generate badges that include views and clones.",
   "main": "dist/index.js",
   "scripts": {
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable",
     "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
     "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
     "clear": "rimraf -rf dist/* .traffic/ .test/",
     "build": "npm run clear && ncc build src/index.js --source-map --license license.txt",
     "dry-test": "node --require dotenv/config dist/index.js",
     "test": "npm run build && npm run dry-test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo 'pre-commit...' && lint-staged && npm run build && npm run lint-check && git add dist/"
-    }
   },
   "lint-staged": {
     "**/*.{js}": [
@@ -57,9 +55,10 @@
     "@vercel/ncc": "^0.27.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
-    "husky": "^5.0.9",
     "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
+    "pinst": "^2.1.4",
     "prettier": "2.2.1",
     "rimraf": "^3.0.2"
   }

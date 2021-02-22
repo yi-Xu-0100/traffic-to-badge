@@ -2,24 +2,12 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 10,
-    "uniques": 7
+    "count": 7,
+    "uniques": 5
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases",
-    "title": "Releases · yi-Xu-0100/traffic-to-badge",
-    "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/37",
-    "title": "update readme template for week badge · Issue #37 · yi-Xu-0100/traffic-to-bad...",
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/29",
+    "title": "Add new badges for views/week and clones/week · Issue #29 · yi-Xu-0100/traffi...",
     "count": 2,
     "uniques": 2
   },
@@ -42,20 +30,32 @@
     "uniques": 1
   },
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/actions",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge/actions/runs/281648004",
     "title": "📝 更新配置脚本 · yi-Xu-0100/traffic-to-badge@814af12",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
-    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.gitignore",
+    "title": "traffic-to-badge/.gitignore at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.gitignore",
-    "title": "traffic-to-badge/.gitignore at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/65cf486187386ce27a3d94a6c1c4ed10c75c3fdf",
+    "title": "💄 add new badge · yi-Xu-0100/traffic-to-badge@65cf486 · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/d7eda1f3b55001b1153da876462802ffbb853774",
+    "title": "📝 update readme template · yi-Xu-0100/traffic-to-badge@d7eda1f · GitHub",
     "count": 1,
     "uniques": 1
   }

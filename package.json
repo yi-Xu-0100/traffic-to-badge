@@ -4,9 +4,7 @@
   "description": "Use repository traffic data to generate badges that include views and clones.",
   "main": "dist/index.js",
   "scripts": {
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable",
+    "prepare": "husky install",
     "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
     "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
     "clear": "rimraf -rf dist/* .traffic/ .test/",

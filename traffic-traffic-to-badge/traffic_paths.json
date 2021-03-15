@@ -1,43 +1,19 @@
 [
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "GitHub - yi-Xu-0100/traffic-to-badge: The GitHub action that using repositori...",
-    "count": 2,
+    "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
+    "count": 3,
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/29",
-    "title": "Add new badges for views/week and clones/week · Issue #29 · yi-Xu-0100/traffi...",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commit/738527755490d435aa7395183d338575381f5e6f",
-    "title": "📝 update readme to add note(#31) · yi-Xu-0100/traffic-to-badge@7385277 · Git...",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
+    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/37",
-    "title": "update readme template for week badge · Issue #37 · yi-Xu-0100/traffic-to-bad...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/projects",
-    "title": "Projects · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.1.5",
-    "title": "Release Release v1.1.5 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "path": "/yi-Xu-0100/traffic-to-badge/releases",
+    "title": "Releases · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

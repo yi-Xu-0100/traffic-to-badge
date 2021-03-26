@@ -2,8 +2,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 12,
-    "uniques": 6
+    "count": 13,
+    "uniques": 7
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.4.0",
@@ -22,6 +22,12 @@
     "title": "History for LICENSE - yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 3,
     "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
+    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/commit/45f3c2a7d242275034829aea186424a147047245",
@@ -50,12 +56,6 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/commit/441e70a702723f4860778e97d608d4bb06b337bd",
     "title": "chore(deps): ⬆️ Bump husky from 5.1.1 to 5.1.2 (#74) · yi-Xu-0100/traffic-to-...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commits",
-    "title": "Commits · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   }

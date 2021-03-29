@@ -2,14 +2,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: The GitHub action that using repositories Insigh...",
-    "count": 13,
-    "uniques": 7
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.4.0",
-    "title": "Release Release v1.4.0 · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 1
+    "count": 11,
+    "uniques": 6
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/LICENSE",
@@ -36,12 +30,6 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/tags",
-    "title": "Tags · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
     "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
@@ -56,6 +44,18 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/commit/441e70a702723f4860778e97d608d4bb06b337bd",
     "title": "chore(deps): ⬆️ Bump husky from 5.1.1 to 5.1.2 (#74) · yi-Xu-0100/traffic-to-...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commits",
+    "title": "Commits · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commits/traffic",
+    "title": "Commits · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

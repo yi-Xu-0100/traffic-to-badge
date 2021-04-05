@@ -44,7 +44,7 @@
     "@actions/core": "^1.1.1",
     "@actions/exec": "^1.0.4",
     "@actions/github": "^4.0.0",
-    "@actions/io": "^1.0.2",
+    "@actions/io": "^1.1.0",
     "dotenv": "^8.2.0",
     "image-downloader": "^4.0.2",
     "underscore": "^1.12.1"

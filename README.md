@@ -22,17 +22,6 @@ The GitHub action that using repositories `Insights/traffic` data to generate ba
 
 **Note: The badge counts the all traffic data which backed up in `traffic_branch`, and only the latest 2 weeks data is official traffic data among them. In which the other data generated with older schedule action or the personal given. The `count/week` badge generates by the official traffic data of a week before action done.**
 
-## 🎨 Table of contents
-
-- [🎨 Table of contents](#-table-of-contents)
-- [🚀 Action configuration](#-action-configuration)
-- [📝 Example usage](#-example-usage)
-- [📝 Use dependabot to keep action up-to-date](#-use-dependabot-to-keep-action-up-to-date)
-- [🙈 Generate `my_token`](#-generate-my_token)
-- [🔊 CHANGELOG](#-changelog)
-- [📄 LICENSE](#-license)
-- [🎉 Thanks](#-thanks)
-
 ## 🚀 Action configuration
 
 ```yaml

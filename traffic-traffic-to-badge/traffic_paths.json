@@ -7,19 +7,37 @@
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
-    "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
+    "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 3,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/CHANGELOG.md",
-    "title": "traffic-to-badge/CHANGELOG.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
+    "title": "traffic-to-badge/CHANGELOG.md at main · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
+    "title": "Pull requests · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 2,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/22",
     "title": "Init traffic data into .traffic fail! · Issue #22 · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/45",
+    "title": "Bump eslint-config-prettier from 6.15.0 to 7.0.0 by dependabot · Pull Request...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pulls/assigned/yi-Xu-0100",
+    "title": "Pull requests · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   }

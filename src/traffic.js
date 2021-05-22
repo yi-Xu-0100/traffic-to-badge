@@ -8,7 +8,7 @@ const { rmRF, mkdirP } = require('@actions/io');
 const { owner, repo } = context.repo;
 const clone_url = `https://github.com/${owner}/${repo}.git`;
 const my_token = getInput('my_token', { require: true });
-const octokit = new getOctokit(my_token);
+const octokit = getOctokit(my_token);
 const type_list = ['views', 'clones'];
 
 let calculateData = function (data) {
@@ -31,7 +31,7 @@ let initData = async function (branch, path) {
   else throw Error(`${path} directory already exists, can not init traffic data!`);
 
   try {
-    await octokit.repos.getBranch({
+    await octokit.rest.repos.getBranch({
       owner: owner,
       repo: repo,
       branch: branch
@@ -56,7 +56,7 @@ let initData = async function (branch, path) {
 
 let getData = async function (repo) {
   try {
-    let views = await octokit.repos.getViews({
+    let views = await octokit.rest.repos.getViews({
       owner: owner,
       repo: repo,
       per: 'day'
@@ -89,7 +89,7 @@ let getData = async function (repo) {
     throw Error(error.message);
   }
   try {
-    let clones = await octokit.repos.getClones({
+    let clones = await octokit.rest.repos.getClones({
       owner: owner,
       repo: repo,
       per: 'day'
@@ -122,7 +122,7 @@ let getData = async function (repo) {
     throw Error(error.message);
   }
   try {
-    var paths = await octokit.repos.getTopPaths({
+    var paths = await octokit.rest.repos.getTopPaths({
       owner: owner,
       repo: repo
     });
@@ -132,7 +132,7 @@ let getData = async function (repo) {
     throw Error(error.message);
   }
   try {
-    var referrers = await octokit.repos.getTopReferrers({
+    var referrers = await octokit.rest.repos.getTopReferrers({
       owner: owner,
       repo: repo
     });

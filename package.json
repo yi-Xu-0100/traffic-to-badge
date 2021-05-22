@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prepare": "husky install",
-    "lint-check": "prettier --check **/*.{js,yml,json,md} && eslint .",
-    "format": "prettier --write **/*.{js,yml,json,md} && eslint .",
+    "lint-check": "prettier --check **/*.{js,yaml,yml,json,md} && eslint .",
+    "format": "prettier --write **/*.{js,yaml,yml,json,md} && eslint .",
     "clear": "rimraf -rf dist/* .traffic/ .test/",
     "build": "npm run clear && ncc build src/index.js --source-map --license license.txt",
     "dry-test": "node --require dotenv/config dist/index.js",
@@ -15,12 +15,10 @@
   "lint-staged": {
     "**/*.{js}": [
       "prettier --write",
-      "git add",
       "eslint"
     ],
-    "**/*.{md,json,yml}": [
-      "prettier --write",
-      "git add"
+    "**/*.{md,json,yml,yaml}": [
+      "prettier --write"
     ]
   },
   "repository": {
@@ -43,7 +41,7 @@
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/exec": "^1.0.4",
-    "@actions/github": "^4.0.0",
+    "@actions/github": "^5.0.0",
     "@actions/io": "^1.1.0",
     "dotenv": "^9.0.2",
     "image-downloader": "^4.0.2",

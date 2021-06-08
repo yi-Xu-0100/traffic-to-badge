@@ -40,7 +40,7 @@
   "homepage": "https://github.com/yi-Xu-0100/traffic-to-badge#readme",
   "dependencies": {
     "@actions/core": "^1.3.0",
-    "@actions/exec": "^1.0.4",
+    "@actions/exec": "^1.1.0",
     "@actions/github": "^5.0.0",
     "@actions/io": "^1.1.0",
     "dotenv": "^10.0.0",

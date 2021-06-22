@@ -1,7 +1,61 @@
 [
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "GitHub - yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using reposit...",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 3,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/traffic.js",
+    "title": "traffic-to-badge/traffic.js at main · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 3,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/generator.js",
+    "title": "traffic-to-badge/generator.js at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
+    "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/5f331c65f588accf1b12bc778406c1d6e2bb0910/src/traffic.js",
+    "title": "traffic-to-badge/traffic.js at 5f331c65f588accf1b12bc778406c1d6e2bb0910 · yi-...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
+    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/index.js",
+    "title": "traffic-to-badge/index.js at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/ffaddeb5ccf9d368fa0686b18a18583b6598e397",
+    "title": "✨ add `views/week` and `clones/week` badge · yi-Xu-0100/traffic-to-badge@ffad...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues",
+    "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
+    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

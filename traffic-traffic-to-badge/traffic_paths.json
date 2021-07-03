@@ -1,55 +1,31 @@
 [
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/traffic.js",
-    "title": "traffic-to-badge/traffic.js at main · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 6,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 4,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
-    "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
+    "title": "traffic-to-badge/traffic.js at main · yi-Xu-0100/traffic-to-badge",
     "count": 3,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/generator.js",
-    "title": "traffic-to-badge/generator.js at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
     "count": 2,
-    "uniques": 1
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/index.js",
     "title": "traffic-to-badge/index.js at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/5f331c65f588accf1b12bc778406c1d6e2bb0910/src/traffic.js",
-    "title": "traffic-to-badge/traffic.js at 5f331c65f588accf1b12bc778406c1d6e2bb0910 · yi-...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues",
-    "title": "Issues · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/24",
     "title": "use promise api for fs module · Issue #24 · yi-Xu-0100/traffic-to-badge · Git...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
+    "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

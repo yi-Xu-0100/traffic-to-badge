@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 5,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/LICENSE",
+    "title": "traffic-to-badge/LICENSE at main · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/31",
+    "title": "Add note for traffic data · Issue #31 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  }
+]

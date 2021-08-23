@@ -8,8 +8,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 2,
-    "uniques": 2
+    "count": 1,
+    "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/LICENSE",
@@ -18,14 +18,26 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/package-lock.json",
-    "title": "traffic-to-badge/package-lock.json at main · yi-Xu-0100/traffic-to-badge · Gi...",
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/32a90911f19f07a3478c0effd8b7a2b3d3ebf5a6",
+    "title": "chore(deps): ⬆️ bump actions/github-script from 4.0.2 to 4.1 · yi-Xu-0100/tra...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/commit/718ea1dea49d3ae1b2740588ec45ae1465e46b66",
-    "title": "chore(deps): ⬆️ bump lint-staged from 11.1.1 to 11.1.2 · yi-Xu-0100/traffic-t...",
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/daf7f4c0c2d4e90f23ad0eb95c059ab24326d360",
+    "title": "chore(deps): ⬆️ bump @actions/core from 1.4.0 to 1.5.0 · yi-Xu-0100/traffic-t...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/db80c6a3ed08687372231d40291bded89b686284",
+    "title": "🔖 release v1.2.1 · yi-Xu-0100/traffic-to-badge@db80c6a · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/commit/f8a87909e53c0208c51fd7e371023cf8f558179a",
+    "title": "chore(deps): ⬆️ bump @vercel/ncc from 0.29.1 to 0.29.2 · yi-Xu-0100/traffic-t...",
     "count": 1,
     "uniques": 1
   },
@@ -36,26 +48,14 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/131",
-    "title": "chore(deps): ⬆️ bump lint-staged from 11.1.1 to 11.1.2 by dependabot · Pull R...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/132",
     "title": "chore(deps): ⬆️ bump @vercel/ncc from 0.29.0 to 0.29.1 by dependabot · Pull R...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/45",
-    "title": "Bump eslint-config-prettier from 6.15.0 to 7.0.0 by dependabot · Pull Request...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.1.5",
-    "title": "Release Release v1.1.5 · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/133",
+    "title": "chore(deps): ⬆️ bump @actions/core from 1.4.0 to 1.5.0 by dependabot · Pull R...",
     "count": 1,
     "uniques": 1
   }

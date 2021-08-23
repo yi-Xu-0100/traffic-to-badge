@@ -51,7 +51,7 @@
     "@vercel/ncc": "^0.29.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "pinst": "^2.1.6",

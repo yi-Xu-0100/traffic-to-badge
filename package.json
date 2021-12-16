@@ -45,7 +45,7 @@
     "@actions/io": "^1.1.1",
     "dotenv": "^10.0.0",
     "image-downloader": "^4.0.3",
-    "underscore": "^1.13.1"
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.33.0",

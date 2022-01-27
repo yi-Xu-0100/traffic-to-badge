@@ -3,5 +3,10 @@
     "referrer": "github.com",
     "count": 2,
     "uniques": 2
+  },
+  {
+    "referrer": "Baidu",
+    "count": 2,
+    "uniques": 1
   }
 ]

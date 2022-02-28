@@ -2,8 +2,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 4,
-    "uniques": 3
+    "count": 3,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
@@ -21,18 +21,6 @@
     "path": "/yi-Xu-0100/traffic-to-badge/pull/188",
     "title": "chore(deps): ⬆️ bump @vercel/ncc from 0.33.1 to 0.33.3 by dependabot[bot] · P...",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.husky/pre-commit",
-    "title": "traffic-to-badge/pre-commit at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
-    "title": "Commits · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
     "uniques": 1
   },
   {
@@ -56,6 +44,18 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/191",
     "title": "chore(deps): ⬆️ bump actions/github-script from 5 to 6 by dependabot[bot] · P...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/192",
+    "title": "chore(deps): ⬆️ bump eslint-config-prettier from 8.3.0 to 8.4.0 by dependabot...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/193",
+    "title": "chore(deps): ⬆️ bump pinst from 2.1.6 to 3.0.0 by dependabot[bot] · Pull Requ...",
     "count": 1,
     "uniques": 1
   }

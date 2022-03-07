@@ -1,37 +1,61 @@
 [
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge · GitHub",
-    "count": 4,
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 6,
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "path": "/yi-Xu-0100/traffic-to-badge/commits/main",
+    "title": "Commits · yi-Xu-0100/traffic-to-badge",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/network/members",
+    "title": "Forks · yi-Xu-0100/traffic-to-badge",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/193",
+    "title": "chore(deps): ⬆️ bump pinst from 2.1.6 to 3.0.0 by dependabot[bot] · Pull Requ...",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues",
+    "title": "Issues · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/191",
+    "title": "chore(deps): ⬆️ bump actions/github-script from 5 to 6 by dependabot[bot] · P...",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/196",
+    "title": "chore(deps): ⬆️ bump actions/checkout from 2.4.0 to 3 by dependabot[bot] · Pu...",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
+    "title": "Pull requests · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
+    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/192",
     "title": "chore(deps): ⬆️ bump eslint-config-prettier from 8.3.0 to 8.4.0 by dependabot...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/193",
-    "title": "chore(deps): ⬆️ bump pinst from 2.1.6 to 3.0.0 by dependabot[bot] · Pull Requ...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/194",
-    "title": "chore(deps): ⬆️ bump eslint from 8.9.0 to 8.10.0 by dependabot[bot] · Pull Re...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/195",
-    "title": "chore(deps): ⬆️ bump image-downloader from 4.0.3 to 4.1.0 by dependabot[bot] ...",
     "count": 1,
     "uniques": 1
   }

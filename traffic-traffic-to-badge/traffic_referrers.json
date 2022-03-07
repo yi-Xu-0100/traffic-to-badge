@@ -1,12 +1,12 @@
 [
   {
-    "referrer": "Baidu",
-    "count": 4,
+    "referrer": "github.com",
+    "count": 17,
     "uniques": 2
   },
   {
-    "referrer": "github.com",
-    "count": 4,
+    "referrer": "Baidu",
+    "count": 1,
     "uniques": 1
   }
 ]

@@ -30,18 +30,6 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/191",
-    "title": "chore(deps): ⬆️ bump actions/github-script from 5 to 6 by dependabot[bot] · P...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/196",
-    "title": "chore(deps): ⬆️ bump actions/checkout from 2.4.0 to 3 by dependabot[bot] · Pu...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/198",
     "title": "chore(deps): ⬆️ bump lint-staged from 12.3.4 to 12.3.5 by dependabot[bot] · P...",
     "count": 2,
@@ -56,6 +44,18 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/actions",
     "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/autoRelease.yml",
+    "title": "traffic-to-badge/autoRelease.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/enhance-deps-pr.yml",
+    "title": "traffic-to-badge/enhance-deps-pr.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

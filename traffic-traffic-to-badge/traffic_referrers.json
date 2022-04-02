@@ -1,7 +1,17 @@
 [
   {
     "referrer": "Baidu",
-    "count": 12,
+    "count": 4,
     "uniques": 3
+  },
+  {
+    "referrer": "github.com",
+    "count": 4,
+    "uniques": 2
+  },
+  {
+    "referrer": "Google",
+    "count": 2,
+    "uniques": 1
   }
 ]

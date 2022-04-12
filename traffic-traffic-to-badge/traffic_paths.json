@@ -1,21 +1,21 @@
 [
   {
-    "path": "/yi-xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
     "count": 4,
     "uniques": 3
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 3,
-    "uniques": 3
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases",
-    "title": "Releases · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
+    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 2,
     "uniques": 2
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/actions",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues",
@@ -24,7 +24,25 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/6/commits/152018e44e1bcbdb8cd2c7adb15277f3c7724c3a",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/208",
+    "title": "chore(deps): ⬆️ bump prettier from 2.6.1 to 2.6.2 by dependabot[bot] · Pull R...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/6/commits/18a15dbd071d8594b6de87c4ba8686f6a9ff8264",
+    "title": "更新到稳定版本 by yi-Xu-0100 · Pull Request #6 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/6/commits/6965f573bd2cb02363682aa63d42e789ece62160",
+    "title": "更新到稳定版本 by yi-Xu-0100 · Pull Request #6 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/6/commits/ecabfc914fafb2847f543dc24de77c3d18361a31",
     "title": "更新到稳定版本 by yi-Xu-0100 · Pull Request #6 · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1

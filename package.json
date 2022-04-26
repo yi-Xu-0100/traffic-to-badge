@@ -39,17 +39,17 @@
   },
   "homepage": "https://github.com/yi-Xu-0100/traffic-to-badge#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.7.0",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.1",
     "@actions/io": "^1.1.2",
     "dotenv": "^11.0.0",
     "image-downloader": "^4.2.0",
-    "underscore": "^1.13.2"
+    "underscore": "^1.13.3"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.33.3",
-    "eslint": "^8.13.0",
+    "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",

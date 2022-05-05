@@ -2,7 +2,7 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 8,
+    "count": 18,
     "uniques": 6
   },
   {
@@ -12,10 +12,16 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/6/checks",
-    "title": "更新到稳定版本 by yi-Xu-0100 · Pull Request #6 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README.md",
+    "title": "traffic-to-badge/README.md at main · yi-Xu-0100/traffic-to-badge",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-xu-0100/traffic-to-badge/issues/21",
+    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
     "count": 2,
-    "uniques": 2
+    "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/211",
@@ -24,38 +30,32 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/CHANGELOG.md",
-    "title": "traffic-to-badge/CHANGELOG.md at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
+    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
+    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
+    "title": "yi-Xu-0100/traffic-to-badge at traffic",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
+    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README.md",
-    "title": "traffic-to-badge/README.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/211/files/ba2e402d37791c95a4d0a3355789967007a6ec7c..f649d7b89c3b658ccbd428e0daa36bac2b84ec82",
-    "title": "Commit range not found · Pull Request #211 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/211/files/f649d7b89c3b658ccbd428e0daa36bac2b84ec82..53efd29e69d4b04eb1a717074d5263c99ae4a88c",
-    "title": "Commit range not found · Pull Request #211 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/212",
-    "title": "chore(deps): ⬆️ bump lint-staged from 12.3.7 to 12.3.8 by dependabot[bot] · P...",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
+    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

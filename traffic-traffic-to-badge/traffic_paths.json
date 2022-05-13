@@ -2,14 +2,14 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 19,
+    "count": 9,
     "uniques": 8
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README.md",
-    "title": "traffic-to-badge/README.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 3,
-    "uniques": 1
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
+    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 2
   },
   {
     "path": "/yi-xu-0100/traffic-to-badge/issues/21",
@@ -18,44 +18,38 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/211",
-    "title": "chore(deps): ⬆️ bump @vercel/ncc from 0.33.3 to 0.33.4 by dependabot[bot] · P...",
-    "count": 2,
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/218",
+    "title": "chore(deps): ⬆️ bump image-downloader from 4.2.0 to 4.3.0 by dependabot[bot] ...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/220",
+    "title": "chore(deps): ⬆️ bump husky from 7.0.4 to 8.0.1 by dependabot[bot] · Pull Requ...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/221",
+    "title": "chore(deps): ⬆️ bump eslint from 8.14.0 to 8.15.0 by dependabot[bot] · Pull R...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.1.5",
+    "title": "Release Release v1.1.5 · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.4.0",
+    "title": "Release Release v1.4.0 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
     "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
-    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/traffic",
-    "title": "yi-Xu-0100/traffic-to-badge at traffic",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
-    "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
-    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
-    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

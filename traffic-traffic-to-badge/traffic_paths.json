@@ -1,49 +1,43 @@
 [
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/224",
+    "title": "chore(deps): ⬆️ bump @actions/core from 1.8.1 to 1.8.2 by dependabot[bot] · P...",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/225",
+    "title": "chore(deps): ⬆️ bump @actions/github from 5.0.2 to 5.0.3 by dependabot[bot] ·...",
+    "count": 2,
+    "uniques": 1
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 9,
-    "uniques": 8
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
-    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/218",
-    "title": "chore(deps): ⬆️ bump image-downloader from 4.2.0 to 4.3.0 by dependabot[bot] ...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/220",
-    "title": "chore(deps): ⬆️ bump husky from 7.0.4 to 8.0.1 by dependabot[bot] · Pull Requ...",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/222",
+    "title": "chore(deps): ⬆️ bump @actions/core from 1.8.0 to 1.8.1 by dependabot[bot] · P...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/221",
-    "title": "chore(deps): ⬆️ bump eslint from 8.14.0 to 8.15.0 by dependabot[bot] · Pull R...",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/223",
+    "title": "chore(deps): ⬆️ bump @actions/github from 5.0.1 to 5.0.2 by dependabot[bot] ·...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.1.5",
-    "title": "Release Release v1.1.5 · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/224/files/4f60b3d52178b0d1eaac7331435e2efda8d57725..5a74bc28471f7a588a8fd30c560c86edc0c89aac",
+    "title": "Commit range not found · Pull Request #224 · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases/tag/v1.4.0",
-    "title": "Release Release v1.4.0 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/225/files/ec4460ec84e61ecf7e85579ea720161a83ac9bad..5957728fcea60118a9959ff0f81ea18f5fc74221",
+    "title": "Commit range not found · Pull Request #225 · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },

@@ -12,12 +12,6 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/222",
     "title": "chore(deps): ⬆️ bump @actions/core from 1.8.0 to 1.8.1 by dependabot[bot] · P...",
     "count": 1,
@@ -38,12 +32,6 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/225/files/ec4460ec84e61ecf7e85579ea720161a83ac9bad..5957728fcea60118a9959ff0f81ea18f5fc74221",
     "title": "Commit range not found · Pull Request #225 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
-    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

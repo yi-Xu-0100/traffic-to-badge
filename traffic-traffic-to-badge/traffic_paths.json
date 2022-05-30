@@ -1,37 +1,37 @@
 [
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/224",
-    "title": "chore(deps): ⬆️ bump @actions/core from 1.8.1 to 1.8.2 by dependabot[bot] · P...",
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
     "count": 2,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/225",
-    "title": "chore(deps): ⬆️ bump @actions/github from 5.0.2 to 5.0.3 by dependabot[bot] ·...",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/autoRelease.yml",
+    "title": "traffic-to-badge/autoRelease.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 2,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/222",
-    "title": "chore(deps): ⬆️ bump @actions/core from 1.8.0 to 1.8.1 by dependabot[bot] · P...",
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
+    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
+    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/enhance-deps-pr.yml",
+    "title": "traffic-to-badge/enhance-deps-pr.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/223",
-    "title": "chore(deps): ⬆️ bump @actions/github from 5.0.1 to 5.0.2 by dependabot[bot] ·...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/224/files/4f60b3d52178b0d1eaac7331435e2efda8d57725..5a74bc28471f7a588a8fd30c560c86edc0c89aac",
-    "title": "Commit range not found · Pull Request #224 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/225/files/ec4460ec84e61ecf7e85579ea720161a83ac9bad..5957728fcea60118a9959ff0f81ea18f5fc74221",
-    "title": "Commit range not found · Pull Request #225 · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
+    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

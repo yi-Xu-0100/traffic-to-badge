@@ -1,44 +1,14 @@
 [
   {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/autoRelease.yml",
-    "title": "traffic-to-badge/autoRelease.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
     "path": "/yi-xu-0100/traffic-to-badge/issues/21",
     "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
     "count": 2,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
-    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/233",
+    "title": "chore(deps): ⬆️ bump lint-staged from 13.0.0 to 13.0.1 by dependabot[bot] · P...",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
-    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/enhance-deps-pr.yml",
-    "title": "traffic-to-badge/enhance-deps-pr.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
-    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
     "uniques": 1
   }
 ]

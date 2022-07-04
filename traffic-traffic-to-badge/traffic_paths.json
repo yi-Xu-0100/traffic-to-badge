@@ -1,25 +1,55 @@
 [
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 3,
-    "uniques": 3
+    "title": "yi-Xu-0100/流量到徽章：📊 GitHub 操作，它使用存储库见解/流量数据生成包含视图和克隆的徽章。",
+    "count": 10,
+    "uniques": 5
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
     "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/src/index.js",
-    "title": "traffic-to-badge/index.js at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
+    "count": 4,
+    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
-    "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
+    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-xu-0100/traffic-to-badge/issues/21",
+    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/dist",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
+    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/template",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
     "count": 1,
     "uniques": 1
   }

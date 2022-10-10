@@ -2,18 +2,54 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 3,
-    "uniques": 2
+    "count": 4,
+    "uniques": 3
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README.md",
-    "title": "traffic-to-badge/README.md at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
+    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
     "count": 3,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/edit/main/README.md",
-    "title": "Editing traffic-to-badge/README.md at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
+    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/actions",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/actions/workflows/autoRelease.yml",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/actions/workflows/traffic2badge.yml",
+    "title": "Actions · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/action.yml",
+    "title": "traffic-to-badge/action.yml at main · yi-Xu-0100/traffic-to-badge",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/LICENSE",
+    "title": "traffic-to-badge/LICENSE at main · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/src",
+    "title": "traffic-to-badge/src at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

@@ -10,5 +10,23 @@
     "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/268",
+    "title": "chore(deps): ⬆️ bump lint-staged from 13.0.4 to 13.1.0 by dependabot[bot] · P...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/269",
+    "title": "chore(deps): ⬆️ bump eslint from 8.28.0 to 8.29.0 by dependabot[bot] · Pull R...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/270",
+    "title": "chore(deps): ⬆️ bump @vercel/ncc from 0.34.0 to 0.36.0 by dependabot[bot] · P...",
+    "count": 1,
+    "uniques": 1
   }
 ]

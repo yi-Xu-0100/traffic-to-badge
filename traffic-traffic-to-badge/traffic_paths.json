@@ -52,5 +52,11 @@
     "title": "Feature request: Include total number of downloads for all releases of a repo...",
     "count": 1,
     "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/273",
+    "title": "chore(deps): ⬆️ bump eslint from 8.30.0 to 8.31.0 by dependabot[bot] · Pull R...",
+    "count": 1,
+    "uniques": 1
   }
 ]

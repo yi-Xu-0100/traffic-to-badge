@@ -1,13 +1,7 @@
 [
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues",
-    "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
-    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/CHANGELOG.md",
+    "title": "traffic-to-badge/CHANGELOG.md at main · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 3,
     "uniques": 1
   },
@@ -24,27 +18,15 @@
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
-    "title": "Pull requests · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/31",
+    "title": "Add note for traffic data · Issue #31 · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 2,
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
-    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/issues",
+    "title": "Issues · yi-Xu-0100/traffic-to-badge",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
-    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/21",
-    "title": "Can't find 'action.yml' · Issue #21 · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
     "uniques": 1
   },
   {
@@ -56,6 +38,24 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/273",
     "title": "chore(deps): ⬆️ bump eslint from 8.30.0 to 8.31.0 by dependabot[bot] · Pull R...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/274",
+    "title": "chore(deps): ⬆️ bump eslint-config-prettier from 8.5.0 to 8.6.0 by dependabot...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/276",
+    "title": "chore(deps): ⬆️ bump peaceiris/actions-gh-pages from 3.9.0 to 3.9.1 by depend...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
+    "title": "Pull requests · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

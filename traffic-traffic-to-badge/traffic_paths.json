@@ -1,21 +1,15 @@
 [
   {
+    "path": "/yi-Xu-0100/traffic-to-badge/issues/32",
+    "title": "Use template for week badge · Issue #32 · yi-Xu-0100/traffic-to-badge · GitHub",
+    "count": 4,
+    "uniques": 4
+  },
+  {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/CHANGELOG.md",
     "title": "traffic-to-badge/CHANGELOG.md at main · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 3,
     "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge",
-    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/commit/8773308fab520e4ca971f86bc5cd83f3cb8b842e",
-    "title": "🚑 fix git add before push · yi-Xu-0100/traffic-to-badge@8773308 · GitHub",
-    "count": 2,
-    "uniques": 2
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/issues/31",
@@ -24,38 +18,14 @@
     "uniques": 2
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues",
-    "title": "Issues · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/issues/265",
-    "title": "Feature request: Include total number of downloads for all releases of a repo...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/273",
-    "title": "chore(deps): ⬆️ bump eslint from 8.30.0 to 8.31.0 by dependabot[bot] · Pull R...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/274",
-    "title": "chore(deps): ⬆️ bump eslint-config-prettier from 8.5.0 to 8.6.0 by dependabot...",
+    "path": "/yi-Xu-0100/traffic-to-badge",
+    "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
     "count": 1,
     "uniques": 1
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/pull/276",
     "title": "chore(deps): ⬆️ bump peaceiris/actions-gh-pages from 3.9.0 to 3.9.1 by depend...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pulls",
-    "title": "Pull requests · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }

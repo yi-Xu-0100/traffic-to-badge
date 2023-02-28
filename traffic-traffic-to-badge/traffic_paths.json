@@ -2,54 +2,24 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 6,
+    "count": 3,
     "uniques": 3
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/releases",
-    "title": "Releases · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
-    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/autoRelease.yml",
-    "title": "traffic-to-badge/autoRelease.yml at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.gitignore",
+    "title": "traffic-to-badge/.gitignore at main · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
-    "title": "traffic-to-badge/README_CN.md at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/LICENSE",
+    "title": "traffic-to-badge/LICENSE at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/284",
-    "title": "chore(deps): ⬆️ bump lint-staged from 13.1.0 to 13.1.1 by dependabot[bot] · P...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/pull/285",
-    "title": "chore(deps): ⬆️ bump prettier from 2.8.3 to 2.8.4 by dependabot[bot] · Pull R...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tags",
-    "title": "Tags · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
-    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
+    "path": "/yi-Xu-0100/traffic-to-badge/pull/6",
+    "title": "更新到稳定版本 by yi-Xu-0100 · Pull Request #6 · yi-Xu-0100/traffic-to-badge · GitHub",
     "count": 1,
     "uniques": 1
   }

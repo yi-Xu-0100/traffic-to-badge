@@ -2,20 +2,8 @@
   {
     "path": "/yi-Xu-0100/traffic-to-badge",
     "title": "yi-Xu-0100/traffic-to-badge: 📊 The GitHub action that using repositories Ins...",
-    "count": 9,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/dist",
-    "title": "traffic-to-badge/dist at main · yi-Xu-0100/traffic-to-badge",
-    "count": 6,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/dist/index.js",
-    "title": "traffic-to-badge/index.js at main · yi-Xu-0100/traffic-to-badge",
-    "count": 4,
-    "uniques": 1
+    "count": 5,
+    "uniques": 5
   },
   {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/README_CN.md",
@@ -24,38 +12,8 @@
     "uniques": 1
   },
   {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github",
-    "title": "traffic-to-badge/.github at main · yi-Xu-0100/traffic-to-badge",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/action.yml",
-    "title": "traffic-to-badge/action.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/dependabot.yml",
     "title": "traffic-to-badge/dependabot.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/.github/workflows/traffic2badge.yml",
-    "title": "traffic-to-badge/traffic2badge.yml at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/blob/main/template/SVG.template",
-    "title": "traffic-to-badge/SVG.template at main · yi-Xu-0100/traffic-to-badge",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/yi-Xu-0100/traffic-to-badge/tree/main/.github/workflows",
-    "title": "traffic-to-badge/.github/workflows at main · yi-Xu-0100/traffic-to-badge",
     "count": 1,
     "uniques": 1
   }
